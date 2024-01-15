@@ -3,6 +3,8 @@ package com.example.daedongyeojido_server.global.security.jwt;
 import com.example.daedongyeojido_server.domain.auth.dao.RefreshTokenRepository;
 import com.example.daedongyeojido_server.domain.auth.domain.RefreshToken;
 import com.example.daedongyeojido_server.domain.auth.dto.response.TokenResponse;
+import com.example.daedongyeojido_server.domain.auth.exception.ExpiredTokenException;
+import com.example.daedongyeojido_server.domain.auth.exception.InvalidTokenException;
 import com.example.daedongyeojido_server.global.security.auth.CustomUserDetailsService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
@@ -30,19 +32,19 @@ public class JwtTokenProvider {
 
     // access token 생성
 
-    public String createAccessToken(String userId) {
+    public String createAccessToken(String classNumber) {
 
         Date now = new Date();
 
         return Jwts.builder()
-                .setSubject(userId)
+                .setSubject(classNumber)
                 .claim("type", "access")
                 .setIssuedAt(now)
                 .setExpiration(new Date(now.getTime() + jwtProperties.getAccessExpiration() * 1000))
                 .signWith(SignatureAlgorithm.HS256, jwtProperties.getSecret())
                 .compact();
     }
-    public String createRefreshToken(String userId) {
+    public String createRefreshToken(String classNumber) {
 
         Date now = new Date();
 
@@ -55,7 +57,7 @@ public class JwtTokenProvider {
 
         refreshTokenRepository.save(
                 RefreshToken.builder()
-                        .userId(userId)
+                        .classNumber(classNumber)
                         .token(refreshToken)
                         .timeToLive(jwtProperties.getRefreshExpiration())
                         .build());

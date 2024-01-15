@@ -2,6 +2,7 @@ package com.example.daedongyeojido_server.global.security.auth;
 
 import com.example.daedongyeojido_server.domain.user.dao.UserRepository;
 import com.example.daedongyeojido_server.domain.user.domain.User;
+import com.example.daedongyeojido_server.domain.user.exception.UserNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
