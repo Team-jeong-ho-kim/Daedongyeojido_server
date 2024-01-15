@@ -86,12 +86,12 @@ public class JwtTokenProvider {
         }
     }
 
-    public TokenResponse receiveToken(String studentId) {
+    public TokenResponse receiveToken(String classNumber) {
 
         return TokenResponse
                 .builder()
-                .accessToken(createAccessToken(studentId))
-                .refreshToken(createRefreshToken(studentId))
+                .accessToken(createAccessToken(classNumber))
+                .refreshToken(createRefreshToken(classNumber))
                 .build();
     }
 
