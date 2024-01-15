@@ -41,8 +41,8 @@ public class User {
     @Column(name = "part", nullable = false)
     private Part part;
 
-    @Column(name = "alarms")
-    private List<Alarm> alarms;
+//    @Column(name = "alarms")
+//    private List<Alarm> alarms;
 
     @Column
     private String myClub;
