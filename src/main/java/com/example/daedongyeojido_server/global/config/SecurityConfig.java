@@ -1,7 +1,9 @@
 package com.example.daedongyeojido_server.global.config;
 
+
+
+import com.example.daedongyeojido_server.global.security.jwt.JwtTokenProvider;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import jakarta.servlet.FilterConfig;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
