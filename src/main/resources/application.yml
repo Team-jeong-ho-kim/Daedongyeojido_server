@@ -3,9 +3,9 @@ spring:
     allow-bean-definition-overriding: true
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/daedong?useSSL=false&allowPublicKeyRetrieval=true
-    username: ${DB_USERNAME:root}
-    password: ${DB_PASSWORD:wjdgus2007?}
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
   spring:
     jpa:
       database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
@@ -24,3 +24,4 @@ jwt:
 
 server:
   port: 8080
+
