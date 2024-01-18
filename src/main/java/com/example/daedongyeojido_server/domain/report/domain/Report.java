@@ -1,10 +1,14 @@
 package com.example.daedongyeojido_server.domain.report.domain;
 
+import com.example.daedongyeojido_server.domain.club.domain.Club;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,6 +24,7 @@ public class Report {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "report_id", nullable = false)
     private Long reportId;
 
     @Column(name = "class_number", length = 4, nullable = false)
@@ -37,6 +42,7 @@ public class Report {
     @Column(name = "learn", length = 100, nullable = false)
     private String learn;
 
-    @Column(name = "club_name", length = 20, nullable = false)
-    private String clubName;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "club_name", nullable = false)
+    private Club clubName;
 }
