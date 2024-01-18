@@ -6,13 +6,12 @@ spring:
     url: ${DB_URL}
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
-  spring:
-    jpa:
-      database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
-      open-in-view: false
-      show-sql: true
-      hibernate:
-        ddl-auto: update
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    open-in-view: false
+    show-sql: true
+    hibernate:
+      ddl-auto: update
   redis:
     host: localhost
     port: 6379
