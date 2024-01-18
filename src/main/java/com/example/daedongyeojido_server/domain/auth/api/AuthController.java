@@ -21,4 +21,9 @@ public class AuthController {
     public TokenResponse studentLogin(@RequestBody @Valid StudentLoginRequest request) {
         return studentLoginService.studentLogin(request);
     }
+//
+//    @PostMapping("/teacher")
+//    public TokenResponse studentLogin(@RequestBody @Valid StudentLoginRequest request) {
+//        return studentLoginService.studentLogin(request);
+//    }
 }
