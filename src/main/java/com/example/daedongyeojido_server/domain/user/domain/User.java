@@ -1,12 +1,17 @@
 package com.example.daedongyeojido_server.domain.user.domain;
 
+import com.example.daedongyeojido_server.domain.club.domain.Club;
 import com.example.daedongyeojido_server.domain.user.domain.type.Part;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,7 +19,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
-import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -31,7 +35,8 @@ public class User {
             columnDefinition = "BINARY(16)",
             nullable = false
     )
-    private UUID userId;
+    @Builder.Default
+    private UUID userId = UUID.randomUUID();
 
     @Column(name = "class_number", length = 4, nullable = false)
     private String classNumber;
@@ -46,7 +51,7 @@ public class User {
 //    @Column(name = "alarms")
 //    private List<Alarm> alarms;
 
-    @Column(name = "my_club", length = 20, nullable = false)
-    private String myClub;
-
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "my_club", nullable = false)
+    private Club myClub;
 }
