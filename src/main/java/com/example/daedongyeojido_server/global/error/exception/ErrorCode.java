@@ -16,6 +16,9 @@ public enum ErrorCode {
     // user
     USER_NOT_FOUND(404, "User not found"),
 
+    // club
+    CLUB_NOT_FOUND(404, "Club not found"),
+
     // general
     BAD_REQUEST(400, "Bad request"),
     INTERNAL_SERVER_ERROR(500, "Internal server error");
