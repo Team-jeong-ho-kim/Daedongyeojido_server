@@ -1,7 +1,5 @@
 package com.example.daedongyeojido_server.global.config;
 
-
-
 import com.example.daedongyeojido_server.global.security.jwt.JwtTokenProvider;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
@@ -68,5 +66,4 @@ public class SecurityConfig {
         source.registerCorsConfiguration("/**", configuration); // 모든 경로에 대해 위에서 설정한 CORS 설정 적용
         return source;
     }
-
 }
