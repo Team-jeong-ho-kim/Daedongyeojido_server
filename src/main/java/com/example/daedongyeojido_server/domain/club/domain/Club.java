@@ -37,16 +37,16 @@ public class Club {
     @Column(name = "club_image_url", length = 20)
     private String clubImageUrl;
 
-    @OneToMany(mappedBy = "club_members", orphanRemoval = true)
+    @OneToMany(mappedBy = "club", orphanRemoval = true)
     private List<User> clubMembers = new ArrayList<>();
 
     @ElementCollection
     private List<String> tags = new ArrayList<>();
 
-    @OneToMany(mappedBy = "notices", orphanRemoval = true)
+    @OneToMany(mappedBy = "club", orphanRemoval = true)
     private List<Notice> notices = new ArrayList<>();
 
-    @OneToMany(mappedBy = "reports", orphanRemoval = true)
+    @OneToMany(mappedBy = "club", orphanRemoval = true)
     private List<Report> reports = new ArrayList<>();
 
     @Column(name = "mess_count", nullable = false)
