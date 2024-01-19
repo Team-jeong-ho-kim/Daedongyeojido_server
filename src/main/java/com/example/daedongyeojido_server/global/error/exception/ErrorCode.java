@@ -19,6 +19,7 @@ public enum ErrorCode {
 
     // club
     CLUB_NOT_FOUND(404, "Club not found"),
+    EXIST_CLUB(409, "동일한 이름의 동아리가 존재합니다."),
 
     // general
     BAD_REQUEST(400, "Bad request"),
