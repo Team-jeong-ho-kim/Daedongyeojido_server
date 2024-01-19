@@ -6,6 +6,7 @@ import com.example.daedongyeojido_server.domain.club.exception.ClubNotFoundExcep
 import com.example.daedongyeojido_server.domain.user.dao.UserRepository;
 import com.example.daedongyeojido_server.domain.user.domain.User;
 import com.example.daedongyeojido_server.domain.user.dto.request.CreateUserRequest;
+import com.example.daedongyeojido_server.domain.user.exception.ExistUserException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +19,10 @@ public class CreateUserService {
     private final ClubRepository clubRepository;
 
     public void createUser(CreateUserRequest request) {
+        if(userRepository.findByClassNumber(request.getClassNumber()).isPresent()) {
+            throw ExistUserException.EXCEPTION;
+        }
+
         Club myclub = clubRepository.findById(request.getClubName())
                         .orElseThrow(()-> ClubNotFoundException.EXCEPTION);
 
