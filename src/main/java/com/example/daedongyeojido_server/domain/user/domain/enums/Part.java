@@ -9,6 +9,8 @@ public enum Part {
 
     APPLICANT("지원자"),
 
+    INDEPENDENT("무소속"),
+
     CLUB_MEMBER("동아리원"),
 
     CLUB_LEADER("동아리장"),
