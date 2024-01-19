@@ -10,5 +10,4 @@ public class ClubNotFoundException extends BusinessException {
     public ClubNotFoundException() {
         super(ErrorCode.CLUB_NOT_FOUND);
     }
-
 }
