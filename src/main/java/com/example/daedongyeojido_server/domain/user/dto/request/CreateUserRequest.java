@@ -1,6 +1,6 @@
 package com.example.daedongyeojido_server.domain.user.dto.request;
 
-import com.example.daedongyeojido_server.domain.user.domain.type.Part;
+import com.example.daedongyeojido_server.domain.user.domain.enums.Part;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.AccessLevel;

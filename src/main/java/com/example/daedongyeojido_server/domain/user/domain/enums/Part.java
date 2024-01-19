@@ -1,4 +1,4 @@
-package com.example.daedongyeojido_server.domain.user.domain.type;
+package com.example.daedongyeojido_server.domain.user.domain.enums;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
