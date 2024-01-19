@@ -18,5 +18,4 @@ public enum Part {
     CLUB_LEADER_TEACHER("전공동아리 담당 선생님");
 
     private final String name;
-
 }
