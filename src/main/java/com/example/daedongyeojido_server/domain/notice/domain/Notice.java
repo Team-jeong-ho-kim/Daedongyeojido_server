@@ -1,9 +1,11 @@
 package com.example.daedongyeojido_server.domain.notice.domain;
 
 import com.example.daedongyeojido_server.domain.club.domain.Club;
+import com.example.daedongyeojido_server.domain.notice.domain.enums.Major;
 import jakarta.persistence.Column;
-import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,8 +19,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Getter
@@ -32,11 +32,9 @@ public class Notice {
     @Column(name = "notice_id", nullable = false)
     private Long noticeId;
 
-    @Column(name = "content", length = 20, nullable = false)
-    private String content;
-
-    @ElementCollection
-    private List<String> techStack = new ArrayList<>();
+    @Enumerated(EnumType.STRING)
+    @Column(name = "major", nullable = false)
+    private Major major;
 
     @Column(name = "deadline", nullable = false)
     private LocalDateTime deadline;
