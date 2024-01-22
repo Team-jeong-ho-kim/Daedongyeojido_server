@@ -36,7 +36,7 @@ public class User {
     )
     private UUID userId = UUID.randomUUID();
 
-    @Column(name = "class_number", length = 4, nullable = false)
+    @Column(name = "class_number", length = 4)
     private String classNumber;
 
     @Column(name = "name", length = 4, nullable = false)
@@ -50,6 +50,6 @@ public class User {
 //    private List<Alarm> alarms;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "my_club", nullable = false)
+    @JoinColumn(name = "my_club")
     private Club myClub;
 }
