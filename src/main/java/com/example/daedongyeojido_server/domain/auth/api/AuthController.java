@@ -1,16 +1,15 @@
 package com.example.daedongyeojido_server.domain.auth.api;
 
+import com.example.daedongyeojido_server.domain.auth.application.CheckUserService;
 import com.example.daedongyeojido_server.domain.auth.application.SignupService;
 import com.example.daedongyeojido_server.domain.auth.application.StudentLoginService;
 import com.example.daedongyeojido_server.domain.auth.application.TeacherLoginService;
 import com.example.daedongyeojido_server.domain.auth.dto.request.SignupAndCheckUserRequest;
-import com.example.daedongyeojido_server.domain.auth.dto.request.SignupRequest;
 import com.example.daedongyeojido_server.domain.auth.dto.request.StudentLoginRequest;
 import com.example.daedongyeojido_server.domain.auth.dto.request.TeacherLoginRequest;
 import com.example.daedongyeojido_server.domain.auth.dto.response.TokenResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +25,8 @@ public class AuthController {
     private final StudentLoginService studentLoginService;
 
     private final TeacherLoginService teacherLoginService;
+
+    private final CheckUserService checkUserService;
 
     @PostMapping("/signup")
     public void signup(@RequestBody @Valid SignupAndCheckUserRequest request) {
@@ -43,5 +44,7 @@ public class AuthController {
     }
 
     @PostMapping("/check-user")
-    public boolean checkUser(@RequestBody @Valid)
+    public boolean checkUser(@RequestBody @Valid SignupAndCheckUserRequest request) {
+        return checkUserService.checkUser(request);
+    }
 }
