@@ -13,10 +13,11 @@ public class CheckUserService {
     private final UserRepository userRepository;
 
     public boolean checkUser(SignupAndCheckUserRequest request) {
-        if (request.getPart() == Part.INDEPENDENT)
-            return userRepository.existsByClassNumber(request.getClassNumber());
-
-        else
-            return userRepository.existsByName(request.getName());
+        if (request.getPart() == Part.INDEPENDENT) {
+            return userRepository.findByClassNumber(request.getClassNumber()).isPresent();
+        }
+        else {
+            return userRepository.findByName(request.getName()).isPresent();
+        }
     }
 }
