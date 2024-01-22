@@ -14,7 +14,7 @@ public enum ErrorCode {
     INVALID_TOKEN(401, "검증되지 않은 토큰입니다."),
 
     // user
-    USER_NOT_FOUND(404, "일치하는 유저가 존재하지 않습니다."),
+    USER_NOT_FOUND(404, "일치하는 학생이 존재하지 않습니다."),
     EXIST_USER(409, "동일한 학번을 가진 학생이 존재합니다."),
 
     // club
