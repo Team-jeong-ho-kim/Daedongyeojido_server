@@ -1,5 +1,6 @@
 package com.example.daedongyeojido_server.domain.auth.application;
 
+import com.example.daedongyeojido_server.domain.auth.dto.request.SignupAndCheckUserRequest;
 import com.example.daedongyeojido_server.domain.auth.dto.request.SignupRequest;
 import com.example.daedongyeojido_server.domain.user.dao.UserRepository;
 import com.example.daedongyeojido_server.domain.user.domain.User;
@@ -12,7 +13,7 @@ public class SignupService {
 
     private final UserRepository userRepository;
 
-    public void signup(SignupRequest request) {
+    public void signup(SignupAndCheckUserRequest request) {
         userRepository.save(
                 User.builder()
                         .classNumber(request.getClassNumber())
