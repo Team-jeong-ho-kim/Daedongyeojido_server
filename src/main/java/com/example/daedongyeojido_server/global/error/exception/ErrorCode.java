@@ -15,7 +15,6 @@ public enum ErrorCode {
 
     // user
     USER_NOT_FOUND(404, "일치하는 유저가 존재하지 않습니다."),
-    EXIST_USER(409, "동일한 학번을 가진 학생이 존재합니다."),
 
     // club
     CLUB_NOT_FOUND(404, "일치하는 동아리가 존재하지 않습니다."),
