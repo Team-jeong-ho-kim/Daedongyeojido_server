@@ -10,4 +10,8 @@ public interface UserRepository extends JpaRepository<User, UUID> {
     Optional<User> findByClassNumber(String classNumber);
 
     Optional<User> findByName(String name);
+
+    Boolean existsByClassNumber(String classNumber);
+
+    Boolean existsByName(String name);
 }
