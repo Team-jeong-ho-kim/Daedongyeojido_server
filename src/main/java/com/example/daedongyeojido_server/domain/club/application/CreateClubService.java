@@ -7,14 +7,14 @@ import com.example.daedongyeojido_server.domain.club.exception.ExistClubExceptio
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-@Service
 @RequiredArgsConstructor
+@Service
 public class CreateClubService {
 
     private final ClubRepository clubRepository;
 
     public void createClub(CreateClubRequest request) {
-        if(clubRepository.existsById(request.getClubName())) throw ExistClubException.EXCEPTION;
+        if (clubRepository.existsById(request.getClubName())) throw ExistClubException.EXCEPTION;
 
         clubRepository.save(
                 Club.builder()
