@@ -28,7 +28,7 @@ public class Mess {
 
     @Column(name = "mess_date", nullable = false)
     private LocalDate messDate;
-    
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "my_club")
     private Club myclub;
