@@ -1,5 +1,6 @@
 package com.example.daedongyeojido_server.global.security.auth;
 
+import com.example.daedongyeojido_server.domain.user.dao.CustomUserRepository;
 import com.example.daedongyeojido_server.domain.user.dao.UserRepository;
 import com.example.daedongyeojido_server.domain.user.domain.User;
 import com.example.daedongyeojido_server.domain.user.exception.UserNotFoundException;
@@ -14,12 +15,20 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     private final UserRepository userRepository;
 
+    private final CustomUserRepository customUserRepository;
+
     @Override
     public UserDetails loadUserByUsername(String classNumber) {
-        User user = userRepository.findByClassNumber(classNumber)
-                .orElseThrow(()-> UserNotFoundException.EXCEPTION);
+        if(userRepository.findByClassNumber(classNumber).isPresent()) {
+            User user = userRepository.findByClassNumber(classNumber)
+                    .orElseThrow(()->UserNotFoundException.EXCEPTION);
+            return new CustomUserDetails(user);
+        }
 
-        return new CustomUserDetails(user);
+        else {
+            User user = customUserRepository.findTeacherByName(classNumber)
+                    .orElseThrow(()->UserNotFoundException.EXCEPTION);
+            return new CustomUserDetails(user);
+        }
     }
-
 }
