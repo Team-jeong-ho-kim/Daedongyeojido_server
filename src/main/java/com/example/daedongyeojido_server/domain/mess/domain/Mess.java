@@ -18,7 +18,7 @@ public class Mess {
     private Long messId;
 
     @Column(name = "mess_start_time", length = 2, nullable = false)
-    private Integer messStsrtTime;
+    private Integer messStartTime;
 
     @Column(name = "mess_end_time", length = 2, nullable = false)
     private Integer messEndTime;
