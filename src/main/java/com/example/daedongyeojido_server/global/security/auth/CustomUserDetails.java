@@ -24,6 +24,7 @@ public record CustomUserDetails(User user) implements UserDetails {
     public String getPassword() {
         return null;
     }
+
     @Override
     public boolean isAccountNonExpired() { return true; }
 

@@ -44,6 +44,7 @@ public class JwtTokenProvider {
                 .signWith(SignatureAlgorithm.HS256, jwtProperties.getSecret())
                 .compact();
     }
+
     public String createRefreshToken(String classNumber) {
 
         Date now = new Date();
@@ -105,5 +106,4 @@ public class JwtTokenProvider {
         }
         return null;
     }
-
 }
