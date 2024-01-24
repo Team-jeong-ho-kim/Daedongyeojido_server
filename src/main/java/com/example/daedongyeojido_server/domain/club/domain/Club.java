@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Getter
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
@@ -43,4 +42,19 @@ public class Club {
 
     @Column(name = "mess_count")
     private Integer messCount = 0;
+
+    @Builder
+    public void modifyClub(String clubName, String title, String content, String clubImageUrl, List<User> clubMembers, List<String> tags, List<Notice> notices) {
+        this.clubName = clubName;
+        this.title = title;
+        this.content = content;
+        this.clubImageUrl = clubImageUrl;
+        this.clubMembers = clubMembers;
+        this.tags = tags;
+        this.notices = notices;
+    }
+
+//    public void addMessCounts() {
+//        this.messCount += 1;
+//    }
 }
