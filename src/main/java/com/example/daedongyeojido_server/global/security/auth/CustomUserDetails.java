@@ -22,7 +22,7 @@ public record CustomUserDetails(User user) implements UserDetails {
 
     @Override
     public String getPassword() {
-        return null;
+        return user.getName();
     }
 
     @Override
