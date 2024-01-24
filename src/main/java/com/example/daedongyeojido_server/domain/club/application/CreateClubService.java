@@ -6,6 +6,7 @@ import com.example.daedongyeojido_server.domain.club.dto.request.CreateClubReque
 import com.example.daedongyeojido_server.domain.club.exception.ExistClubException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @RequiredArgsConstructor
 @Service
@@ -13,12 +14,13 @@ public class CreateClubService {
 
     private final ClubRepository clubRepository;
 
+    @Transactional
     public void createClub(CreateClubRequest request) {
+
         if (clubRepository.existsById(request.getClubName())) throw ExistClubException.EXCEPTION;
 
-        clubRepository.save(
-                Club.builder()
-                        .clubName(request.getClubName())
-                        .build());
+        clubRepository.save(Club.builder()
+                .clubName(request.getClubName())
+                .build());
     }
 }
