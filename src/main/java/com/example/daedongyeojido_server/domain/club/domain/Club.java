@@ -44,6 +44,10 @@ public class Club {
     private Integer messCount = 0;
 
     @Builder
+    public Club(String clubName) {
+        this.clubName = clubName;
+    }
+
     public void modifyClub(String clubName, String title, String content, String clubImageUrl, List<User> clubMembers, List<String> tags, List<Notice> notices) {
         this.clubName = clubName;
         this.title = title;
