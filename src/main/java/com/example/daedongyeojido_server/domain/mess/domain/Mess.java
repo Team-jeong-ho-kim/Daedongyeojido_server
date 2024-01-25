@@ -2,13 +2,14 @@ package com.example.daedongyeojido_server.domain.mess.domain;
 
 import com.example.daedongyeojido_server.domain.club.domain.Club;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
 @Getter
-@Builder
-@AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 public class Mess {
@@ -32,4 +33,14 @@ public class Mess {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "my_club")
     private Club myclub;
+
+    @Builder
+    public Mess(Long messId, Integer messStartTime, Integer messEndTime, Boolean messAgree, LocalDate messDate, Club myclub) {
+        this.messId = messId;
+        this.messStartTime = messStartTime;
+        this.messEndTime = messEndTime;
+        this.messAgree = messAgree;
+        this.messDate = messDate;
+        this.myclub = myclub;
+    }
 }
