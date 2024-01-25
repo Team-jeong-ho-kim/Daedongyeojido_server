@@ -43,6 +43,9 @@ public class Club {
     @Column(name = "mess_count")
     private Integer messCount = 0;
 
+//    @OneToMany(mappedBy = "clubName", orphanRemoval = true)
+//    private
+
     @Builder
     public Club(String clubName) {
         this.clubName = clubName;
