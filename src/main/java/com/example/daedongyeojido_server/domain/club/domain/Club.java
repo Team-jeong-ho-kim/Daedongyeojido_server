@@ -28,7 +28,7 @@ public class Club {
     @Column(name = "club_image_url", length = 20)
     private String clubImageUrl;
 
-    @OneToMany(mappedBy = "myClub",fetch = FetchType.EAGER, orphanRemoval = true)
+    @OneToMany(mappedBy = "myClub", orphanRemoval = true)
     private List<User> clubMembers = new ArrayList<>();
 
     @ElementCollection
