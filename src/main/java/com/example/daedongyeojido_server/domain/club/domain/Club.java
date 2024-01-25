@@ -28,7 +28,7 @@ public class Club {
     @Column(name = "club_image_url", length = 20)
     private String clubImageUrl;
 
-    @OneToMany(mappedBy = "myClub", orphanRemoval = true)
+    @OneToMany(mappedBy = "myClub",fetch = FetchType.EAGER, orphanRemoval = true)
     private List<User> clubMembers = new ArrayList<>();
 
     @ElementCollection
@@ -49,6 +49,10 @@ public class Club {
     @Builder
     public Club(String clubName) {
         this.clubName = clubName;
+    }
+
+    public void addMember(User user) {
+        this.clubMembers.add(user);
     }
 
     public void modifyClub(String clubName, String title, String content, String clubImageUrl, List<User> clubMembers, List<String> tags, List<Notice> notices) {
