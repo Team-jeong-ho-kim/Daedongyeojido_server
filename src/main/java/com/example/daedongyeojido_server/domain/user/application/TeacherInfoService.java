@@ -7,18 +7,25 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class MyInfoService {
+public class TeacherInfoService {
 
     private final UserFacade userFacade;
 
-    public MyInfoResponse myInfo() {
+    public MyInfoResponse teacherInfo() {
         User user = userFacade.currentTeacher();
+
+        String clubName;
+        if (user.getMyClub() == null) {
+            clubName = "null";
+        } else {
+            clubName = user.getMyClub().getClubName();
+        }
 
         return MyInfoResponse.builder()
                 .classNumber(user.getClassNumber())
                 .name(user.getName())
                 .part(user.getPart())
-                .myClub(user.getMyClub())
+                .myClub(clubName)
                 .build();
     }
 }
