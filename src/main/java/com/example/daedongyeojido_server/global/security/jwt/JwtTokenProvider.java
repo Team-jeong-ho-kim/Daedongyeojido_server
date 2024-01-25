@@ -5,6 +5,9 @@ import com.example.daedongyeojido_server.domain.auth.domain.RefreshToken;
 import com.example.daedongyeojido_server.domain.auth.dto.response.LoginResponse;
 import com.example.daedongyeojido_server.domain.auth.exception.ExpiredTokenException;
 import com.example.daedongyeojido_server.domain.auth.exception.InvalidTokenException;
+import com.example.daedongyeojido_server.domain.user.dao.UserRepository;
+import com.example.daedongyeojido_server.domain.user.domain.User;
+import com.example.daedongyeojido_server.domain.user.exception.UserNotFoundException;
 import com.example.daedongyeojido_server.global.security.auth.CustomUserDetailsService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
@@ -25,6 +28,8 @@ import java.util.Date;
 public class JwtTokenProvider {
 
     private final JwtProperties jwtProperties;
+
+    private final UserRepository userRepository;
 
     private final CustomUserDetailsService customUserDetailsService;
 
@@ -89,10 +94,14 @@ public class JwtTokenProvider {
 
     public LoginResponse receiveToken(String classNumber) {
 
+        User user = userRepository.findByClassNumber(classNumber)
+                .orElseThrow(()-> UserNotFoundException.EXCEPTION);
+
         return LoginResponse
                 .builder()
                 .accessToken(createAccessToken(classNumber))
                 .refreshToken(createRefreshToken(classNumber))
+                .part(user.getPart())
                 .build();
     }
 
