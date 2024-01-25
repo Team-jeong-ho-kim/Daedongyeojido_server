@@ -23,8 +23,8 @@ public class CreateMessRequest {
     @Size(max = 2)
     private Integer messEndTime;
 
-    @NotBlank
-    private Boolean messAgree;
+//    @NotBlank
+//    private Boolean messAgree;
 
     @NotBlank
     private LocalDate messDate;
