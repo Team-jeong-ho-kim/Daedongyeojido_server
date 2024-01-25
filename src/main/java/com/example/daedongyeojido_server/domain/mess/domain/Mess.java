@@ -24,8 +24,8 @@ public class Mess {
     @Column(name = "mess_end_time", length = 2, nullable = false)
     private Integer messEndTime;
 
-    @Column(name = "mess_agree", nullable = false)
-    private Boolean messAgree;
+//    @Column(name = "mess_agree", nullable = false)
+//    private Boolean messAgree = false;
 
     @Column(name = "mess_date", nullable = false)
     private LocalDate messDate;
@@ -35,12 +35,16 @@ public class Mess {
     private Club myclub;
 
     @Builder
-    public Mess(Long messId, Integer messStartTime, Integer messEndTime, Boolean messAgree, LocalDate messDate, Club myclub) {
+    public Mess(Long messId, Integer messStartTime, Integer messEndTime, LocalDate messDate, Club myclub) {
         this.messId = messId;
         this.messStartTime = messStartTime;
         this.messEndTime = messEndTime;
-        this.messAgree = messAgree;
         this.messDate = messDate;
         this.myclub = myclub;
     }
+
+//    public void permissionMess(Long messId) {
+//        this.messId = messId;
+//        this.messAgree = true;
+//    }
 }
