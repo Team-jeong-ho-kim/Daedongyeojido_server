@@ -2,7 +2,7 @@ package com.example.daedongyeojido_server.global.security.jwt;
 
 import com.example.daedongyeojido_server.domain.auth.dao.RefreshTokenRepository;
 import com.example.daedongyeojido_server.domain.auth.domain.RefreshToken;
-import com.example.daedongyeojido_server.domain.auth.dto.response.TokenResponse;
+import com.example.daedongyeojido_server.domain.auth.dto.response.LoginResponse;
 import com.example.daedongyeojido_server.domain.auth.exception.ExpiredTokenException;
 import com.example.daedongyeojido_server.domain.auth.exception.InvalidTokenException;
 import com.example.daedongyeojido_server.global.security.auth.CustomUserDetailsService;
@@ -87,9 +87,9 @@ public class JwtTokenProvider {
         }
     }
 
-    public TokenResponse receiveToken(String classNumber) {
+    public LoginResponse receiveToken(String classNumber) {
 
-        return TokenResponse
+        return LoginResponse
                 .builder()
                 .accessToken(createAccessToken(classNumber))
                 .refreshToken(createRefreshToken(classNumber))

@@ -7,7 +7,7 @@ import com.example.daedongyeojido_server.domain.auth.application.TeacherLoginSer
 import com.example.daedongyeojido_server.domain.auth.dto.request.SignupAndCheckUserRequest;
 import com.example.daedongyeojido_server.domain.auth.dto.request.StudentLoginRequest;
 import com.example.daedongyeojido_server.domain.auth.dto.request.TeacherLoginRequest;
-import com.example.daedongyeojido_server.domain.auth.dto.response.TokenResponse;
+import com.example.daedongyeojido_server.domain.auth.dto.response.LoginResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,12 +34,12 @@ public class AuthController {
     }
 
     @PostMapping("/student")
-    public TokenResponse studentLogin(@RequestBody @Valid StudentLoginRequest request) {
+    public LoginResponse studentLogin(@RequestBody @Valid StudentLoginRequest request) {
         return studentLoginService.studentLogin(request);
     }
 
     @PostMapping("/teacher")
-    public TokenResponse teacherLogin(@RequestBody @Valid TeacherLoginRequest request) {
+    public LoginResponse teacherLogin(@RequestBody @Valid TeacherLoginRequest request) {
         return teacherLoginService.teacherLogin(request);
     }
 

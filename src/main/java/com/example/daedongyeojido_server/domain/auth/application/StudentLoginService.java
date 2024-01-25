@@ -1,7 +1,7 @@
 package com.example.daedongyeojido_server.domain.auth.application;
 
 import com.example.daedongyeojido_server.domain.auth.dto.request.StudentLoginRequest;
-import com.example.daedongyeojido_server.domain.auth.dto.response.TokenResponse;
+import com.example.daedongyeojido_server.domain.auth.dto.response.LoginResponse;
 import com.example.daedongyeojido_server.domain.user.dao.UserRepository;
 import com.example.daedongyeojido_server.domain.user.domain.User;
 import com.example.daedongyeojido_server.domain.user.exception.UserNotFoundException;
@@ -17,7 +17,7 @@ public class StudentLoginService {
 
     private final JwtTokenProvider jwtTokenProvider;
 
-    public TokenResponse studentLogin(StudentLoginRequest request) {
+    public LoginResponse studentLogin(StudentLoginRequest request) {
         User user = userRepository.findByClassNumber(request.getClassNumber())
                 .orElseThrow(()-> UserNotFoundException.EXCEPTION);
 
