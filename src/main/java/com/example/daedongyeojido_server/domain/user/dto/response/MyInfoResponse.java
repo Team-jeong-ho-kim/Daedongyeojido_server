@@ -1,6 +1,5 @@
 package com.example.daedongyeojido_server.domain.user.dto.response;
 
-import com.example.daedongyeojido_server.domain.club.domain.Club;
 import com.example.daedongyeojido_server.domain.user.domain.enums.Part;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,5 +16,5 @@ public class MyInfoResponse {
 
     private Part part;
 
-    private Club myClub;
+    private String myClub;
 }
