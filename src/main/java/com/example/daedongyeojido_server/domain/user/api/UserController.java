@@ -1,9 +1,14 @@
 package com.example.daedongyeojido_server.domain.user.api;
 
-import com.example.daedongyeojido_server.domain.user.application.MyInfoService;
+import com.example.daedongyeojido_server.domain.user.application.AddClubMemberService;
+import com.example.daedongyeojido_server.domain.user.application.StudentInfoService;
+import com.example.daedongyeojido_server.domain.user.application.TeacherInfoService;
+import com.example.daedongyeojido_server.domain.user.dto.request.AddClubMemberRequest;
 import com.example.daedongyeojido_server.domain.user.dto.response.MyInfoResponse;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,10 +17,24 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/jung-ho/user")
 public class UserController {
 
-    private final MyInfoService myInfoService;
+    private final StudentInfoService studentInfoService;
 
-    @PostMapping("my-info")
-    public MyInfoResponse myInfo() {
-        return myInfoService.myInfo();
+    private final TeacherInfoService teacherInfoService;
+
+    private final AddClubMemberService addClubMemberService;
+
+    @PostMapping("/student-info")
+    public MyInfoResponse studentInfo() {
+        return studentInfoService.studentInfo();
+    }
+
+    @PostMapping("/teacher-info")
+    public MyInfoResponse teacherInfo() {
+        return teacherInfoService.teacherInfo();
+    }
+
+    @PostMapping("/member")
+    public void addClubMember(@RequestBody @Valid AddClubMemberRequest request) {
+        addClubMemberService.AddClubMember(request);
     }
 }
