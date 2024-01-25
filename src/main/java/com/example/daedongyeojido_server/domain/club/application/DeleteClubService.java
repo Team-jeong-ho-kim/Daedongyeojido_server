@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class DeleteClubService {
 
     private final ClubRepository clubRepository;
+
     @Transactional
     public void deleteClub(String clubName) {
         Club club = clubRepository.findById(clubName)
