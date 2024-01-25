@@ -52,4 +52,10 @@ public class User {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "my_club")
     private Club myClub;
+
+    public void addClubMember(String name, Part part, Club clubName) {
+        this.name = name;
+        this.part = part;
+        this.myClub = clubName;
+    }
 }
