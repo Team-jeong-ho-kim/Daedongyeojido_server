@@ -9,10 +9,11 @@ import lombok.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
 @Getter
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Entity
 public class Club {
 
     @Id
@@ -45,11 +46,6 @@ public class Club {
 
 //    @OneToMany(mappedBy = "clubName", orphanRemoval = true)
 //    private
-
-    @Builder
-    public Club(String clubName) {
-        this.clubName = clubName;
-    }
 
     public void addMember(User user) {
         this.clubMembers.add(user);
