@@ -16,15 +16,12 @@ public class CreateMessRequest {
     private Long messId;
 
     @NotBlank
-    @Size(max = 2)
+    @Size(min = 1, max = 2, message = "시작 교시는 한 자리수 또는 두 자리수 안으로 선택해야하며 선택을 하지 않으면 안됩니다.")
     private Integer messStartTime;
 
     @NotBlank
-    @Size(max = 2)
+    @Size(min = 1, max = 2, message = "마무리 교시는 한 자리수 또는 두 자리수 안으로 선택해야하며 선택을 하지 않으면 안됩니다.")
     private Integer messEndTime;
-
-//    @NotBlank
-//    private Boolean messAgree;
 
     @NotBlank
     private LocalDate messDate;
