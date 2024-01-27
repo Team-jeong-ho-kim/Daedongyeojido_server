@@ -9,9 +9,10 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
-@Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
+@Getter
+@Builder
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Mess {
 
     @Id

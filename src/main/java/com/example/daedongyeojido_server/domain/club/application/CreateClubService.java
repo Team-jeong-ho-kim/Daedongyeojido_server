@@ -8,8 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-@RequiredArgsConstructor
 @Service
+@RequiredArgsConstructor
 public class CreateClubService {
 
     private final ClubRepository clubRepository;
@@ -17,10 +17,12 @@ public class CreateClubService {
     @Transactional
     public void createClub(CreateClubRequest request) {
 
-        if (clubRepository.existsById(request.getClubName())) throw ExistClubException.EXCEPTION;
+        if (clubRepository.existsById(request.getClubName()))
+            throw ExistClubException.EXCEPTION;
 
-        clubRepository.save(Club.builder()
-                .clubName(request.getClubName())
-                .build());
+        clubRepository.save(
+                Club.builder()
+                        .clubName(request.getClubName())
+                        .build());
     }
 }

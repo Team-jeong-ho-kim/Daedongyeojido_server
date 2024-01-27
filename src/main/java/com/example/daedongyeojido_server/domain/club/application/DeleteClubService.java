@@ -6,8 +6,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-@RequiredArgsConstructor
 @Service
+@RequiredArgsConstructor
 public class DeleteClubService {
 
     private final ClubRepository clubRepository;
@@ -16,6 +16,6 @@ public class DeleteClubService {
     public void deleteClub(String clubName) {
         Club club = clubRepository.findById(clubName)
                 .orElseThrow(RuntimeException::new);
-        clubRepository.delete(club);
+        clubRepository.deleteById(clubName);
     }
 }

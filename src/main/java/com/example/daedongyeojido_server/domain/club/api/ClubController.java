@@ -12,15 +12,19 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@RestController
 @RequiredArgsConstructor
 @RequestMapping("/jung-ho/club")
-@RestController
 public class ClubController {
 
     private final CreateClubService createClubService;
+
     private final ModifyClubService modifyClubService;
+
     private final ClubInfoService clubInfoService;
+
     private final QueryAllClubService queryAllClubService;
+
     private final DeleteClubService deleteClubService;
 
     @ResponseStatus(HttpStatus.OK)
@@ -30,26 +34,26 @@ public class ClubController {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping("/all")
-    public List<Club> queryAllClub() {
-        return queryAllClubService.queryAllCLub();
-    }
-
-    @ResponseStatus(HttpStatus.OK)
-    @PostMapping("/detailed")
+    @PostMapping("/info")
     public ClubInfoResponse clubInfo() {
         return clubInfoService.clubInfo();
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @PatchMapping("/update")
+    @GetMapping("/all")
+    public List<Club> queryAllClub() {
+        return queryAllClubService.queryAllClub();
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @PatchMapping("/modify/{clubName}")
     public void modifyClub(@PathVariable String clubName,
                            @RequestBody @Valid UpdateClubRequest request) {
         modifyClubService.modifyClub(clubName, request);
     }
 
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    @DeleteMapping("/delete")
+    @ResponseStatus(HttpStatus.OK)
+    @DeleteMapping("/delete/{clubName}")
     public void deleteClub(@PathVariable String clubName) {
         deleteClubService.deleteClub(clubName);
     }

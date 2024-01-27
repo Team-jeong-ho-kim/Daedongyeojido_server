@@ -8,8 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-@RequiredArgsConstructor
 @Service
+@RequiredArgsConstructor
 public class CreateMessService {
 
     private final MessRepository messRepository;
@@ -17,12 +17,14 @@ public class CreateMessService {
     @Transactional
     public void createMess(CreateMessRequest request) {
 
-        if (messRepository.existsById(request.getMessId())) throw ExistMessException.EXCEPTION;
+        if (messRepository.existsById(request.getMessId()))
+            throw ExistMessException.EXCEPTION;
 
-        messRepository.save(Mess.builder()
-                .messDate(request.getMessDate())
-                .messStartTime(request.getMessStartTime())
-                .messEndTime(request.getMessEndTime())
-                .build());
+        messRepository.save(
+                Mess.builder()
+                        .messDate(request.getMessDate())
+                        .messStartTime(request.getMessStartTime())
+                        .messEndTime(request.getMessEndTime())
+                        .build());
     }
 }
