@@ -55,6 +55,10 @@ public class Club {
         this.clubMembers.add(user);
     }
 
+    public void addNotice(Notice notice) {
+        this.notices.add(notice);
+    }
+
     public void modifyClub(String clubName, String title, String content, String clubImageUrl, List<User> clubMembers, List<String> tags, List<Notice> notices) {
         this.clubName = clubName;
         this.title = title;
