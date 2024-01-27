@@ -7,13 +7,13 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@RequiredArgsConstructor
 @Service
+@RequiredArgsConstructor
 public class QueryAllClubService {
 
     private final ClubRepository clubRepository;
 
-    public List<Club> queryAllCLub() {
+    public List<Club> queryAllClub() {
         return clubRepository.findAll();
     }
 }
