@@ -44,9 +44,6 @@ public class Club {
     @Column(name = "mess_count")
     private Integer messCount = 0;
 
-//    @OneToMany(mappedBy = "clubName", orphanRemoval = true)
-//    private
-
     public void addMember(User user) {
         this.clubMembers.add(user);
     }
@@ -64,8 +61,4 @@ public class Club {
         this.tags = tags;
         this.notices = notices;
     }
-
-//    public void addMessCounts() {
-//        this.messCount += 1;
-//    }
 }
