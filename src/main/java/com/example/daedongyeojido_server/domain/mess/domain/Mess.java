@@ -25,9 +25,6 @@ public class Mess {
     @Column(name = "mess_end_time", length = 2, nullable = false)
     private Integer messEndTime;
 
-//    @Column(name = "mess_agree", nullable = false)
-//    private Boolean messAgree = false;
-
     @Column(name = "mess_date", nullable = false)
     private LocalDate messDate;
 
@@ -43,9 +40,4 @@ public class Mess {
         this.messDate = messDate;
         this.myclub = myclub;
     }
-
-//    public void permissionMess(Long messId) {
-//        this.messId = messId;
-//        this.messAgree = true;
-//    }
 }
