@@ -9,6 +9,10 @@ import lombok.Getter;
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum ErrorCode {
 
+    //alarm
+    ALARM_NOT_FOUND(404, "일치하는 알림이 존재하지 않습니다"),
+    EXIST_ALARM(409, "동일한 알림이 존재합니다."),
+
     // jwt
     EXPIRED_TOKEN(401 , "만료된 토큰입니다."),
     INVALID_TOKEN(401, "검증되지 않은 토큰입니다."),
