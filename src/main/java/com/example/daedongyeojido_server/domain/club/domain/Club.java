@@ -52,13 +52,12 @@ public class Club {
         this.notices.add(notice);
     }
 
-    public void modifyClub(String clubName, String title, String content, String clubImageUrl, List<User> clubMembers, List<String> tags, List<Notice> notices) {
+    public void modifyClub(String clubName, String title, String content, String clubImageUrl, List<User> clubMembers, List<String> tags) {
         this.clubName = clubName;
         this.title = title;
         this.content = content;
         this.clubImageUrl = clubImageUrl;
         this.clubMembers = clubMembers;
         this.tags = tags;
-        this.notices = notices;
     }
 }
