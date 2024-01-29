@@ -20,6 +20,11 @@ public class ClubInfoService {
 
         return ClubInfoResponse.builder()
                 .clubName(club.getClubName())
+                .title(club.getTitle())
+                .contents(club.getContent())
+                .clubImageUrl(club.getClubImageUrl())
+                .tags(club.getTags())
+                .clubMembers(club.getClubMembers())
                 .build();
     }
 }
