@@ -29,6 +29,4 @@ public class UpdateClubRequest {
     private List<User> clubMembers;
 
     private List<String> tags;
-
-    private List<Notice> notices;
 }
