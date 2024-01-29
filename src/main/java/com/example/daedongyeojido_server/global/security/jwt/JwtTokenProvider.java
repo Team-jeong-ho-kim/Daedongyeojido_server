@@ -5,6 +5,7 @@ import com.example.daedongyeojido_server.domain.auth.domain.RefreshToken;
 import com.example.daedongyeojido_server.domain.auth.dto.response.LoginResponse;
 import com.example.daedongyeojido_server.domain.auth.exception.ExpiredTokenException;
 import com.example.daedongyeojido_server.domain.auth.exception.InvalidTokenException;
+import com.example.daedongyeojido_server.domain.user.dao.CustomUserRepository;
 import com.example.daedongyeojido_server.domain.user.dao.UserRepository;
 import com.example.daedongyeojido_server.domain.user.domain.User;
 import com.example.daedongyeojido_server.domain.user.exception.UserNotFoundException;
@@ -30,6 +31,8 @@ public class JwtTokenProvider {
     private final JwtProperties jwtProperties;
 
     private final UserRepository userRepository;
+
+    private final CustomUserRepository customUserRepository;
 
     private final CustomUserDetailsService customUserDetailsService;
 
@@ -101,6 +104,19 @@ public class JwtTokenProvider {
                 .builder()
                 .accessToken(createAccessToken(classNumber))
                 .refreshToken(createRefreshToken(classNumber))
+                .part(user.getPart())
+                .build();
+    }
+
+    public LoginResponse teacherReceiveToken(String name) {
+
+        User user = customUserRepository.findTeacherByName(name)
+                .orElseThrow(()->UserNotFoundException.EXCEPTION);
+
+        return LoginResponse
+                .builder()
+                .accessToken(createAccessToken(name))
+                .refreshToken(createRefreshToken(name))
                 .part(user.getPart())
                 .build();
     }
