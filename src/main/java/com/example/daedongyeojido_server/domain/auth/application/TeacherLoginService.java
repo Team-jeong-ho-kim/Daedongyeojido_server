@@ -21,6 +21,6 @@ public class TeacherLoginService {
         User user = customUserRepository.findTeacherByName(request.getName())
                 .orElseThrow(()->UserNotFoundException.EXCEPTION);
 
-        return jwtTokenProvider.receiveToken(request.getName());
+        return jwtTokenProvider.teacherReceiveToken(request.getName());
     }
 }
