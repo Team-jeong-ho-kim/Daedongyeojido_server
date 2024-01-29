@@ -11,16 +11,26 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class NoticeResponse {
 
+    private Long id;
+
     private Major major;
 
     private String clubName;
 
     private LocalDateTime deadline;
 
+    private Boolean applyOrNot;
+
     public NoticeResponse(Notice notice) {
+        id = notice.getNoticeId();
         major = notice.getMajor();
         clubName = notice.getClubName().getClubName();
         deadline = notice.getDeadline();
+        applyOrNot = false;
+    }
+
+    public void apply() {
+        this.applyOrNot = true;
     }
 }
 
