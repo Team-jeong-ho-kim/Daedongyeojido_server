@@ -34,6 +34,9 @@ public class Report {
     @Column(name = "name", length = 4, nullable = false)
     private String name;
 
+    @Column(name = "one_liner", length = 20, nullable = false)
+    private String oneLiner;
+
     @Column(name = "introduction", length = 100, nullable = false)
     private String introduction;
 
