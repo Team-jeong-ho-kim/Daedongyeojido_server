@@ -3,7 +3,7 @@ package com.example.daedongyeojido_server.domain.club.api;
 import com.example.daedongyeojido_server.domain.club.application.*;
 import com.example.daedongyeojido_server.domain.club.domain.Club;
 import com.example.daedongyeojido_server.domain.club.dto.request.CreateClubRequest;
-import com.example.daedongyeojido_server.domain.club.dto.request.UpdateClubRequest;
+import com.example.daedongyeojido_server.domain.club.dto.request.ModifyClubRequest;
 import com.example.daedongyeojido_server.domain.club.dto.response.ClubInfoResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -48,7 +48,7 @@ public class ClubController {
     @ResponseStatus(HttpStatus.OK)
     @PatchMapping("/modify/{clubName}")
     public void modifyClub(@PathVariable String clubName,
-                           @RequestBody @Valid UpdateClubRequest request) {
+                           @RequestBody @Valid ModifyClubRequest request) {
         modifyClubService.modifyClub(clubName, request);
     }
 
