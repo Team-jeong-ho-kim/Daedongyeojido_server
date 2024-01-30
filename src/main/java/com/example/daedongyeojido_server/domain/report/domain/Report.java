@@ -47,10 +47,6 @@ public class Report {
     private String learn;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "club_name", nullable = false)
-    private Club clubName;
-
-    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "notice_id", nullable = false)
     private Notice notice;
 }
