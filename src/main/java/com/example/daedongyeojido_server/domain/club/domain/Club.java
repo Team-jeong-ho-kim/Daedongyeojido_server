@@ -38,9 +38,6 @@ public class Club {
     @OneToMany(mappedBy = "clubName", orphanRemoval = true)
     private List<Notice> notices = new ArrayList<>();
 
-    @OneToMany(mappedBy = "clubName", orphanRemoval = true)
-    private List<Report> reports = new ArrayList<>();
-
     @Column(name = "mess_count")
     private Integer messCount = 0;
 
