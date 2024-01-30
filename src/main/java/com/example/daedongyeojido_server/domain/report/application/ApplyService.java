@@ -6,6 +6,8 @@ import com.example.daedongyeojido_server.domain.notice.exception.NoticeNotFoundE
 import com.example.daedongyeojido_server.domain.report.dao.ReportRepository;
 import com.example.daedongyeojido_server.domain.report.domain.Report;
 import com.example.daedongyeojido_server.domain.report.dto.request.ApplyRequest;
+import com.example.daedongyeojido_server.domain.user.application.UserFacade;
+import com.example.daedongyeojido_server.domain.user.domain.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,19 +16,23 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class ApplyService {
 
+    private final UserFacade userFacade;
+
     private final ReportRepository reportRepository;
 
     private final NoticeRepository noticeRepository;
 
     @Transactional
     public void apply(ApplyRequest request) {
+        User user = userFacade.currentStudent();
+
         Notice notice = noticeRepository.findById(request.getNoticeId())
                 .orElseThrow(()-> NoticeNotFoundException.EXCEPTION);
 
         reportRepository.save(
                 Report.builder()
-                        .classNumber(request.getClassNumber())
-                        .name(request.getName())
+                        .classNumber(user.getClassNumber())
+                        .name(user.getName())
                         .oneLiner(request.getOneLiner())
                         .introduction(request.getIntroduction())
                         .hopeMajor(request.getHopeMajor())
