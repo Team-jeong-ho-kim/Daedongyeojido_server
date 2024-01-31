@@ -2,7 +2,7 @@ package com.example.daedongyeojido_server.domain.report.api;
 
 import com.example.daedongyeojido_server.domain.report.application.ApplyService;
 import com.example.daedongyeojido_server.domain.report.application.CancelApplyService;
-import com.example.daedongyeojido_server.domain.report.application.QueryReportService;
+import com.example.daedongyeojido_server.domain.report.application.QueryApplicantService;
 import com.example.daedongyeojido_server.domain.report.application.ReportInfoService;
 import com.example.daedongyeojido_server.domain.report.dto.request.ApplyRequest;
 import com.example.daedongyeojido_server.domain.report.dto.response.ReportInfoResponse;
@@ -26,7 +26,7 @@ public class ReportController {
 
     private final ApplyService applyService;
 
-    private final QueryReportService queryReportService;
+    private final QueryApplicantService queryReportService;
 
     private final ReportInfoService reportInfoService;
 
@@ -37,9 +37,9 @@ public class ReportController {
         applyService.apply(request);
     }
 
-    @GetMapping("/query/{clubName}")
-    public List<ReportResponse> queryReport(@PathVariable String clubName) {
-        return queryReportService.queryReport(clubName);
+    @GetMapping("/applicant/{clubName}")
+    public List<ReportResponse> queryApplicant(@PathVariable String clubName) {
+        return queryReportService.queryApplicant(clubName);
     }
 
     @GetMapping("/report-info/{reportId}")

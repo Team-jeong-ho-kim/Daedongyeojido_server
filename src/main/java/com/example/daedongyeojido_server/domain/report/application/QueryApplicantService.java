@@ -13,14 +13,14 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class QueryReportService {
+public class QueryApplicantService {
 
     private final ClubRepository clubRepository;
 
     private final CustomReportRepository customReportRepository;
 
     @Transactional
-    public List<ReportResponse> queryReport(String clubName) {
+    public List<ReportResponse> queryApplicant(String clubName) {
         Club club = clubRepository.findByClubName(clubName);
 
         return customReportRepository.findClubReport(club)

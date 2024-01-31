@@ -40,7 +40,7 @@ public class StudentInfoService {
                 .name(user.getName())
                 .part(user.getPart())
                 .myClub(clubName)
-                .myReportResponses(myReportResponses)
+                .myReport(myReportResponses)
                 .build();
     }
 }

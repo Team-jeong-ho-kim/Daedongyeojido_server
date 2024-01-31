@@ -20,5 +20,5 @@ public class MyInfoResponse {
 
     private String myClub;
 
-    private List<MyReportResponse> myReportResponses;
+    private List<MyReportResponse> myReport;
 }
