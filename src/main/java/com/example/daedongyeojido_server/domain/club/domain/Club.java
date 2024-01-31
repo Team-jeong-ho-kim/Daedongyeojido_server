@@ -31,7 +31,7 @@ public class Club {
     @OneToMany(mappedBy = "myClub", orphanRemoval = true)
     private List<User> clubMembers = new ArrayList<>();
 
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     private List<String> tags = new ArrayList<>();
 
     @OneToMany(mappedBy = "clubName", orphanRemoval = true)
