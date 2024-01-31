@@ -1,10 +1,10 @@
 package com.example.daedongyeojido_server.domain.club.api;
 
 import com.example.daedongyeojido_server.domain.club.application.*;
-import com.example.daedongyeojido_server.domain.club.domain.Club;
 import com.example.daedongyeojido_server.domain.club.dto.request.CreateClubRequest;
 import com.example.daedongyeojido_server.domain.club.dto.request.ModifyClubRequest;
 import com.example.daedongyeojido_server.domain.club.dto.response.ClubInfoResponse;
+import com.example.daedongyeojido_server.domain.club.dto.response.QueryAllClubResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -41,7 +41,7 @@ public class ClubController {
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/all")
-    public List<Club> queryAllClub() {
+    public List<QueryAllClubResponse> queryAllClub() {
         return queryAllClubService.queryAllClub();
     }
 
