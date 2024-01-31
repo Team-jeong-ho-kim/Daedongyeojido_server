@@ -2,8 +2,11 @@ package com.example.daedongyeojido_server.domain.report.domain;
 
 import com.example.daedongyeojido_server.domain.club.domain.Club;
 import com.example.daedongyeojido_server.domain.notice.domain.Notice;
+import com.example.daedongyeojido_server.domain.report.domain.enums.PassingResult;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -45,6 +48,10 @@ public class Report {
 
     @Column(name = "learn", length = 100, nullable = false)
     private String learn;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "passing_result", nullable = false)
+    private PassingResult passingResult;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "notice_id", nullable = false)
