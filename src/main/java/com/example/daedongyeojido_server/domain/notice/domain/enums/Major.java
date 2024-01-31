@@ -25,7 +25,9 @@ public enum Major {
 
     DEVOPS("데브옵스"),
 
-    DESIGN("디자인");
+    DESIGN("디자인"),
+
+    GAME("게임개발");
 
     private final String name;
 }
