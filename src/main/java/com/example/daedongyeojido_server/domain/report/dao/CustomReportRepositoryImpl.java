@@ -2,7 +2,6 @@ package com.example.daedongyeojido_server.domain.report.dao;
 
 import com.example.daedongyeojido_server.domain.club.domain.Club;
 import com.example.daedongyeojido_server.domain.report.domain.Report;
-import com.example.daedongyeojido_server.domain.user.domain.User;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -21,13 +20,6 @@ public class CustomReportRepositoryImpl implements CustomReportRepository {
         return queryFactory
                 .selectFrom(report)
                 .where(report.notice.clubName.eq(club))
-                .fetch();
-    }
-
-    public List<Report> findMyReport(User user) {
-        return queryFactory
-                .selectFrom(report)
-                .where(report.classNumber.eq(user.getClassNumber()))
                 .fetch();
     }
 }
