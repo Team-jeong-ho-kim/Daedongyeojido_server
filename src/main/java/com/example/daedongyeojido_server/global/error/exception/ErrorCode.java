@@ -25,7 +25,10 @@ public enum ErrorCode {
     EXIST_CLUB(409, "동일한 이름의 동아리가 존재합니다."),
 
     // notice
-    NOTICE_NOT_FOUND(404, "일치하는 공고가 존해하지 않습니다."),
+    NOTICE_NOT_FOUND(404, "일치하는 공고가 존재하지 않습니다."),
+
+    // report
+    REPORT_NOT_FOUND(404, "일치하는 지원서가 존재하지 않습니다."),
 
     // mess
     MESS_NOT_FOUND(404, "일치하는 회식이 존재하지 않습니다"),
