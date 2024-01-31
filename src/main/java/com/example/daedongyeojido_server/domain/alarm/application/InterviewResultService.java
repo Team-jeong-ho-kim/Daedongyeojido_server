@@ -29,6 +29,9 @@ public class InterviewResultService {
         Report report = reportRepository.findById(request.getReportId())
                 .orElseThrow(()-> ReportNotFoundException.EXCEPTION);
 
+        User user = userRepository.findByClassNumber(report.getClassNumber())
+                .orElseThrow(()-> UserNotFoundException.EXCEPTION);
+
         Alarm alarm = alarmRepository.save(
                 Alarm.builder()
                         .clubName(report.getNotice().getClubName().getClubName())
@@ -36,10 +39,10 @@ public class InterviewResultService {
                         .passingResult(request.getPassingResult())
                         .major(report.getNotice().getMajor())
                         .alarmType(AlarmType.PASS_RESULT)
+                        .user(user)
                         .build());
 
-        User user = userRepository.findByClassNumber(report.getClassNumber())
-                .orElseThrow(()-> UserNotFoundException.EXCEPTION);
+        report.interviewResult(request.getPassingResult());
 
         user.addAlarm(alarm);
     }
