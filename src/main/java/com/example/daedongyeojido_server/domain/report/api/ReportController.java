@@ -3,7 +3,9 @@ package com.example.daedongyeojido_server.domain.report.api;
 import com.example.daedongyeojido_server.domain.report.application.ApplyService;
 import com.example.daedongyeojido_server.domain.report.application.CancelApplyService;
 import com.example.daedongyeojido_server.domain.report.application.QueryReportService;
+import com.example.daedongyeojido_server.domain.report.application.ReportInfoService;
 import com.example.daedongyeojido_server.domain.report.dto.request.ApplyRequest;
+import com.example.daedongyeojido_server.domain.report.dto.response.ReportInfoResponse;
 import com.example.daedongyeojido_server.domain.report.dto.response.ReportResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -26,6 +28,8 @@ public class ReportController {
 
     private final QueryReportService queryReportService;
 
+    private final ReportInfoService reportInfoService;
+
     private final CancelApplyService cancelApplyService;
 
     @PostMapping("/apply")
@@ -36,6 +40,11 @@ public class ReportController {
     @GetMapping("/query/{clubName}")
     public List<ReportResponse> queryReport(@PathVariable String clubName) {
         return queryReportService.queryReport(clubName);
+    }
+
+    @GetMapping("/report-info/{reportId}")
+    public ReportInfoResponse reportInfo(@PathVariable Long reportId) {
+        return reportInfoService.reportInfo(reportId);
     }
 
     @DeleteMapping("/cancel/{reportId}")
