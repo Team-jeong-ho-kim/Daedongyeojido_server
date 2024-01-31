@@ -1,7 +1,6 @@
 package com.example.daedongyeojido_server.domain.club.domain;
 
 import com.example.daedongyeojido_server.domain.notice.domain.Notice;
-import com.example.daedongyeojido_server.domain.report.domain.Report;
 import com.example.daedongyeojido_server.domain.user.domain.User;
 import jakarta.persistence.*;
 import lombok.*;
