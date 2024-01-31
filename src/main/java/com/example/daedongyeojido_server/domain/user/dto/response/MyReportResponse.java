@@ -12,6 +12,8 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class MyReportResponse {
 
+    private Long id;
+
     private String clubName;
 
     private Major hopeMajor;
@@ -21,6 +23,7 @@ public class MyReportResponse {
     private PassingResult passingResult;
 
     public MyReportResponse(Report report) {
+        id = report.getReportId();
         clubName = report.getNotice().getClubName().getClubName();
         hopeMajor = report.getNotice().getMajor();
         deadline = report.getNotice().getDeadline();
