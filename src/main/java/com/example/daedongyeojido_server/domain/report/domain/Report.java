@@ -55,4 +55,8 @@ public class Report {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "notice_id", nullable = false)
     private Notice notice;
+
+    public void interviewResult(PassingResult passingResult) {
+        this.passingResult = passingResult;
+    }
 }
