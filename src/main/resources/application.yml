@@ -12,15 +12,15 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
-  redis:
-    host: ${REDIS_HOST}
-    port: 6379
 jwt:
   header: Authorization
   prefix: Bearer
   secret: lhjljlasndflasjdkfasdkfnasdasjidkflajsdkfahsdfjkafewfawefwaefeawfw
   accessExpiration: 604800
   refreshExpiration: 271000
+redis:
+    host: ${REDIS_HOST}
+    port: 6379
 
 server:
   port: 8080
