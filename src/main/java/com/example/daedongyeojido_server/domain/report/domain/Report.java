@@ -1,6 +1,5 @@
 package com.example.daedongyeojido_server.domain.report.domain;
 
-import com.example.daedongyeojido_server.domain.club.domain.Club;
 import com.example.daedongyeojido_server.domain.notice.domain.Notice;
 import com.example.daedongyeojido_server.domain.report.domain.enums.PassingResult;
 import jakarta.persistence.Column;
