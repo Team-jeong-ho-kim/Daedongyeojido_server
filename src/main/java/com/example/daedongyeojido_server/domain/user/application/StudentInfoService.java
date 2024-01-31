@@ -1,6 +1,6 @@
 package com.example.daedongyeojido_server.domain.user.application;
 
-import com.example.daedongyeojido_server.domain.report.dao.CustomReportRepository;
+import com.example.daedongyeojido_server.domain.report.dao.ReportRepository;
 import com.example.daedongyeojido_server.domain.user.domain.User;
 import com.example.daedongyeojido_server.domain.user.dto.response.MyInfoResponse;
 import com.example.daedongyeojido_server.domain.user.dto.response.MyReportResponse;
@@ -17,7 +17,7 @@ public class StudentInfoService {
 
     private final UserFacade userFacade;
 
-    private final CustomReportRepository customReportRepository;
+    private final ReportRepository reportRepository;
 
     @Transactional
     public MyInfoResponse studentInfo() {
@@ -30,7 +30,7 @@ public class StudentInfoService {
             clubName = user.getMyClub().getClubName();
         }
 
-        List<MyReportResponse> myReportResponses = customReportRepository.findMyReport(user)
+        List<MyReportResponse> myReportResponses = reportRepository.findAllByClassNumber(user.getClassNumber())
                 .stream()
                 .map(MyReportResponse::new)
                 .collect(Collectors.toList());
