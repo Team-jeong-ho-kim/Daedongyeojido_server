@@ -9,6 +9,8 @@ import lombok.Getter;
 @AllArgsConstructor
 public class ReportResponse {
 
+    private Long reportId;
+
     private String classNumber;
 
     private String name;
@@ -16,6 +18,7 @@ public class ReportResponse {
     private Major hopeMajor;
 
     public ReportResponse(Report report) {
+        reportId = report.getReportId();
         classNumber = report.getClassNumber();
         name = report.getName();
         hopeMajor = report.getNotice().getMajor();
