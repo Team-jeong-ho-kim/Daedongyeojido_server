@@ -38,3 +38,4 @@ jobs:
             DB_USERNAME=${{ secrets.DB_USERNAME }}
             DB_PASSWORD=${{ secrets.DB_PASSWORD }}
             ACCESS_KEY=${{ secrets.ACCESS_KEY }}
+            REDIS_HOST=${{ secrets.REDIS_HOST }}
