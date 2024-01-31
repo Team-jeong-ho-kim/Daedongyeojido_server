@@ -12,6 +12,7 @@ import com.example.daedongyeojido_server.domain.user.domain.User;
 import com.example.daedongyeojido_server.domain.user.exception.UserNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -23,6 +24,7 @@ public class InterviewResultService {
 
     private final UserRepository userRepository;
 
+    @Transactional
     public void interviewResult(InterviewResultRequest request) {
         Report report = reportRepository.findById(request.getReportId())
                 .orElseThrow(()-> ReportNotFoundException.EXCEPTION);
