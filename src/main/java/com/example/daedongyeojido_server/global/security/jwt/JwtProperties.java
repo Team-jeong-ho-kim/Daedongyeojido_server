@@ -6,7 +6,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @Getter
 @AllArgsConstructor
-//@ConstructorBinding
 @ConfigurationProperties(prefix = "jwt")
 public class JwtProperties {
 
