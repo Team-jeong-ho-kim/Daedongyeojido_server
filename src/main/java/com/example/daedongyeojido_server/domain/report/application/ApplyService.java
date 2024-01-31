@@ -5,6 +5,7 @@ import com.example.daedongyeojido_server.domain.notice.domain.Notice;
 import com.example.daedongyeojido_server.domain.notice.exception.NoticeNotFoundException;
 import com.example.daedongyeojido_server.domain.report.dao.ReportRepository;
 import com.example.daedongyeojido_server.domain.report.domain.Report;
+import com.example.daedongyeojido_server.domain.report.domain.enums.PassingResult;
 import com.example.daedongyeojido_server.domain.report.dto.request.ApplyRequest;
 import com.example.daedongyeojido_server.domain.user.application.UserFacade;
 import com.example.daedongyeojido_server.domain.user.domain.User;
@@ -37,6 +38,7 @@ public class ApplyService {
                         .introduction(request.getIntroduction())
                         .hopeMajor(request.getHopeMajor())
                         .learn(request.getLearn())
+                        .passingResult(PassingResult.WAIT)
                         .notice(notice)
                         .build());
     }
