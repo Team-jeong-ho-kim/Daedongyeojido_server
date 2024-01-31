@@ -1,5 +1,6 @@
 package com.example.daedongyeojido_server.domain.user.domain;
 
+import com.example.daedongyeojido_server.domain.alarm.domain.Alarm;
 import com.example.daedongyeojido_server.domain.club.domain.Club;
 import com.example.daedongyeojido_server.domain.user.domain.enums.Part;
 import jakarta.persistence.Column;
@@ -11,6 +12,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,6 +20,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -46,8 +49,8 @@ public class User {
     @Column(name = "part", nullable = false)
     private Part part;
 
-//    @Column(name = "alarms")
-//    private List<Alarm> alarms;
+    @OneToMany(mappedBy = "user", orphanRemoval = true)
+    private List<Alarm> alarms;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "my_club")
@@ -57,5 +60,9 @@ public class User {
         this.name = name;
         this.part = part;
         this.myClub = clubName;
+    }
+
+    public void addAlarm(Alarm alarm) {
+        alarms.add(alarm);
     }
 }
