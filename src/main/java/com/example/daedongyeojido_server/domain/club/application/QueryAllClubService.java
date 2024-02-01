@@ -1,7 +1,6 @@
 package com.example.daedongyeojido_server.domain.club.application;
 
 import com.example.daedongyeojido_server.domain.alarm.dao.AlarmRepository;
-import com.example.daedongyeojido_server.domain.alarm.domain.Alarm;
 import com.example.daedongyeojido_server.domain.alarm.domain.enums.AlarmType;
 import com.example.daedongyeojido_server.domain.alarm.dto.response.AnnouncementResponse;
 import com.example.daedongyeojido_server.domain.club.dao.ClubRepository;
@@ -30,8 +29,11 @@ public class QueryAllClubService {
                 .map(AllClubResponse::new)
                 .collect(Collectors.toList());
 
-        Alarm announcement = alarmRepository.findByAlarmType(AlarmType.ANNOUNCEMENT);
+        List<AnnouncementResponse> announcementResponses = alarmRepository.findAllByAlarmType(AlarmType.ANNOUNCEMENT)
+                .stream()
+                .map(AnnouncementResponse::new)
+                .collect(Collectors.toList());
 
-        return new MainResponse(queryAllClubResponses, new AnnouncementResponse(announcement));
+        return new MainResponse(queryAllClubResponses, announcementResponses);
     }
 }

@@ -4,13 +4,11 @@ import com.example.daedongyeojido_server.domain.club.application.*;
 import com.example.daedongyeojido_server.domain.club.dto.request.CreateClubRequest;
 import com.example.daedongyeojido_server.domain.club.dto.request.ModifyClubRequest;
 import com.example.daedongyeojido_server.domain.club.dto.response.ClubInfoResponse;
-import com.example.daedongyeojido_server.domain.club.dto.response.QueryAllClubResponse;
+import com.example.daedongyeojido_server.domain.club.dto.response.MainResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -41,7 +39,7 @@ public class ClubController {
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/all")
-    public List<QueryAllClubResponse> queryAllClub() {
+    public MainResponse queryAllClub() {
         return queryAllClubService.queryAllClub();
     }
 
