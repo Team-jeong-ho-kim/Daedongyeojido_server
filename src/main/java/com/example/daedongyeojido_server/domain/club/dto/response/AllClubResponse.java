@@ -8,7 +8,7 @@ import java.util.List;
 
 @Getter
 @AllArgsConstructor
-public class QueryAllClubResponse {
+public class AllClubResponse {
 
     private String clubName;
 
@@ -18,7 +18,7 @@ public class QueryAllClubResponse {
 
     private List<String> tags;
 
-    public QueryAllClubResponse(Club club) {
+    public AllClubResponse(Club club) {
         clubName = club.getClubName();
         title = club.getTitle();
         clubImageUrl = club.getClubImageUrl();
