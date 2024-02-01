@@ -1,6 +1,5 @@
 package com.example.daedongyeojido_server.domain.club.dto.response;
 
-import com.example.daedongyeojido_server.domain.user.domain.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -22,5 +21,5 @@ public class ClubInfoResponse {
 
     private List<String> tags;
 
-    private List<User> clubMembers;
+    private List<ClubMemberResponse> clubMembers;
 }
