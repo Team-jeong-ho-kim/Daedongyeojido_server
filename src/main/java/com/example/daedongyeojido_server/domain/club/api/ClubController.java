@@ -32,9 +32,9 @@ public class ClubController {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @PostMapping("/info")
-    public ClubInfoResponse clubInfo() {
-        return clubInfoService.clubInfo();
+    @GetMapping("/info/{clubName}")
+    public ClubInfoResponse clubInfo(@PathVariable String clubName) {
+        return clubInfoService.clubInfo(clubName);
     }
 
     @ResponseStatus(HttpStatus.OK)
