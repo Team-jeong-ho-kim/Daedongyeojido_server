@@ -3,9 +3,14 @@ package com.example.daedongyeojido_server.domain.club.application;
 import com.example.daedongyeojido_server.domain.club.dao.ClubRepository;
 import com.example.daedongyeojido_server.domain.club.domain.Club;
 import com.example.daedongyeojido_server.domain.club.dto.response.ClubInfoResponse;
+import com.example.daedongyeojido_server.domain.club.dto.response.ClubMemberResponse;
+import com.example.daedongyeojido_server.domain.user.dao.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -13,10 +18,18 @@ public class ClubInfoService {
 
     private final ClubRepository clubRepository;
 
-    @Transactional
-    public ClubInfoResponse clubInfo() {
+    private final UserRepository userRepository;
 
-        Club club = clubRepository.findByClubName(clubInfo().getClubName());
+    @Transactional
+    public ClubInfoResponse clubInfo(String clubName) {
+
+        Club club = clubRepository.findByClubName(clubName);
+
+
+        List<ClubMemberResponse> clubMemberResponses = userRepository.findAllByMyClub(club)
+                .stream()
+                .map(ClubMemberResponse::new)
+                .collect(Collectors.toList());
 
         return ClubInfoResponse.builder()
                 .clubName(club.getClubName())
@@ -24,7 +37,7 @@ public class ClubInfoService {
                 .contents(club.getContent())
                 .clubImageUrl(club.getClubImageUrl())
                 .tags(club.getTags())
-                .clubMembers(club.getClubMembers())
+                .clubMembers(clubMemberResponses)
                 .build();
     }
 }
