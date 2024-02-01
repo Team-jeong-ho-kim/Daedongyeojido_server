@@ -27,7 +27,7 @@ public class ClubController {
 
     private final DeleteClubService deleteClubService;
 
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/create")
     public void createClub(@RequestBody @Valid CreateClubRequest request) {
         createClubService.createClub(request);

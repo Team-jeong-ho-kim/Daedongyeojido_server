@@ -24,17 +24,19 @@ public class AlarmController {
 
     private final MyAlarmService myAlarmService;
 
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/announcement")
     public void createAnnouncement(@RequestBody @Valid CreateAnnouncementRequest request){
         createAnnouncementService.createAnnouncement(request);
     }
 
+    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/result")
     public void interviewResult(@RequestBody @Valid InterviewResultRequest request) {
         interviewResultService.interviewResult(request);
     }
 
+    @ResponseStatus(HttpStatus.OK)
     @GetMapping("/my-alarm")
     public List<AlarmResponse> myAlarm() {
         return myAlarmService.myAlarm();

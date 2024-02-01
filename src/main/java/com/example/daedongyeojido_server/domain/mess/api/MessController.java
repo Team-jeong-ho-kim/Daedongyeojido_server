@@ -23,7 +23,7 @@ public class MessController {
 
     private final DeleteMessService deleteMessService;
 
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/create")
     public void createMess(@RequestBody @Valid CreateMessRequest request) {
         createMessService.createMess(request);
@@ -35,7 +35,7 @@ public class MessController {
         return queryMessService.queryMess();
     }
 
-    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @ResponseStatus(HttpStatus.OK)
     @DeleteMapping("/delete/{messId}")
     public void deleteMess(@PathVariable Long messId) {
         deleteMessService.deleteMess(messId);

@@ -10,9 +10,11 @@ import com.example.daedongyeojido_server.domain.auth.dto.request.TeacherLoginReq
 import com.example.daedongyeojido_server.domain.auth.dto.response.LoginResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -28,21 +30,25 @@ public class AuthController {
 
     private final CheckUserService checkUserService;
 
+    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/signup")
     public void signup(@RequestBody @Valid SignupAndCheckUserRequest request) {
         signupService.signup(request);
     }
 
+    @ResponseStatus(HttpStatus.OK)
     @PostMapping("/student")
     public LoginResponse studentLogin(@RequestBody @Valid StudentLoginRequest request) {
         return studentLoginService.studentLogin(request);
     }
 
+    @ResponseStatus(HttpStatus.OK)
     @PostMapping("/teacher")
     public LoginResponse teacherLogin(@RequestBody @Valid TeacherLoginRequest request) {
         return teacherLoginService.teacherLogin(request);
     }
 
+    @ResponseStatus(HttpStatus.OK)
     @PostMapping("/check-user")
     public boolean checkUser(@RequestBody @Valid SignupAndCheckUserRequest request) {
         return checkUserService.checkUser(request);
