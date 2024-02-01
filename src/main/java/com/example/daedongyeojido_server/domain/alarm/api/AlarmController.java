@@ -1,8 +1,11 @@
 package com.example.daedongyeojido_server.domain.alarm.api;
 
+import com.example.daedongyeojido_server.domain.alarm.application.AcceptMessService;
+import com.example.daedongyeojido_server.domain.alarm.application.CancelMessService;
 import com.example.daedongyeojido_server.domain.alarm.application.CreateAnnouncementService;
 import com.example.daedongyeojido_server.domain.alarm.application.InterviewResultService;
 import com.example.daedongyeojido_server.domain.alarm.application.MyAlarmService;
+import com.example.daedongyeojido_server.domain.alarm.dto.request.AcceptMessRequest;
 import com.example.daedongyeojido_server.domain.alarm.dto.request.CreateAnnouncementRequest;
 import com.example.daedongyeojido_server.domain.alarm.dto.request.InterviewResultRequest;
 import com.example.daedongyeojido_server.domain.alarm.dto.response.AlarmResponse;
@@ -22,7 +25,11 @@ public class AlarmController {
 
     private final InterviewResultService interviewResultService;
 
+    private final AcceptMessService acceptMessService;
+
     private final MyAlarmService myAlarmService;
+
+    private final CancelMessService cancelMessService;
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/announcement")
@@ -36,9 +43,21 @@ public class AlarmController {
         interviewResultService.interviewResult(request);
     }
 
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping("/accept{messId}")
+    public void acceptMess(@PathVariable Long messId) {
+        acceptMessService.acceptMess(messId);
+    }
+
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/my-alarm")
     public List<AlarmResponse> myAlarm() {
         return myAlarmService.myAlarm();
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @DeleteMapping("/cancel/{messId}")
+    public void cancelMess(@PathVariable Long messId) {
+        cancelMessService.cancelAlarm(messId);
     }
 }
