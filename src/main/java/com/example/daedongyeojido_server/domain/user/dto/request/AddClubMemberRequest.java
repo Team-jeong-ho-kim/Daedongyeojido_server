@@ -2,6 +2,7 @@ package com.example.daedongyeojido_server.domain.user.dto.request;
 
 import com.example.daedongyeojido_server.domain.user.domain.enums.Part;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -19,6 +20,7 @@ public class AddClubMemberRequest {
     @Size(min = 3, max = 4, message = "name은 3글자 이상, 4글자 이하여야 합니다.")
     private String name;
 
+    @NotNull
     private Part part;
 
     @NotBlank
