@@ -28,6 +28,10 @@ public class Club {
     @Column(name = "club_image_url", length = 20)
     private String clubImageUrl;
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "teacher")
+    private User teacher;
+
     @OneToMany(mappedBy = "myClub", orphanRemoval = true)
     private List<User> clubMembers = new ArrayList<>();
 
