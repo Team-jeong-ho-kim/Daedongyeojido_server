@@ -11,6 +11,6 @@ import lombok.NoArgsConstructor;
 public class StudentLoginRequest {
 
     @NotBlank
-    @Size(min = 4, max = 4, message = "classNumber는 4글자 이여야 합니다.")
+    @Size(min = 4, max = 4, message = "학번은 4글자 이어야 합니다.")
     private String classNumber;
 }

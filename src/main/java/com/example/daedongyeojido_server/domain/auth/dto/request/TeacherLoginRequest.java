@@ -11,6 +11,6 @@ import lombok.NoArgsConstructor;
 public class TeacherLoginRequest {
 
     @NotBlank
-    @Size(min = 3, max = 4, message = "name은 3글자 이상, 4글자 이하여야 합니다.")
+    @Size(min = 3, max = 4, message = "이름은 3글자 이상, 4글자 이하여야 합니다.")
     private String name;
 }
