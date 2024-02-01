@@ -2,7 +2,6 @@ package com.example.daedongyeojido_server.domain.alarm.application;
 
 import com.example.daedongyeojido_server.domain.alarm.dao.AlarmRepository;
 import com.example.daedongyeojido_server.domain.alarm.domain.Alarm;
-import com.example.daedongyeojido_server.domain.alarm.dto.request.AcceptMessRequest;
 import com.example.daedongyeojido_server.domain.alarm.exception.NotValidTeacherException;
 import com.example.daedongyeojido_server.domain.mess.dao.MessRepository;
 import com.example.daedongyeojido_server.domain.mess.domain.Mess;
