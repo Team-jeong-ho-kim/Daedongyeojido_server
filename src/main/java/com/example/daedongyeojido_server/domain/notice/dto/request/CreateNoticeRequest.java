@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 public class CreateNoticeRequest {
 
     @NotBlank
-    @Size(min = 1, max = 20, message = "clubName은 1글자 이상, 20글자 이하여야 합니다.")
+    @Size(min = 1, max = 20, message = "동아리 이름은 1글자 이상, 20글자 이하여야 합니다.")
     private String clubName;
 
     @NotNull
