@@ -1,5 +1,6 @@
 package com.example.daedongyeojido_server.domain.user.dao;
 
+import com.example.daedongyeojido_server.domain.club.domain.Club;
 import com.example.daedongyeojido_server.domain.user.domain.User;
 import com.example.daedongyeojido_server.domain.user.domain.enums.Part;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -25,5 +26,12 @@ public class CustomUserRepositoryImpl implements CustomUserRepository {
                 .fetchOne();
 
         return Optional.ofNullable(teacher);
+    }
+
+    public User findLeaderByClub(Club club) {
+        return queryFactory
+                .selectFrom(user)
+                .where(user.myClub.eq(club).and(user.part.eq(Part.CLUB_LEADER)))
+                .fetchOne();
     }
 }
