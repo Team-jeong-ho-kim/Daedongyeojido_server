@@ -31,21 +31,21 @@ public class AcceptMessService {
         User teacher = userFacade.currentTeacher();
 
         Mess mess = messRepository.findById(messId)
-                .orElseThrow(()-> MessNotFoundException.EXCEPTION);
+                .orElseThrow(() -> MessNotFoundException.EXCEPTION);
 
-        if(teacher.getPart()!= Part.CLUB_LEADER_TEACHER || teacher!=mess.getMyclub().getTeacher()) {
+        if (teacher.getPart() != Part.CLUB_LEADER_TEACHER || teacher != mess.getMyClub().getTeacher()) {
             throw NotValidTeacherException.EXCEPTION;
         }
 
         mess.acceptOrCancelMess(1);
 
-        if(mess.getMessAccept() >= 2) {
+        if (mess.getMessAccept() >= 2) {
             Alarm alarm = alarmRepository.save(
                     Alarm.builder()
-                            .clubName(mess.getMyclub().getClubName())
+                            .clubName(mess.getMyClub().getClubName())
                             .build());
 
-            User leader = customUserRepository.findLeaderByClub(mess.getMyclub());
+            User leader = customUserRepository.findLeaderByClub(mess.getMyClub());
             leader.addAlarm(alarm);
 
             messRepository.deleteById(messId);
