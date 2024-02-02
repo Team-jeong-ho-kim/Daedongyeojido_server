@@ -4,6 +4,8 @@ import com.example.daedongyeojido_server.domain.mess.dao.MessRepository;
 import com.example.daedongyeojido_server.domain.mess.domain.Mess;
 import com.example.daedongyeojido_server.domain.mess.dto.request.CreateMessRequest;
 import com.example.daedongyeojido_server.domain.mess.exception.ExistMessException;
+import com.example.daedongyeojido_server.domain.user.application.UserFacade;
+import com.example.daedongyeojido_server.domain.user.domain.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,17 +16,23 @@ public class CreateMessService {
 
     private final MessRepository messRepository;
 
+    private final UserFacade userFacade;
+
     @Transactional
     public void createMess(CreateMessRequest request) {
 
-        if (messRepository.existsById(request.getMessId()))
+        User user = userFacade.currentStudent();
+
+        if (messRepository.findByMyClub(user.getMyClub()).isPresent()) {
             throw ExistMessException.EXCEPTION;
+        }
 
         messRepository.save(
                 Mess.builder()
                         .messDate(request.getMessDate())
                         .messStartTime(request.getMessStartTime())
                         .messEndTime(request.getMessEndTime())
+                        .myClub(user.getMyClub())
                         .build());
     }
 }
