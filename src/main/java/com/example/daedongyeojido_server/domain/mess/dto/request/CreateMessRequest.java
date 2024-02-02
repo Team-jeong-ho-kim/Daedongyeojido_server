@@ -13,9 +13,6 @@ import java.time.LocalDate;
 public class CreateMessRequest {
 
     @NotBlank
-    private Long messId;
-
-    @NotBlank
     @Size(min = 1, max = 2, message = "시작 교시는 한 자리수 또는 두 자리수 중에서 선택해야하며 선택을 하지 않으면 안됩니다.")
     private Integer messStartTime;
 
