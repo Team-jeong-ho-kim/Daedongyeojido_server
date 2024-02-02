@@ -47,6 +47,8 @@ public class AcceptMessService {
 
             User leader = customUserRepository.findLeaderByClub(mess.getMyclub());
             leader.addAlarm(alarm);
+
+            messRepository.deleteById(messId);
         }
     }
 }
