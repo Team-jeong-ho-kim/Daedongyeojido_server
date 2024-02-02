@@ -3,8 +3,8 @@ package com.example.daedongyeojido_server.domain.mess.api;
 import com.example.daedongyeojido_server.domain.mess.application.CreateMessService;
 import com.example.daedongyeojido_server.domain.mess.application.DeleteMessService;
 import com.example.daedongyeojido_server.domain.mess.application.QueryMessService;
-import com.example.daedongyeojido_server.domain.mess.domain.Mess;
 import com.example.daedongyeojido_server.domain.mess.dto.request.CreateMessRequest;
+import com.example.daedongyeojido_server.domain.mess.dto.response.QueryMessResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -31,7 +31,7 @@ public class MessController {
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/query")
-    public List<Mess> queryMess() {
+    public List<QueryMessResponse> queryMess() {
         return queryMessService.queryMess();
     }
 
