@@ -10,6 +10,5 @@ import java.util.UUID;
 
 public interface UserRepository extends JpaRepository<User, UUID> {
     Optional<User> findByClassNumber(String classNumber);
-
     List<User> findAllByMyClub(Club myClub);
 }
