@@ -1,6 +1,7 @@
 package com.example.daedongyeojido_server.domain.auth.api;
 
 import com.example.daedongyeojido_server.domain.auth.application.CheckUserService;
+import com.example.daedongyeojido_server.domain.auth.application.LoginService;
 import com.example.daedongyeojido_server.domain.auth.application.SignupService;
 import com.example.daedongyeojido_server.domain.auth.application.StudentLoginService;
 import com.example.daedongyeojido_server.domain.auth.application.TeacherLoginService;
@@ -22,6 +23,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/jung-ho/auth")
 public class AuthController {
 
+    private final LoginService loginService;
+
     private final SignupService signupService;
 
     private final StudentLoginService studentLoginService;
@@ -29,6 +32,12 @@ public class AuthController {
     private final TeacherLoginService teacherLoginService;
 
     private final CheckUserService checkUserService;
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping("/login")
+    public LoginResponse login(@RequestBody @Valid SignupAndCheckUserRequest request) {
+        return loginService.login(request);
+    }
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/signup")
