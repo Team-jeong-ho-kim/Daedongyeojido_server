@@ -40,7 +40,7 @@ public class AlarmController {
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping("/accept{messId}")
+    @PostMapping("/accept/{messId}")
     public void acceptMess(@PathVariable Long messId) {
         acceptMessService.acceptMess(messId);
     }
