@@ -38,8 +38,8 @@ public enum ErrorCode {
     NOT_VALID_TEACHER(401, "적절하지 않은 선생님입니다."),
 
     //image
-    IMAGE_UPLOAD_FAIL(400, "Image upload fail"),
-    WRONG_IMAGE(400, "Wrong Image"),
+    IMAGE_UPLOAD_FAIL(400, "이미지 업로드에 실패 했습니다."),
+    WRONG_IMAGE(400, "잘못된 이미지 입니다."),
 
     // general
     BAD_REQUEST(400, "프론트 탓..."),
