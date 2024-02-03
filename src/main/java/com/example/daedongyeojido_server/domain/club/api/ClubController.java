@@ -32,15 +32,15 @@ public class ClubController {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping("/info/{clubName}")
-    public ClubInfoResponse clubInfo(@PathVariable String clubName) {
-        return clubInfoService.clubInfo(clubName);
+    @PostMapping("/main")
+    public MainResponse queryAllClub() {
+        return queryAllClubService.queryAllClub();
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping("/all")
-    public MainResponse queryAllClub() {
-        return queryAllClubService.queryAllClub();
+    @GetMapping("/info/{clubName}")
+    public ClubInfoResponse clubInfo(@PathVariable String clubName) {
+        return clubInfoService.clubInfo(clubName);
     }
 
     @ResponseStatus(HttpStatus.OK)
