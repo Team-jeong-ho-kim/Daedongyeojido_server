@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 
 public interface MessRepository extends JpaRepository<Mess, Long> {
-    Optional<Mess> findByMyClub(Club myclub);
+    Optional<Mess> findByMyClub(Club myClub);
 }

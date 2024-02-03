@@ -30,8 +30,8 @@ public class Mess {
     @Column(name = "math_accept")
     private Integer MessAccept = 0;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "my_club")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "my_club", nullable = false)
     private Club myClub;
 
     public void acceptOrCancelMess(int i) {
