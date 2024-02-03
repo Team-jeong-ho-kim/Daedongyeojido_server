@@ -37,6 +37,10 @@ public enum ErrorCode {
     EXIST_ALARM(409, "동일한 알림이 존재합니다."),
     NOT_VALID_TEACHER(401, "적절하지 않은 선생님입니다."),
 
+    //image
+    IMAGE_UPLOAD_FAIL(400, "Image upload fail"),
+    WRONG_IMAGE(400, "Wrong Image"),
+
     // general
     BAD_REQUEST(400, "프론트 탓..."),
     INTERNAL_SERVER_ERROR(500, "서버 탓...");
