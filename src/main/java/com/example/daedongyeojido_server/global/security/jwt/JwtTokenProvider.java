@@ -97,6 +97,8 @@ public class JwtTokenProvider {
 
     public LoginResponse receiveToken(String classNumber) {
 
+        Date now = new Date();
+
         User user = userRepository.findByClassNumber(classNumber)
                 .orElseThrow(()-> UserNotFoundException.EXCEPTION);
 
@@ -104,11 +106,15 @@ public class JwtTokenProvider {
                 .builder()
                 .accessToken(createAccessToken(classNumber))
                 .refreshToken(createRefreshToken(classNumber))
+                .accessExpiredAt(new Date(now.getTime() + jwtProperties.getAccessExpiration()))
+                .refreshExpiredAt(new Date(now.getTime() + jwtProperties.getRefreshExpiration()))
                 .part(user.getPart())
                 .build();
     }
 
     public LoginResponse teacherReceiveToken(String name) {
+
+        Date now = new Date();
 
         User user = customUserRepository.findTeacherByName(name)
                 .orElseThrow(()->UserNotFoundException.EXCEPTION);
@@ -117,6 +123,8 @@ public class JwtTokenProvider {
                 .builder()
                 .accessToken(createAccessToken(name))
                 .refreshToken(createRefreshToken(name))
+                .accessExpiredAt(new Date(now.getTime() + jwtProperties.getAccessExpiration()))
+                .refreshExpiredAt(new Date(now.getTime() + jwtProperties.getRefreshExpiration()))
                 .part(user.getPart())
                 .build();
     }

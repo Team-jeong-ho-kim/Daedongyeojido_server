@@ -4,16 +4,19 @@ import com.example.daedongyeojido_server.domain.user.domain.enums.Part;
 import lombok.Builder;
 import lombok.Getter;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 @Getter
 @Builder
 public class LoginResponse {
+
     private final String accessToken;
 
     private final String refreshToken;
 
-    private final LocalDateTime expiredAt;
+    private Date accessExpiredAt;
+
+    private Date refreshExpiredAt;
 
     private final Part part;
 }
