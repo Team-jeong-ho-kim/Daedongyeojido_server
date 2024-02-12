@@ -1,6 +1,6 @@
 package com.example.daedongyeojido_server.domain.auth.application;
 
-import com.example.daedongyeojido_server.domain.auth.dto.request.SignupAndCheckUserRequest;
+import com.example.daedongyeojido_server.domain.auth.dto.request.LoginRequest;
 import com.example.daedongyeojido_server.domain.auth.dto.response.LoginResponse;
 import com.example.daedongyeojido_server.domain.user.dao.CustomUserRepository;
 import com.example.daedongyeojido_server.domain.user.dao.UserRepository;
@@ -22,7 +22,7 @@ public class LoginService {
     private final JwtTokenProvider jwtTokenProvider;
 
     @Transactional
-    public LoginResponse login(SignupAndCheckUserRequest request) {
+    public LoginResponse login(LoginRequest request) {
         if (request.getPart() == Part.INDEPENDENT) {
             if(userRepository.findByClassNumber(request.getClassNumber()).isPresent()) {
                 return jwtTokenProvider.receiveToken(request.getClassNumber());

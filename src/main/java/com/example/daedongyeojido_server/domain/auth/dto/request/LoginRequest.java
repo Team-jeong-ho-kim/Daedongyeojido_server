@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class SignupAndCheckUserRequest {
+public class LoginRequest {
 
     @Size(min = 4, max = 4, message = "학번은 4글자 이어야 합니다.")
     private String classNumber;
