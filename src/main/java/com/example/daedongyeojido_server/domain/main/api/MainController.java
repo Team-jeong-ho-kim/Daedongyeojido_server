@@ -2,7 +2,9 @@ package com.example.daedongyeojido_server.domain.main.api;
 
 import com.example.daedongyeojido_server.domain.main.application.AddBannerService;
 import com.example.daedongyeojido_server.domain.main.application.DeleteBannerService;
+import com.example.daedongyeojido_server.domain.main.application.QueryMainService;
 import com.example.daedongyeojido_server.domain.main.dto.request.BannerRequest;
+import com.example.daedongyeojido_server.domain.main.dto.response.MainResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -23,6 +25,8 @@ public class MainController {
 
     private final DeleteBannerService deleteBannerService;
 
+    private final QueryMainService queryMainService;
+
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/banner")
     public void addBanner(@RequestBody @Valid BannerRequest request) {
@@ -33,5 +37,11 @@ public class MainController {
     @DeleteMapping("/banner/{bannerId}")
     public void deleteBanner(@PathVariable Long bannerId) {
         deleteBannerService.deleteBanner(bannerId);
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @PostMapping()
+    public MainResponse queryMain() {
+        return queryMainService.queryMain();
     }
 }

@@ -1,6 +1,7 @@
-package com.example.daedongyeojido_server.domain.club.dto.response;
+package com.example.daedongyeojido_server.domain.main.dto.response;
 
 import com.example.daedongyeojido_server.domain.alarm.dto.response.AnnouncementResponse;
+import com.example.daedongyeojido_server.domain.club.dto.response.AllClubResponse;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
