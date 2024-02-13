@@ -1,4 +1,4 @@
-package com.example.daedongyeojido_server.domain.main.application.dao;
+package com.example.daedongyeojido_server.domain.main.dao;
 
 import com.example.daedongyeojido_server.domain.main.domain.Banner;
 import org.springframework.data.jpa.repository.JpaRepository;

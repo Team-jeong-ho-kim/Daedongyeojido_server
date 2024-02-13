@@ -1,6 +1,6 @@
 package com.example.daedongyeojido_server.domain.main.application;
 
-import com.example.daedongyeojido_server.domain.main.application.dao.BannerRepository;
+import com.example.daedongyeojido_server.domain.main.dao.BannerRepository;
 import com.example.daedongyeojido_server.domain.main.domain.Banner;
 import com.example.daedongyeojido_server.domain.main.dto.request.BannerRequest;
 import lombok.RequiredArgsConstructor;
