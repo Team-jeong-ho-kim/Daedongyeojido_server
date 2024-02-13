@@ -18,6 +18,6 @@ public class ModifyClubService {
         Club club = clubRepository.findById(clubName)
                 .orElseThrow(RuntimeException::new);
 
-        club.modifyClub(request.getTitle(), request.getContent(), request.getClubImageUrl(), request.getTags());
+        club.modifyClub(request.getTitle(), request.getIntroduction(), request.getProject(), request.getWeWant(), request.getQAndA(), request.getClubImageUrl(), request.getTags());
     }
 }
