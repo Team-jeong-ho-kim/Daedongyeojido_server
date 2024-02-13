@@ -14,6 +14,7 @@ public class CreateImageService {
 
     private final S3Util s3Util;
 
+    @Transactional
     public ImageUrlResponse createImage(MultipartFile multipartFiles) {
 
         String imageUrl = s3Util.uploadImage(multipartFiles);
