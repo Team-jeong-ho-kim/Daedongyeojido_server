@@ -5,6 +5,8 @@ import com.example.daedongyeojido_server.domain.alarm.domain.enums.AlarmType;
 import com.example.daedongyeojido_server.domain.alarm.dto.response.AnnouncementResponse;
 import com.example.daedongyeojido_server.domain.club.dao.ClubRepository;
 import com.example.daedongyeojido_server.domain.club.dto.response.AllClubResponse;
+import com.example.daedongyeojido_server.domain.main.dao.BannerRepository;
+import com.example.daedongyeojido_server.domain.main.domain.Banner;
 import com.example.daedongyeojido_server.domain.main.dto.response.MainResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,12 +19,16 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class QueryMainService {
 
+    private final BannerRepository bannerRepository;
+
     private final ClubRepository clubRepository;
 
     private final AlarmRepository alarmRepository;
 
     @Transactional(readOnly = true)
     public MainResponse queryMain() {
+
+        List<Banner> banners = bannerRepository.findAll();
 
         List<AllClubResponse> queryAllClubResponses = clubRepository.findAll()
                 .stream()
@@ -34,6 +40,6 @@ public class QueryMainService {
                 .map(AnnouncementResponse::new)
                 .collect(Collectors.toList());
 
-        return new MainResponse(queryAllClubResponses, announcementResponses);
+        return new MainResponse(banners, queryAllClubResponses, announcementResponses);
     }
 }
