@@ -22,8 +22,17 @@ public class Club {
     @Column(name = "title", length = 30)
     private String title;
 
-    @Column(name = "content", length = 300)
-    private String content;
+    @Column(name = "introduction", length = 500)
+    private String introduction;
+
+    @Column(name = "project", length = 300)
+    private String project;
+
+    @Column(name = "we_want", length = 300)
+    private String weWant;
+
+    @Column(name = "q_and_a", length = 300)
+    private String qAndA;
 
     @Column(name = "club_image_url", length = 20)
     private String clubImageUrl;
@@ -52,9 +61,12 @@ public class Club {
         this.notices.add(notice);
     }
 
-    public void modifyClub(String title, String content, String clubImageUrl, List<String> tags) {
+    public void modifyClub(String title, String introduction, String project, String weWant, String qAndA, String clubImageUrl, List<String> tags) {
         this.title = title;
-        this.content = content;
+        this.introduction = introduction;
+        this.project = project;
+        this.weWant = weWant;
+        this.qAndA = qAndA;
         this.clubImageUrl = clubImageUrl;
         this.tags = tags;
     }
