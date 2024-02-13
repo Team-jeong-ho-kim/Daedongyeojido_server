@@ -14,8 +14,6 @@ public class DeleteClubService {
 
     @Transactional
     public void deleteClub(String clubName) {
-        Club club = clubRepository.findById(clubName)
-                .orElseThrow(RuntimeException::new);
         clubRepository.deleteById(clubName);
     }
 }
