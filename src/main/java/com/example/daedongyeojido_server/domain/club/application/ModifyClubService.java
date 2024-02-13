@@ -14,9 +14,8 @@ public class ModifyClubService {
     private final ClubRepository clubRepository;
 
     @Transactional
-    public void modifyClub(String clubName, ModifyClubRequest request) {
-        Club club = clubRepository.findById(clubName)
-                .orElseThrow(RuntimeException::new);
+    public void modifyClub(ModifyClubRequest request) {
+        Club club = clubRepository.findByClubName(request.getClubName());
 
         club.modifyClub(request.getTitle(), request.getIntroduction(), request.getProject(), request.getWeWant(), request.getQAndA(), request.getClubImageUrl());
     }

@@ -56,10 +56,9 @@ public class ClubController {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @PatchMapping("/modify/{clubName}")
-    public void modifyClub(@PathVariable String clubName,
-                           @RequestBody @Valid ModifyClubRequest request) {
-        modifyClubService.modifyClub(clubName, request);
+    @PatchMapping("/modify")
+    public void modifyClub(@RequestBody @Valid ModifyClubRequest request) {
+        modifyClubService.modifyClub(request);
     }
 
     @ResponseStatus(HttpStatus.OK)
