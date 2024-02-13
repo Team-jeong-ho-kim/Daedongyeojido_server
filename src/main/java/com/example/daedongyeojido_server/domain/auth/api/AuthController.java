@@ -25,8 +25,9 @@ public class AuthController {
         return loginService.login(request);
     }
 
+    @ResponseStatus(HttpStatus.OK)
     @PatchMapping("/token")
     public LoginResponse reissue(@RequestBody @Valid RefreshTokenRequest request) {
-        return reissueService.reissue(String.valueOf(request));
+        return reissueService.reissue(request);
     }
 }

@@ -58,7 +58,6 @@ public class JwtTokenProvider {
         Date now = new Date();
 
         String refreshToken = Jwts.builder()
-                .setSubject(classNumber)
                 .claim("type", "refresh")
                 .setIssuedAt(now)
                 .setExpiration(new Date(now.getTime() + jwtProperties.getRefreshExpiration() * 1000))
@@ -137,13 +136,6 @@ public class JwtTokenProvider {
         if (StringUtils.hasText(bearerToken) && bearerToken.startsWith(jwtProperties.getPrefix())
                 && bearerToken.length() > jwtProperties.getPrefix().length() + 1) {
             return bearerToken.substring(7);
-        }
-        return null;
-    }
-
-    public String parseToken(String bearerToken) {
-        if (bearerToken != null && bearerToken.startsWith(jwtProperties.getPrefix())) {
-            return bearerToken.replace(jwtProperties.getPrefix(), "");
         }
         return null;
     }

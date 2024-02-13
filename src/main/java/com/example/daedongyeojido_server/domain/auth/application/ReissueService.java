@@ -2,6 +2,7 @@ package com.example.daedongyeojido_server.domain.auth.application;
 
 import com.example.daedongyeojido_server.domain.auth.dao.RefreshTokenRepository;
 import com.example.daedongyeojido_server.domain.auth.domain.RefreshToken;
+import com.example.daedongyeojido_server.domain.auth.dto.request.RefreshTokenRequest;
 import com.example.daedongyeojido_server.domain.auth.dto.response.LoginResponse;
 import com.example.daedongyeojido_server.domain.auth.exception.InvaildRefreshTokenException;
 import com.example.daedongyeojido_server.domain.auth.exception.RefreshTokenNotFoundException;
@@ -22,14 +23,9 @@ public class ReissueService {
     private final RefreshTokenRepository refreshTokenRepository;
 
     @Transactional
-    public LoginResponse reissue(String refreshToken) {
-        String parseToken = jwtTokenProvider.parseToken(refreshToken);
+    public LoginResponse reissue(RefreshTokenRequest request) {
 
-        if (parseToken == null) {
-            throw InvaildRefreshTokenException.EXCEPTION;
-        }
-
-        RefreshToken redisRefreshToken = refreshTokenRepository.findByToken(jwtTokenProvider.parseToken(refreshToken))
+        RefreshToken redisRefreshToken = refreshTokenRepository.findByToken(request.getToken())
                 .orElseThrow(() -> RefreshTokenNotFoundException.EXCEPTION);
 
         String newRefreshToken = jwtTokenProvider.createRefreshToken(redisRefreshToken.getClassNumber());

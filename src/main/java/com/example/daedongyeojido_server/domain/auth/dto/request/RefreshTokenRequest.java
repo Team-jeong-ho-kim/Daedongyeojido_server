@@ -11,11 +11,5 @@ import lombok.NoArgsConstructor;
 public class RefreshTokenRequest {
 
     @NotBlank
-    @Size(min = 4, max = 4, message = "학번은 4글자 이어야 합니다.")
-    String classNumber;
-
-    @NotBlank
     String token;
-
-    Long timeToLive;
 }
