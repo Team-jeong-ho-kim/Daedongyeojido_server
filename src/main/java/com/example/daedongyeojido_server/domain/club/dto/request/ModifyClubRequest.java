@@ -27,6 +27,4 @@ public class ModifyClubRequest {
     private String qAndA;
 
     private String clubImageUrl;
-
-    private List<String> tags;
 }
