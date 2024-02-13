@@ -4,6 +4,7 @@ import com.example.daedongyeojido_server.domain.user.domain.User;
 import com.example.daedongyeojido_server.domain.user.dto.response.MyInfoResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -11,6 +12,7 @@ public class TeacherInfoService {
 
     private final UserFacade userFacade;
 
+    @Transactional(readOnly = true)
     public MyInfoResponse teacherInfo() {
         User user = userFacade.currentTeacher();
 

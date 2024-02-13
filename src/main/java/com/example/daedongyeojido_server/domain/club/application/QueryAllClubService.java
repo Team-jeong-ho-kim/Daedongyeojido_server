@@ -21,7 +21,7 @@ public class QueryAllClubService {
 
     private final AlarmRepository alarmRepository;
 
-    @Transactional
+    @Transactional(readOnly = true)
     public MainResponse queryAllClub() {
 
         List<AllClubResponse> queryAllClubResponses = clubRepository.findAll()

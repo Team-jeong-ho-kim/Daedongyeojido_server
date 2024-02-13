@@ -19,7 +19,7 @@ public class StudentInfoService {
 
     private final ReportRepository reportRepository;
 
-    @Transactional
+    @Transactional(readOnly = true)
     public MyInfoResponse studentInfo() {
         User user = userFacade.currentStudent();
 

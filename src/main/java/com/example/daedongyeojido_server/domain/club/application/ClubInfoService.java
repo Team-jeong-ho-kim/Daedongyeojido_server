@@ -20,7 +20,7 @@ public class ClubInfoService {
 
     private final UserRepository userRepository;
 
-    @Transactional
+    @Transactional(readOnly = true)
     public ClubInfoResponse clubInfo(String clubName) {
 
         Club club = clubRepository.findByClubName(clubName);

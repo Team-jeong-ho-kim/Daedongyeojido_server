@@ -27,7 +27,7 @@ public class QueryNoticeService {
 
     private final ReportRepository reportRepository;
 
-    @Transactional
+    @Transactional(readOnly = true)
     public List<NoticeResponse> queryNotice(String clubName) {
         User user = userFacade.currentStudent();
 

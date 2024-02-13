@@ -15,7 +15,7 @@ public class QueryMessService {
 
     private final MessRepository messRepository;
 
-    @Transactional
+    @Transactional(readOnly = true)
     public List<QueryMessResponse> queryMess() {
 
         return messRepository.findAll()

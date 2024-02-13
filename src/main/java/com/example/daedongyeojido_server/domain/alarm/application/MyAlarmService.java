@@ -19,7 +19,7 @@ public class MyAlarmService {
 
     private final UserFacade userFacade;
 
-    @Transactional
+    @Transactional(readOnly = true)
     public List<AlarmResponse> myAlarm() {
         User user = userFacade.currentStudent();
 

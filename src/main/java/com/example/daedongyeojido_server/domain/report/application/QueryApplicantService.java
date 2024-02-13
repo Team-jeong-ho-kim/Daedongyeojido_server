@@ -19,7 +19,7 @@ public class QueryApplicantService {
 
     private final CustomReportRepository customReportRepository;
 
-    @Transactional
+    @Transactional(readOnly = true)
     public List<ReportResponse> queryApplicant(String clubName) {
         Club club = clubRepository.findByClubName(clubName);
 
