@@ -1,11 +1,13 @@
 package com.example.daedongyeojido_server.domain.club.api;
 
+import com.example.daedongyeojido_server.domain.club.application.AddTagService;
 import com.example.daedongyeojido_server.domain.club.application.ClubInfoService;
 import com.example.daedongyeojido_server.domain.club.application.CreateClubService;
 import com.example.daedongyeojido_server.domain.club.application.DeleteClubService;
 import com.example.daedongyeojido_server.domain.club.application.ModifyClubService;
 import com.example.daedongyeojido_server.domain.club.dto.request.CreateClubRequest;
 import com.example.daedongyeojido_server.domain.club.dto.request.ModifyClubRequest;
+import com.example.daedongyeojido_server.domain.club.dto.request.TagRequest;
 import com.example.daedongyeojido_server.domain.club.dto.response.ClubInfoResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -27,6 +29,8 @@ public class ClubController {
 
     private final CreateClubService createClubService;
 
+    private final AddTagService addTagService;
+
     private final ModifyClubService modifyClubService;
 
     private final ClubInfoService clubInfoService;
@@ -37,6 +41,12 @@ public class ClubController {
     @PostMapping("/create")
     public void createClub(@RequestBody @Valid CreateClubRequest request) {
         createClubService.createClub(request);
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @PostMapping("/tag")
+    public void addTag(@RequestBody @Valid TagRequest request) {
+        addTagService.addTag(request);
     }
 
     @ResponseStatus(HttpStatus.OK)
