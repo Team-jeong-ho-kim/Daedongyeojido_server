@@ -1,4 +1,4 @@
-package com.example.daedongyeojido_server.global.s3.exception;
+package com.example.daedongyeojido_server.infra.s3.exception;
 
 import com.example.daedongyeojido_server.global.error.exception.BusinessException;
 import com.example.daedongyeojido_server.global.error.exception.ErrorCode;

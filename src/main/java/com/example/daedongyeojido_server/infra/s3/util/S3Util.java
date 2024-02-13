@@ -1,11 +1,11 @@
-package com.example.daedongyeojido_server.global.s3.util;
+package com.example.daedongyeojido_server.infra.s3.util;
 
 import com.amazonaws.SdkClientException;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
-import com.example.daedongyeojido_server.global.s3.exception.ImageUploadFailedException;
+import com.example.daedongyeojido_server.infra.s3.exception.ImageUploadFailedException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;

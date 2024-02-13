@@ -1,7 +1,7 @@
-package com.example.daedongyeojido_server.global.s3.api;
+package com.example.daedongyeojido_server.infra.s3.api;
 
-import com.example.daedongyeojido_server.global.s3.dto.response.ImageUrlResponse;
-import com.example.daedongyeojido_server.global.s3.service.CreateImageService;
+import com.example.daedongyeojido_server.infra.s3.dto.response.ImageUrlResponse;
+import com.example.daedongyeojido_server.infra.s3.service.CreateImageService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;

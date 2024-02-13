@@ -1,4 +1,4 @@
-package com.example.daedongyeojido_server.global.config;
+package com.example.daedongyeojido_server.infra.config;
 
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
