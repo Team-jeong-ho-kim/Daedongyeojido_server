@@ -61,13 +61,12 @@ public class Club {
         this.notices.add(notice);
     }
 
-    public void modifyClub(String title, String introduction, String project, String weWant, String qAndA, String clubImageUrl, List<String> tags) {
+    public void modifyClub(String title, String introduction, String project, String weWant, String qAndA, String clubImageUrl) {
         this.title = title;
         this.introduction = introduction;
         this.project = project;
         this.weWant = weWant;
         this.qAndA = qAndA;
         this.clubImageUrl = clubImageUrl;
-        this.tags = tags;
     }
 }
