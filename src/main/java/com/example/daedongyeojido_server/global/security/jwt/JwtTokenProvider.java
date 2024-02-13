@@ -101,7 +101,7 @@ public class JwtTokenProvider {
         Date now = new Date();
 
         User user = userRepository.findByClassNumber(classNumber)
-                .orElseThrow(()-> UserNotFoundException.EXCEPTION);
+                .orElseThrow(() -> UserNotFoundException.EXCEPTION);
 
         return LoginResponse
                 .builder()
@@ -118,7 +118,7 @@ public class JwtTokenProvider {
         Date now = new Date();
 
         User user = customUserRepository.findTeacherByName(name)
-                .orElseThrow(()->UserNotFoundException.EXCEPTION);
+                .orElseThrow(() -> UserNotFoundException.EXCEPTION);
 
         return LoginResponse
                 .builder()
@@ -137,6 +137,13 @@ public class JwtTokenProvider {
         if (StringUtils.hasText(bearerToken) && bearerToken.startsWith(jwtProperties.getPrefix())
                 && bearerToken.length() > jwtProperties.getPrefix().length() + 1) {
             return bearerToken.substring(7);
+        }
+        return null;
+    }
+
+    public String parseToken(String bearerToken) {
+        if (bearerToken != null && bearerToken.startsWith(jwtProperties.getPrefix())) {
+            return bearerToken.replace(jwtProperties.getPrefix(), "");
         }
         return null;
     }
