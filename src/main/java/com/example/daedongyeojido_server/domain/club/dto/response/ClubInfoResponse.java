@@ -15,7 +15,13 @@ public class ClubInfoResponse {
 
     private String title;
 
-    private String contents;
+    private String introduction;
+
+    private String project;
+
+    private String weWant;
+
+    private String qAndA;
 
     private String clubImageUrl;
 
