@@ -18,5 +18,4 @@ public class JwtProperties {
     private final Long accessExpiration;
 
     private final Long refreshExpiration;
-
 }
