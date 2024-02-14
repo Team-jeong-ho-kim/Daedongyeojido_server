@@ -10,6 +10,7 @@ import com.example.daedongyeojido_server.domain.user.dto.response.MyInfoResponse
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -50,7 +51,7 @@ public class UserController {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @PostMapping("/all")
+    @GetMapping("/all")
     public List<AllUserResponse> findAllUser() {
         return findAllUserService.findAllUser();
     }
