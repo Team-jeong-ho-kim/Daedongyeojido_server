@@ -39,7 +39,6 @@ public class JwtTokenProvider {
     private final RefreshTokenRepository refreshTokenRepository;
 
     // access token 생성
-
     public String createAccessToken(String classNumber) {
 
         Date now = new Date();
