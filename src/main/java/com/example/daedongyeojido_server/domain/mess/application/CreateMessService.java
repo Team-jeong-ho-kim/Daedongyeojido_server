@@ -32,6 +32,7 @@ public class CreateMessService {
                         .messDate(request.getMessDate())
                         .messStartTime(request.getMessStartTime())
                         .messEndTime(request.getMessEndTime())
+                        .MessAccept(0)
                         .myClub(user.getMyClub())
                         .build());
     }
