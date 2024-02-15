@@ -14,7 +14,7 @@ import org.springframework.data.redis.core.index.Indexed;
 public class RefreshToken {
 
     @Id
-    private String classNumber;
+    private String xquareId;
 
     @Indexed
     private String token;
