@@ -21,7 +21,7 @@ public class MyAlarmService {
 
     @Transactional(readOnly = true)
     public List<AlarmResponse> myAlarm() {
-        User user = userFacade.currentStudent();
+        User user = userFacade.currentUser();
 
         return alarmRepository.findAllByUser(user)
                 .stream()

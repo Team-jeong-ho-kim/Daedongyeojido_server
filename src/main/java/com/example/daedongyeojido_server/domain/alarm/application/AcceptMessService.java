@@ -28,7 +28,7 @@ public class AcceptMessService {
 
     @Transactional
     public void acceptMess(Long messId) {
-        User teacher = userFacade.currentTeacher();
+        User teacher = userFacade.currentUser();
 
         Mess mess = messRepository.findById(messId)
                 .orElseThrow(() -> MessNotFoundException.EXCEPTION);

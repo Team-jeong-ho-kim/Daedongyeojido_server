@@ -20,7 +20,7 @@ public class CreateAnnouncementService {
 
     @Transactional
     public void createAnnouncement(CreateAnnouncementRequest request) {
-        User user = userFacade.currentTeacher();
+        User user = userFacade.currentUser();
 
         alarmRepository.save(
                 Alarm.builder()
