@@ -20,11 +20,18 @@ public class QueryMessResponse {
 
     private String myClub;
 
+    private Boolean acceptOrNot;
+
     public QueryMessResponse(Mess mess) {
         messStartTime = mess.getMessStartTime();
         messEndTime = mess.getMessEndTime();
         messDate = mess.getMessDate();
         myClub = mess.getMyClub().getClubName();
         messId = mess.getMessId();
+        acceptOrNot = false;
+    }
+
+    public void accept() {
+        this.acceptOrNot = true;
     }
 }
