@@ -33,11 +33,11 @@ public class AcceptMessService {
         Mess mess = messRepository.findById(messId)
                 .orElseThrow(() -> MessNotFoundException.EXCEPTION);
 
-        if (teacher.getPart() != Part.CLUB_LEADER_TEACHER || teacher != mess.getMyClub().getTeacher()) {
+        if (teacher.getPart() != Part.CLUB_LEADER_TEACHER && teacher != mess.getMyClub().getTeacher()) {
             throw NotValidTeacherException.EXCEPTION;
         }
 
-        mess.acceptOrCancelMess(1);
+        mess.acceptOrCancelMess(1, teacher.getName());
 
         if (mess.getMessAccept() >= 2) {
             Alarm alarm = alarmRepository.save(
