@@ -30,7 +30,7 @@ public class UserController {
     private final FindAllUserService findAllUserService;
 
     @ResponseStatus(HttpStatus.OK)
-    @PostMapping("/student-info")
+    @PostMapping("/my-info")
     public MyInfoResponse myInfo() {
         return myInfoService.myInfo();
     }
