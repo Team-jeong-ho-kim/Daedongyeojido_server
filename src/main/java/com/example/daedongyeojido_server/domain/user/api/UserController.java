@@ -2,8 +2,7 @@ package com.example.daedongyeojido_server.domain.user.api;
 
 import com.example.daedongyeojido_server.domain.user.application.AddClubMemberService;
 import com.example.daedongyeojido_server.domain.user.application.FindAllUserService;
-import com.example.daedongyeojido_server.domain.user.application.StudentInfoService;
-import com.example.daedongyeojido_server.domain.user.application.TeacherInfoService;
+import com.example.daedongyeojido_server.domain.user.application.MyInfoService;
 import com.example.daedongyeojido_server.domain.user.dto.request.AddClubMemberRequest;
 import com.example.daedongyeojido_server.domain.user.dto.response.AllUserResponse;
 import com.example.daedongyeojido_server.domain.user.dto.response.MyInfoResponse;
@@ -24,9 +23,7 @@ import java.util.List;
 @RequestMapping("/jung-ho/user")
 public class UserController {
 
-    private final StudentInfoService studentInfoService;
-
-    private final TeacherInfoService teacherInfoService;
+    private final MyInfoService myInfoService;
 
     private final AddClubMemberService addClubMemberService;
 
@@ -34,14 +31,8 @@ public class UserController {
 
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("/student-info")
-    public MyInfoResponse studentInfo() {
-        return studentInfoService.studentInfo();
-    }
-
-    @ResponseStatus(HttpStatus.OK)
-    @PostMapping("/teacher-info")
-    public MyInfoResponse teacherInfo() {
-        return teacherInfoService.teacherInfo();
+    public MyInfoResponse myInfo() {
+        return myInfoService.myInfo();
     }
 
     @ResponseStatus(HttpStatus.OK)
