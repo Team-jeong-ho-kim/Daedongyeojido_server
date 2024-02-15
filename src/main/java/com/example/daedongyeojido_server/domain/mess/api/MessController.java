@@ -30,7 +30,7 @@ public class MessController {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping("/query")
+    @PostMapping("/all")
     public List<QueryMessResponse> queryMess() {
         return queryMessService.queryMess();
     }
