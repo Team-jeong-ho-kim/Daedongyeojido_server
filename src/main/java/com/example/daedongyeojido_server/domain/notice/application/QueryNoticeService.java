@@ -29,7 +29,7 @@ public class QueryNoticeService {
 
     @Transactional(readOnly = true)
     public List<NoticeResponse> queryNotice(String clubName) {
-        User user = userFacade.currentStudent();
+        User user = userFacade.currentUser();
 
         Club club = clubRepository.findByClubName(clubName);
 

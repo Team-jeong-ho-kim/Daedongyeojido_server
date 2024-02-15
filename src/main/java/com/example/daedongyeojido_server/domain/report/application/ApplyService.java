@@ -25,7 +25,7 @@ public class ApplyService {
 
     @Transactional
     public void apply(ApplyRequest request) {
-        User user = userFacade.currentStudent();
+        User user = userFacade.currentUser();
 
         Notice notice = noticeRepository.findById(request.getNoticeId())
                 .orElseThrow(()-> NoticeNotFoundException.EXCEPTION);

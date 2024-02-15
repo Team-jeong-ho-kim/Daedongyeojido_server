@@ -21,7 +21,7 @@ public class CreateMessService {
     @Transactional
     public void createMess(CreateMessRequest request) {
 
-        User user = userFacade.currentStudent();
+        User user = userFacade.currentUser();
 
         if (messRepository.findByMyClub(user.getMyClub()).isPresent()) {
             throw ExistMessException.EXCEPTION;
