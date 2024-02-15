@@ -39,6 +39,9 @@ public class User {
     )
     private UUID userId = UUID.randomUUID();
 
+    @Column(name = "xquare_id", nullable = false)
+    private String xquareId;
+
     @Column(name = "class_number", length = 4)
     private String classNumber;
 
