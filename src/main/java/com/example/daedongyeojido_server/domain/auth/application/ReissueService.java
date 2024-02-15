@@ -4,9 +4,7 @@ import com.example.daedongyeojido_server.domain.auth.dao.RefreshTokenRepository;
 import com.example.daedongyeojido_server.domain.auth.domain.RefreshToken;
 import com.example.daedongyeojido_server.domain.auth.dto.request.RefreshTokenRequest;
 import com.example.daedongyeojido_server.domain.auth.dto.response.LoginResponse;
-import com.example.daedongyeojido_server.domain.auth.exception.InvaildRefreshTokenException;
 import com.example.daedongyeojido_server.domain.auth.exception.RefreshTokenNotFoundException;
-import com.example.daedongyeojido_server.global.security.jwt.JwtProperties;
 import com.example.daedongyeojido_server.global.security.jwt.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -18,24 +16,14 @@ public class ReissueService {
 
     private final JwtTokenProvider jwtTokenProvider;
 
-    private final JwtProperties jwtProperties;
-
     private final RefreshTokenRepository refreshTokenRepository;
 
     @Transactional
     public LoginResponse reissue(RefreshTokenRequest request) {
 
-        RefreshToken redisRefreshToken = refreshTokenRepository.findByToken(request.getToken())
+        RefreshToken refreshToken = refreshTokenRepository.findByToken(request.getToken())
                 .orElseThrow(() -> RefreshTokenNotFoundException.EXCEPTION);
 
-        String newRefreshToken = jwtTokenProvider.createRefreshToken(redisRefreshToken.getClassNumber());
-        redisRefreshToken.updateToken(newRefreshToken, jwtProperties.getRefreshExpiration());
-
-        String newAccessToken = jwtTokenProvider.createAccessToken(redisRefreshToken.getClassNumber());
-
-        return LoginResponse.builder()
-                .accessToken(newAccessToken)
-                .refreshToken(newRefreshToken)
-                .build();
+        return jwtTokenProvider.receiveToken(refreshToken.getXquareId());
     }
 }
