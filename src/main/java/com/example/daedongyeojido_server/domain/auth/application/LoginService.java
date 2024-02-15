@@ -29,6 +29,7 @@ public class LoginService {
         }
         else if (request.getName().equals("신요셉")) {
             User user = User.builder()
+                    .xquareId(request.getXquareId())
                     .name(request.getName())
                     .part(Part.CLUB_LEADER_TEACHER)
                     .build();
