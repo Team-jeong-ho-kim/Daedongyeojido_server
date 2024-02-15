@@ -65,7 +65,7 @@ public class JwtTokenProvider {
 
         refreshTokenRepository.save(
                 RefreshToken.builder()
-                        .classNumber(xquareId)
+                        .xquareId(xquareId)
                         .token(refreshToken)
                         .timeToLive(jwtProperties.getRefreshExpiration())
                         .build());
