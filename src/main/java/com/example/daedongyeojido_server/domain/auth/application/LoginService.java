@@ -23,45 +23,29 @@ public class LoginService {
 
     @Transactional
     public LoginResponse login(LoginRequest request) {
-        if (request.getPart() == Part.INDEPENDENT) {
-            if(userRepository.findByClassNumber(request.getClassNumber()).isPresent()) {
-                return jwtTokenProvider.receiveToken(request.getClassNumber());
-            }
-            else {
-                User user = User.builder()
-                        .classNumber(request.getClassNumber())
-                        .name(request.getName())
-                        .part(request.getPart())
-                        .build();
 
-                userRepository.save(user);
+        if(userRepository.findByXquareId(request.getXquareId()).isPresent()) {
+            return jwtTokenProvider.receiveToken(request.getXquareId());
+        }
+        else if (request.getName().equals("신요셉")) {
+            User user = User.builder()
+                    .name(request.getName())
+                    .part(Part.CLUB_LEADER_TEACHER)
+                    .build();
 
-                return jwtTokenProvider.receiveToken(request.getClassNumber());
-            }
+            userRepository.save(user);
         }
         else {
-            if(customUserRepository.findTeacherByName(request.getName()).isPresent()) {
-                return jwtTokenProvider.teacherReceiveToken(request.getName());
-            }
-            else {
-                if (request.getName().equals("신요셉")) {
-                    User user = User.builder()
-                            .name(request.getName())
-                            .part(Part.CLUB_LEADER_TEACHER)
-                            .build();
+            User user = User.builder()
+                    .xquareId(request.getXquareId())
+                    .classNumber(request.getClassNumber())
+                    .name(request.getName())
+                    .part(request.getPart())
+                    .build();
 
-                    userRepository.save(user);
-                }
-                else {
-                    User user = User.builder()
-                            .name(request.getName())
-                            .part(request.getPart())
-                            .build();
-
-                    userRepository.save(user);
-                }
-                return jwtTokenProvider.teacherReceiveToken(request.getName());
-            }
+            userRepository.save(user);
         }
+
+        return jwtTokenProvider.receiveToken(request.getXquareId());
     }
 }
