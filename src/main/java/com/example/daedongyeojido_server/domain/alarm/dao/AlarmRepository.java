@@ -9,6 +9,5 @@ import java.util.List;
 
 public interface AlarmRepository extends JpaRepository<Alarm, Long> {
     List<Alarm> findAllByUser(User user);
-
     List<Alarm> findAllByAlarmType(AlarmType alarmType);
 }
