@@ -41,10 +41,8 @@ public class QueryNoticeService {
                 .collect(Collectors.toList());
 
         for(int i=0; i<noticeResponses.size(); i++) {
-            NoticeResponse noticeResponse = noticeResponses.get(i);
-            Notice notice = notices.get(i);
-            if(!(reportRepository.findAllByClassNumberAndNotice(user.getClassNumber(), notice).isEmpty())) {
-                noticeResponse.apply();
+            if(!(reportRepository.findAllByClassNumberAndNotice(user.getClassNumber(), notices.get(i)).isEmpty())) {
+                noticeResponses.get(i).apply();
             }
         }
 
