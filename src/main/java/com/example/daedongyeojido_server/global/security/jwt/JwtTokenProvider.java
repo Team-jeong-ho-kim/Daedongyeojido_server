@@ -39,12 +39,12 @@ public class JwtTokenProvider {
     private final RefreshTokenRepository refreshTokenRepository;
 
     // access token 생성
-    public String createAccessToken(String classNumber) {
+    public String createAccessToken(String xquareId) {
 
         Date now = new Date();
 
         return Jwts.builder()
-                .setSubject(classNumber)
+                .setSubject(xquareId)
                 .claim("type", "access")
                 .setIssuedAt(now)
                 .setExpiration(new Date(now.getTime() + jwtProperties.getAccessExpiration() * 1000))
@@ -52,7 +52,7 @@ public class JwtTokenProvider {
                 .compact();
     }
 
-    public String createRefreshToken(String classNumber) {
+    public String createRefreshToken(String xquareId) {
 
         Date now = new Date();
 
@@ -65,7 +65,7 @@ public class JwtTokenProvider {
 
         refreshTokenRepository.save(
                 RefreshToken.builder()
-                        .classNumber(classNumber)
+                        .classNumber(xquareId)
                         .token(refreshToken)
                         .timeToLive(jwtProperties.getRefreshExpiration())
                         .build());
@@ -94,34 +94,17 @@ public class JwtTokenProvider {
         }
     }
 
-    public LoginResponse receiveToken(String classNumber) {
+    public LoginResponse receiveToken(String xquareId) {
 
         Date now = new Date();
 
-        User user = userRepository.findByClassNumber(classNumber)
+        User user = userRepository.findByClassNumber(xquareId)
                 .orElseThrow(() -> UserNotFoundException.EXCEPTION);
 
         return LoginResponse
                 .builder()
-                .accessToken(createAccessToken(classNumber))
-                .refreshToken(createRefreshToken(classNumber))
-                .accessExpiredAt(new Date(now.getTime() + jwtProperties.getAccessExpiration()))
-                .refreshExpiredAt(new Date(now.getTime() + jwtProperties.getRefreshExpiration()))
-                .part(user.getPart())
-                .build();
-    }
-
-    public LoginResponse teacherReceiveToken(String name) {
-
-        Date now = new Date();
-
-        User user = customUserRepository.findTeacherByName(name)
-                .orElseThrow(() -> UserNotFoundException.EXCEPTION);
-
-        return LoginResponse
-                .builder()
-                .accessToken(createAccessToken(name))
-                .refreshToken(createRefreshToken(name))
+                .accessToken(createAccessToken(xquareId))
+                .refreshToken(createRefreshToken(xquareId))
                 .accessExpiredAt(new Date(now.getTime() + jwtProperties.getAccessExpiration()))
                 .refreshExpiredAt(new Date(now.getTime() + jwtProperties.getRefreshExpiration()))
                 .part(user.getPart())
