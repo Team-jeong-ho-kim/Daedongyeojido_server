@@ -98,7 +98,7 @@ public class JwtTokenProvider {
 
         Date now = new Date();
 
-        User user = userRepository.findByClassNumber(xquareId)
+        User user = userRepository.findByXquareId(xquareId)
                 .orElseThrow(() -> UserNotFoundException.EXCEPTION);
 
         return LoginResponse
