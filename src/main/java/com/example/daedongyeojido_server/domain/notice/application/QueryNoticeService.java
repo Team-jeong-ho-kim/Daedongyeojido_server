@@ -6,7 +6,7 @@ import com.example.daedongyeojido_server.domain.notice.dao.NoticeRepository;
 import com.example.daedongyeojido_server.domain.notice.domain.Notice;
 import com.example.daedongyeojido_server.domain.notice.dto.response.NoticeResponse;
 import com.example.daedongyeojido_server.domain.report.dao.ReportRepository;
-import com.example.daedongyeojido_server.domain.user.application.UserFacade;
+import com.example.daedongyeojido_server.domain.user.application.facade.UserFacade;
 import com.example.daedongyeojido_server.domain.user.domain.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

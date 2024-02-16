@@ -1,4 +1,4 @@
-package com.example.daedongyeojido_server.domain.user.application;
+package com.example.daedongyeojido_server.domain.user.application.facade;
 
 import com.example.daedongyeojido_server.domain.user.dao.UserRepository;
 import com.example.daedongyeojido_server.domain.user.domain.User;

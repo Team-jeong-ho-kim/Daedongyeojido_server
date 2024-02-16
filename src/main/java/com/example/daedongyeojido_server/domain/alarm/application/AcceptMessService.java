@@ -6,7 +6,7 @@ import com.example.daedongyeojido_server.domain.alarm.exception.NotValidTeacherE
 import com.example.daedongyeojido_server.domain.mess.dao.MessRepository;
 import com.example.daedongyeojido_server.domain.mess.domain.Mess;
 import com.example.daedongyeojido_server.domain.mess.exception.MessNotFoundException;
-import com.example.daedongyeojido_server.domain.user.application.UserFacade;
+import com.example.daedongyeojido_server.domain.user.application.facade.UserFacade;
 import com.example.daedongyeojido_server.domain.user.dao.CustomUserRepository;
 import com.example.daedongyeojido_server.domain.user.domain.User;
 import com.example.daedongyeojido_server.domain.user.domain.enums.Part;

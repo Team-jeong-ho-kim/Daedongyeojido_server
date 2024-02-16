@@ -7,7 +7,7 @@ import com.example.daedongyeojido_server.domain.report.dao.ReportRepository;
 import com.example.daedongyeojido_server.domain.report.domain.Report;
 import com.example.daedongyeojido_server.domain.report.domain.enums.PassingResult;
 import com.example.daedongyeojido_server.domain.report.dto.request.ApplyRequest;
-import com.example.daedongyeojido_server.domain.user.application.UserFacade;
+import com.example.daedongyeojido_server.domain.user.application.facade.UserFacade;
 import com.example.daedongyeojido_server.domain.user.domain.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
