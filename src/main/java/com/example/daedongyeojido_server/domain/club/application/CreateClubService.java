@@ -23,6 +23,7 @@ public class CreateClubService {
         clubRepository.save(
                 Club.builder()
                         .clubName(request.getClubName())
+                        .messCount(0)
                         .build());
     }
 }
