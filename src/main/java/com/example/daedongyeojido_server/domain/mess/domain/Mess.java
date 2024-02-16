@@ -53,6 +53,12 @@ public class Mess {
 
     public void acceptOrCancelMess(int i, String teacherName) {
         this.MessAccept += i;
-        this.acceptTeachers.add(teacherName);
+
+        if(i>0) {
+            this.acceptTeachers.add(teacherName);
+        }
+        else {
+            this.acceptTeachers.remove(teacherName);
+        }
     }
 }
