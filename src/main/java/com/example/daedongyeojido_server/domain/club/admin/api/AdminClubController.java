@@ -36,7 +36,7 @@ public class AdminClubController {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @PostMapping("/all")
+    @PostMapping("/page")
     public List<AdminPageResponse> queryClubList() {
         return queryAdminPageService.queryAdminPage();
     }
