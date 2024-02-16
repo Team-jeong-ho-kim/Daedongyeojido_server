@@ -2,6 +2,7 @@ package com.example.daedongyeojido_server.domain.alarm.application;
 
 import com.example.daedongyeojido_server.domain.alarm.dao.AlarmRepository;
 import com.example.daedongyeojido_server.domain.alarm.domain.Alarm;
+import com.example.daedongyeojido_server.domain.alarm.domain.enums.AlarmType;
 import com.example.daedongyeojido_server.domain.alarm.exception.NotValidTeacherException;
 import com.example.daedongyeojido_server.domain.mess.dao.MessRepository;
 import com.example.daedongyeojido_server.domain.mess.domain.Mess;
@@ -33,19 +34,24 @@ public class AcceptMessService {
         Mess mess = messRepository.findById(messId)
                 .orElseThrow(() -> MessNotFoundException.EXCEPTION);
 
-        if (teacher.getPart() != Part.CLUB_LEADER_TEACHER && teacher != mess.getMyClub().getTeacher()) {
+        if (teacher.getPart() != Part.CLUB_LEADER_TEACHER && !(teacher.getName().equals(mess.getMyClub().getTeacher().getName()))) {
+            System.out.println(mess.getMyClub().getTeacher());
             throw NotValidTeacherException.EXCEPTION;
         }
 
         mess.acceptOrCancelMess(1, teacher.getName());
 
         if (mess.getMessAccept() >= 2) {
+            User leader = customUserRepository.findLeaderByClub(mess.getMyClub());
+
             Alarm alarm = alarmRepository.save(
                     Alarm.builder()
                             .clubName(mess.getMyClub().getClubName())
+                            .userName(leader.getName())
+                            .alarmType(AlarmType.MESS_ACCEPT)
+                            .user(leader)
                             .build());
 
-            User leader = customUserRepository.findLeaderByClub(mess.getMyClub());
             leader.addAlarm(alarm);
 
             messRepository.deleteById(messId);
