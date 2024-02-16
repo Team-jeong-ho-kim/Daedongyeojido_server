@@ -41,7 +41,7 @@ public class Mess {
     @Column(name = "mess_date", nullable = false)
     private LocalDate messDate;
 
-    @Column(name = "math_accept")
+    @Column(name = "math_accept", nullable = false)
     private Integer MessAccept = 0;
 
     @ManyToOne(fetch = FetchType.LAZY)
