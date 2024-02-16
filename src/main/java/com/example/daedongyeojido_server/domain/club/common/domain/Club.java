@@ -1,5 +1,6 @@
 package com.example.daedongyeojido_server.domain.club.common.domain;
 
+import com.example.daedongyeojido_server.domain.club.admin.dto.request.ClubMemberRequest;
 import com.example.daedongyeojido_server.domain.notice.domain.Notice;
 import com.example.daedongyeojido_server.domain.user.domain.User;
 import jakarta.persistence.*;
@@ -72,5 +73,9 @@ public class Club {
         this.weWant = weWant;
         this.qAndA = qAndA;
         this.clubImageUrl = clubImageUrl;
+    }
+
+    public void editClubTeacher(User teacher) {
+        this.teacher = teacher;
     }
 }
