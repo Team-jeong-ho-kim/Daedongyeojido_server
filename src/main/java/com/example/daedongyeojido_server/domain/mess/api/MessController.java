@@ -1,5 +1,6 @@
 package com.example.daedongyeojido_server.domain.mess.api;
 
+import com.example.daedongyeojido_server.domain.mess.application.AcceptMessService;
 import com.example.daedongyeojido_server.domain.mess.application.CreateMessService;
 import com.example.daedongyeojido_server.domain.mess.application.DeleteMessService;
 import com.example.daedongyeojido_server.domain.mess.application.QueryMessService;
@@ -19,6 +20,8 @@ public class MessController {
 
     private final CreateMessService createMessService;
 
+    private final AcceptMessService acceptMessService;
+
     private final QueryMessService queryMessService;
 
     private final DeleteMessService deleteMessService;
@@ -27,6 +30,12 @@ public class MessController {
     @PostMapping("/create")
     public void createMess(@RequestBody @Valid CreateMessRequest request) {
         createMessService.createMess(request);
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping("/accept/{messId}")
+    public void acceptMess(@PathVariable Long messId) {
+        acceptMessService.acceptMess(messId);
     }
 
     @ResponseStatus(HttpStatus.OK)

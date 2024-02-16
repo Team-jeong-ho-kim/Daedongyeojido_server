@@ -1,4 +1,4 @@
-package com.example.daedongyeojido_server.domain.alarm.application;
+package com.example.daedongyeojido_server.domain.mess.application;
 
 import com.example.daedongyeojido_server.domain.alarm.dao.AlarmRepository;
 import com.example.daedongyeojido_server.domain.alarm.domain.Alarm;

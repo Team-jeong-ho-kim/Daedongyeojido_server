@@ -1,6 +1,6 @@
 package com.example.daedongyeojido_server.domain.alarm.api;
 
-import com.example.daedongyeojido_server.domain.alarm.application.AcceptMessService;
+import com.example.daedongyeojido_server.domain.mess.application.AcceptMessService;
 import com.example.daedongyeojido_server.domain.alarm.application.CreateAnnouncementService;
 import com.example.daedongyeojido_server.domain.alarm.application.InterviewResultService;
 import com.example.daedongyeojido_server.domain.alarm.application.MyAlarmService;
@@ -23,8 +23,6 @@ public class AlarmController {
 
     private final InterviewResultService interviewResultService;
 
-    private final AcceptMessService acceptMessService;
-
     private final MyAlarmService myAlarmService;
 
     @ResponseStatus(HttpStatus.CREATED)
@@ -37,12 +35,6 @@ public class AlarmController {
     @PostMapping("/result")
     public void interviewResult(@RequestBody @Valid InterviewResultRequest request) {
         interviewResultService.interviewResult(request);
-    }
-
-    @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping("/accept/{messId}")
-    public void acceptMess(@PathVariable Long messId) {
-        acceptMessService.acceptMess(messId);
     }
 
     @ResponseStatus(HttpStatus.OK)
