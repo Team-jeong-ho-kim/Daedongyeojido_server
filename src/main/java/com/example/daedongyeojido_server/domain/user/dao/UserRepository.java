@@ -12,4 +12,5 @@ public interface UserRepository extends JpaRepository<User, UUID> {
     Optional<User> findByXquareId(String xquareId);
     Optional<User> findByClassNumber(String classNumber);
     List<User> findAllByMyClub(Club myClub);
+    Optional<User> findByName(String name);
 }
