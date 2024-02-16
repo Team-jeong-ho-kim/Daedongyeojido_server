@@ -47,7 +47,7 @@ public class AdminClubController {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @PatchMapping("/edit")
+    @PatchMapping("/edit-member")
     public void editClub(@RequestBody @Valid EditClubMemberRequest request) {
         editClubMemberService.editClubMember(request);
     }
