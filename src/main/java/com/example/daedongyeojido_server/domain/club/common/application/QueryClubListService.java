@@ -1,7 +1,7 @@
-package com.example.daedongyeojido_server.domain.club.application;
+package com.example.daedongyeojido_server.domain.club.common.application;
 
-import com.example.daedongyeojido_server.domain.club.dao.ClubRepository;
-import com.example.daedongyeojido_server.domain.club.dto.response.ClubListResponse;
+import com.example.daedongyeojido_server.domain.club.common.dao.ClubRepository;
+import com.example.daedongyeojido_server.domain.club.common.dto.response.ClubListResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

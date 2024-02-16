@@ -1,6 +1,6 @@
-package com.example.daedongyeojido_server.domain.club.dao;
+package com.example.daedongyeojido_server.domain.club.common.dao;
 
-import com.example.daedongyeojido_server.domain.club.domain.Club;
+import com.example.daedongyeojido_server.domain.club.common.domain.Club;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ClubRepository extends JpaRepository<Club, String> {

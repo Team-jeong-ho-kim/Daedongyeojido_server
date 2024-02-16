@@ -1,4 +1,4 @@
-package com.example.daedongyeojido_server.domain.club.dto.response;
+package com.example.daedongyeojido_server.domain.club.common.dto.response;
 
 import com.example.daedongyeojido_server.domain.user.domain.User;
 import lombok.AllArgsConstructor;

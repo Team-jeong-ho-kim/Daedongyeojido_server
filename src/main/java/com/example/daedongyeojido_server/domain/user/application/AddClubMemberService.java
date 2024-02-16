@@ -1,7 +1,7 @@
 package com.example.daedongyeojido_server.domain.user.application;
 
-import com.example.daedongyeojido_server.domain.club.dao.ClubRepository;
-import com.example.daedongyeojido_server.domain.club.domain.Club;
+import com.example.daedongyeojido_server.domain.club.common.dao.ClubRepository;
+import com.example.daedongyeojido_server.domain.club.common.domain.Club;
 import com.example.daedongyeojido_server.domain.user.dao.UserRepository;
 import com.example.daedongyeojido_server.domain.user.domain.User;
 import com.example.daedongyeojido_server.domain.user.dto.request.AddClubMemberRequest;
