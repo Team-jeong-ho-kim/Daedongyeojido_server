@@ -39,7 +39,12 @@ public class AcceptMessService {
             throw NotValidTeacherException.EXCEPTION;
         }
 
-        mess.acceptOrCancelMess(1, teacher.getName());
+        if(mess.getAcceptTeachers().contains(teacher.getName())) {
+            mess.acceptOrCancelMess(-1, teacher.getName());
+        }
+        else {
+            mess.acceptOrCancelMess(1, teacher.getName());
+        }
 
         if (mess.getMessAccept() >= 2) {
             User leader = customUserRepository.findLeaderByClub(mess.getMyClub());
