@@ -22,6 +22,6 @@ public class AllClubResponse {
         clubName = club.getClubName();
         title = club.getTitle();
         clubImageUrl = club.getClubImageUrl();
-        tags = club.getTags();
+        tags = club.getTags().subList(0, 3);
     }
 }
