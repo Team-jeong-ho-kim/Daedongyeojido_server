@@ -10,13 +10,13 @@ import java.util.Date;
 @Builder
 public class LoginResponse {
 
-    private final String accessToken;
+    private String accessToken;
 
-    private final String refreshToken;
+    private String refreshToken;
 
     private Date accessExpiredAt;
 
     private Date refreshExpiredAt;
 
-    private final Part part;
+    private Part part;
 }
