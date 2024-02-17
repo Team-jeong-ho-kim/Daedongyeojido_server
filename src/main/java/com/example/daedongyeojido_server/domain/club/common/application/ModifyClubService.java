@@ -17,6 +17,7 @@ public class ModifyClubService {
     public void modifyClub(ModifyClubRequest request) {
         Club club = clubRepository.findByClubName(request.getClubName());
 
-        club.modifyClub(request.getTitle(), request.getIntroduction(), request.getProject(), request.getWeWant(), request.getQAndA(), request.getClubImageUrl());
+        club.modifyClub(request.getTitle(), request.getIntroduction(), request.getProject(),
+                request.getWeWant(), request.getQAndA(), request.getClubImageUrl(), request.getTags());
     }
 }

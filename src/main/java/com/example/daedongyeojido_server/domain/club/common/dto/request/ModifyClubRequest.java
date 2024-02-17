@@ -6,6 +6,8 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class ModifyClubRequest {
@@ -30,4 +32,7 @@ public class ModifyClubRequest {
     private String qAndA;
 
     private String clubImageUrl;
+
+    @Size(max = 6)
+    private List<String> tags;
 }
