@@ -72,10 +72,6 @@ public class Club {
         this.notices.add(notice);
     }
 
-    public void addTag(String tag) {
-        this.tags.add(tag);
-    }
-
     public void modifyClub(String title, String introduction, String project, String weWant, String qAndA, String clubImageUrl) {
         this.title = title;
         this.introduction = introduction;
