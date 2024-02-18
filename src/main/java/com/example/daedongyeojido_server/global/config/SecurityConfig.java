@@ -52,6 +52,9 @@ public class SecurityConfig {
                         .requestMatchers("/auth/**", "/main", "/club/info/**")
                         .permitAll()
 
+                        .requestMatchers("/report/apply", "/report/cancel/**")
+                        .hasRole("INDEPENDENT")
+
                         .requestMatchers("/club/modify", "/notice/create", "/notice/delete/**", "/mess/create", "/mess/delete/**", "/alarm/result")
                         .hasRole("CLUB_LEADER")
 
