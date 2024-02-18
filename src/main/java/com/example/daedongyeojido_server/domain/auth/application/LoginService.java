@@ -2,7 +2,6 @@ package com.example.daedongyeojido_server.domain.auth.application;
 
 import com.example.daedongyeojido_server.domain.auth.dto.request.LoginRequest;
 import com.example.daedongyeojido_server.domain.auth.dto.response.LoginResponse;
-import com.example.daedongyeojido_server.domain.user.dao.CustomUserRepository;
 import com.example.daedongyeojido_server.domain.user.dao.UserRepository;
 import com.example.daedongyeojido_server.domain.user.domain.User;
 import com.example.daedongyeojido_server.domain.user.domain.enums.Part;
@@ -16,8 +15,6 @@ import org.springframework.transaction.annotation.Transactional;
 public class LoginService {
 
     private final UserRepository userRepository;
-
-    private final CustomUserRepository customUserRepository;
 
     private final JwtTokenProvider jwtTokenProvider;
 
