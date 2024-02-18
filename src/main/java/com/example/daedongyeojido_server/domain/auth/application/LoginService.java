@@ -37,7 +37,7 @@ public class LoginService {
 
     private String getClassNumber(XquareUserResponse xquareUser) {
         String num = xquareUser.getNum() < 10 ? "0" + xquareUser.getNum() : String.valueOf(xquareUser.getNum());
-        return xquareUser.getGrade() + xquareUser.getClass_num() + num;
+        return String.valueOf(xquareUser.getGrade()) + String.valueOf(xquareUser.getClass_num()) + num;
     }
 
     private Part getPart(XquareUserResponse xquareUser) {
