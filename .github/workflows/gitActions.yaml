@@ -41,4 +41,4 @@ jobs:
             REDIS_HOST=${{ secrets.REDIS_HOST }}
             AWS_ACCESS_KEY=${{ secrets.AWS_ACCESS_KEY }}
             SECRET_KEY=${{ secrets.SECRET_KEY }}
-            
+            XQUARE_URL=${{ secrets.XQUARE_URL }}
