@@ -16,7 +16,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/jung-ho/alarm")
+@RequestMapping("/alarm")
 public class AlarmController {
 
     private final CreateAnnouncementService createAnnouncementService;

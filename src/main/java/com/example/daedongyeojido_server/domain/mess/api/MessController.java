@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/jung-ho/mess")
+@RequestMapping("/mess")
 public class MessController {
 
     private final CreateMessService createMessService;

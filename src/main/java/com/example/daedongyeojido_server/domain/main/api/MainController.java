@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/jung-ho/main")
+@RequestMapping("/main")
 public class MainController {
 
     private final AddBannerService addBannerService;

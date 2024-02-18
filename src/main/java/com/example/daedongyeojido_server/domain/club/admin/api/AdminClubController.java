@@ -23,7 +23,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/jung-ho/admin-club")
+@RequestMapping("/admin-club")
 public class AdminClubController {
 
     private final CreateClubService createClubService;

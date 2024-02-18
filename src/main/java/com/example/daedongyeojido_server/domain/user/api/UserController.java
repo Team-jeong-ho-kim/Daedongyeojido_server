@@ -16,7 +16,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/jung-ho/user")
+@RequestMapping("/user")
 public class UserController {
 
     private final MyInfoService myInfoService;

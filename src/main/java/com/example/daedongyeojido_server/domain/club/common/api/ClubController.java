@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/jung-ho/club")
+@RequestMapping("/club")
 public class ClubController {
 
     private final ModifyClubService modifyClubService;

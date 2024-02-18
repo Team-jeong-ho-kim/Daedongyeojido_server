@@ -23,7 +23,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/jung-ho/report")
+@RequestMapping("/report")
 public class ReportController {
 
     private final ApplyService applyService;
