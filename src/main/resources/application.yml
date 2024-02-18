@@ -39,5 +39,7 @@ cloud:
 
 
 server:
+  servlet:
+    context-path: /jung-ho
   port: 8080
 
