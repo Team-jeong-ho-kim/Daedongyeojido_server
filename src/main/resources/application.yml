@@ -37,6 +37,8 @@ cloud:
   stack:
     auto: false
 
+key:
+  xquare-api-url: ${XQUARE_URL}
 
 server:
   servlet:

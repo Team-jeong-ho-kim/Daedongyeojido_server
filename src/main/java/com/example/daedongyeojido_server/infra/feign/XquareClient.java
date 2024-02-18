@@ -5,7 +5,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-@FeignClient(name = "xquare-client", url = "https://prod-server.xquare.app/users/account-id")
+@FeignClient(name = "xquare-client", url = "${key.xquare-api-url}")
 public interface XquareClient {
 
     @GetMapping("/{accountId}")
