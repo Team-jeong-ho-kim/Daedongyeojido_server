@@ -17,48 +17,46 @@ import org.springframework.transaction.annotation.Transactional;
 public class LoginService {
 
     private final UserRepository userRepository;
-
     private final JwtTokenProvider jwtTokenProvider;
-
     private final XquareClient xquareClient;
 
     @Transactional
     public LoginResponse login(LoginRequest request) {
-
         XquareUserResponse xquareUser = xquareClient.xquareUser(request.getXquareId());
+        String classNumber = getClassNumber(xquareUser);
+        Part part = getPart(xquareUser);
 
-        String num = "null";
-        if(xquareUser.getNum()<10) num = "0" + String.valueOf(xquareUser.getNum());
+        return userRepository.findByXquareId(request.getXquareId())
+                .map(user -> jwtTokenProvider.receiveToken(request.getXquareId()))
+                .orElseGet(() -> {
+                    User user = createUser(request, xquareUser, classNumber, part);
+                    userRepository.save(user);
+                    return jwtTokenProvider.receiveToken(request.getXquareId());
+                });
+    }
 
-        String classNumber = String.valueOf(xquareUser.getGrade()) + String.valueOf(xquareUser.getClass_num()) + num;
+    private String getClassNumber(XquareUserResponse xquareUser) {
+        String num = xquareUser.getNum() < 10 ? "0" + xquareUser.getNum() : String.valueOf(xquareUser.getNum());
+        return xquareUser.getGrade() + xquareUser.getClass_num() + num;
+    }
 
-        Part part = Part.ERROR;
-        if(xquareUser.getUser_role().equals("STU")) part = Part.INDEPENDENT;
-        else if (xquareUser.getUser_role().equals("SCH")) part = Part.TEACHER;
+    private Part getPart(XquareUserResponse xquareUser) {
+        return "STU".equals(xquareUser.getUser_role()) ? Part.INDEPENDENT
+                : "SCH".equals(xquareUser.getUser_role()) ? Part.TEACHER
+                : Part.ERROR;
+    }
 
-        if(userRepository.findByXquareId(request.getXquareId()).isPresent()) {
-            return jwtTokenProvider.receiveToken(request.getXquareId());
+    private User createUser(LoginRequest request, XquareUserResponse xquareUser, String classNumber, Part part) {
+        User.UserBuilder userBuilder = User.builder()
+                .xquareId(request.getXquareId())
+                .name(xquareUser.getName());
+
+        if ("신요셉".equals(xquareUser.getName())) {
+            userBuilder.part(Part.CLUB_LEADER_TEACHER);
+        } else {
+            userBuilder.classNumber(classNumber).part(part);
         }
-        else if (xquareUser.getName().equals("신요셉")) {
-            User user = User.builder()
-                    .xquareId(request.getXquareId())
-                    .name(xquareUser.getName())
-                    .part(Part.CLUB_LEADER_TEACHER)
-                    .build();
 
-            userRepository.save(user);
-        }
-        else {
-            User user = User.builder()
-                    .xquareId(request.getXquareId())
-                    .classNumber(classNumber)
-                    .name(xquareUser.getName())
-                    .part(part)
-                    .build();
-
-            userRepository.save(user);
-        }
-
-        return jwtTokenProvider.receiveToken(request.getXquareId());
+        return userBuilder.build();
     }
 }
