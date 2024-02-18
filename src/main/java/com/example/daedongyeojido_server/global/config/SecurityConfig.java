@@ -12,6 +12,7 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -48,7 +49,20 @@ public class SecurityConfig {
                 )
 
                 .authorizeHttpRequests(authorize -> authorize
-                        .anyRequest().permitAll()
+
+                        .requestMatchers("/auth/login", "/main", "/club/info/**")
+                        .permitAll()
+
+                        .requestMatchers("/club/modify", "/notice/create", "/notice/delete/**", "/mess/create", "/mess/delete/**", "/alarm/result")
+                        .hasRole("CLUB_LEADER")
+
+                        .requestMatchers("/admin-club/page", "/admin-club/edit-member", "/mess/accept/**", "/mess/all")
+                        .hasAnyRole("TEACHER", "CLUB_LEADER_TEACHER")
+
+                        .requestMatchers("/admin-club/create", "/admin-club/delete/**", "/alarm/announcement"
+                        ).hasRole("CLUB_LEADER_TEACHER")
+
+                        .anyRequest().authenticated()
                 )
 
                 .with(new FilterConfig(jwtTokenProvider, objectMapper), Customizer.withDefaults());
