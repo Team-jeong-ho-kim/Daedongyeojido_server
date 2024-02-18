@@ -5,8 +5,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.cors.CorsConfiguration;
@@ -28,28 +31,29 @@ public class SecurityConfig {
     @Bean
     protected SecurityFilterChain configure(HttpSecurity httpSecurity) throws Exception {
 
-        return httpSecurity
-                .csrf().disable()
-                .cors().and()
-                .exceptionHandling()
+        httpSecurity
+                .csrf(AbstractHttpConfigurer::disable)
 
-                .and()
-                .headers()
-                .frameOptions()
-                .sameOrigin()
+                .cors(cors -> cors
+                        .configurationSource(corsConfigurationSource())
+                )
 
-                .and()
-                .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .headers(headers -> headers
+                        .frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin
+                        )
+                )
 
-                .and()
-                .authorizeRequests()
-                .anyRequest().permitAll()
+                .sessionManagement(sessionManagement -> sessionManagement
+                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                )
 
-                .and()
-                .apply(new FilterConfig(jwtTokenProvider, objectMapper))
-                .and()
-                .build();
+                .authorizeHttpRequests(authorize -> authorize
+                        .anyRequest().permitAll()
+                )
+
+                .with(new FilterConfig(jwtTokenProvider, objectMapper), Customizer.withDefaults());
+
+        return httpSecurity.build();
 
     }
 
