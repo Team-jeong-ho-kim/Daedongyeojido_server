@@ -4,6 +4,8 @@ import com.example.daedongyeojido_server.domain.club.common.domain.Club;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Getter
@@ -22,6 +24,6 @@ public class AllClubResponse {
         clubName = club.getClubName();
         title = club.getTitle();
         clubImageUrl = club.getClubImageUrl();
-        tags = club.getTags().subList(0, 3);
+        tags = club.getTags().subList(0, Math.min(3, club.getTags().size()));
     }
 }
