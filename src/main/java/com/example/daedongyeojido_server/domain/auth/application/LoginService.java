@@ -9,6 +9,7 @@ import com.example.daedongyeojido_server.global.security.jwt.JwtTokenProvider;
 import com.example.daedongyeojido_server.infra.feign.XquareClient;
 import com.example.daedongyeojido_server.infra.feign.dto.response.XquareUserResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,8 +23,21 @@ public class LoginService {
 
     private final XquareClient xquareClient;
 
+    @Value("${key.admin-id}")
+    private String adminId;
+
     @Transactional
     public LoginResponse login(LoginRequest request) {
+        if(request.getXquareId().equals(adminId)) {
+            return userRepository.findByXquareId(request.getXquareId())
+                    .map(user -> jwtTokenProvider.receiveToken(request.getXquareId()))
+                    .orElseGet(() -> {
+                        User user = createAdmin(request);
+                        userRepository.save(user);
+                        return jwtTokenProvider.receiveToken(request.getXquareId());
+                    });
+        };
+
         XquareUserResponse xquareUser = xquareClient.xquareUser(request.getXquareId());
         String classNumber = getClassNumber(xquareUser);
         Part part = getPart(xquareUser);
@@ -60,5 +74,13 @@ public class LoginService {
         }
 
         return userBuilder.build();
+    }
+
+    private User createAdmin(LoginRequest request) {
+        return User.builder()
+                .xquareId(request.getXquareId())
+                .name("관리자")
+                .part(Part.ADMIN)
+                .build();
     }
 }
