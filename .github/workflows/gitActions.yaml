@@ -44,3 +44,4 @@ jobs:
             XQUARE_URL=${{ secrets.XQUARE_URL }}
             DAEDONG_SECRET_KEY=${{ secrets.DAEDONG_SECRET_KEY }}
             PICK_SECRET_KEY=${{ secrets.PICK_SECRET_KEY }}
+            ADMIN_ID=${{ secrets.ADMIN_ID }}

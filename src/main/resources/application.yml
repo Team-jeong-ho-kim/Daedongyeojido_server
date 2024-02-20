@@ -41,6 +41,7 @@ key:
   xquare-api-url: ${XQUARE_URL}
   daedong-secret-key: ${DAEDONG_SECRET_KEY}
   pick-secret-key: ${PICK_SECRET_KEY}
+  admin-id: ${ADMIN_ID}
 
 server:
   servlet:
