@@ -4,12 +4,12 @@ import com.example.daedongyeojido_server.domain.main.application.AddBannerServic
 import com.example.daedongyeojido_server.domain.main.application.DeleteBannerService;
 import com.example.daedongyeojido_server.domain.main.application.QueryMainService;
 import com.example.daedongyeojido_server.domain.main.dto.request.BannerRequest;
+import com.example.daedongyeojido_server.domain.main.dto.request.DeleteBannerRequest;
 import com.example.daedongyeojido_server.domain.main.dto.response.MainResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,9 +34,9 @@ public class MainController {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @DeleteMapping("/banner/{bannerId}")
-    public void deleteBanner(@PathVariable Long bannerId) {
-        deleteBannerService.deleteBanner(bannerId);
+    @DeleteMapping("/banner")
+    public void deleteBanner(@RequestBody @Valid DeleteBannerRequest request) {
+        deleteBannerService.deleteBanner(request);
     }
 
     @ResponseStatus(HttpStatus.OK)
