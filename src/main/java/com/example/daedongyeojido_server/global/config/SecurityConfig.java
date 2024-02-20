@@ -53,16 +53,16 @@ public class SecurityConfig {
                         .permitAll()
 
                         .requestMatchers("/report/apply", "/report/cancel/**")
-                        .hasRole("INDEPENDENT")
+                        .hasAnyRole("INDEPENDENT", "ADMIN")
 
                         .requestMatchers("/club/modify", "/notice/create", "/notice/delete/**", "/mess/create", "/mess/delete/**", "/alarm/result")
-                        .hasRole("CLUB_LEADER")
+                        .hasAnyRole("CLUB_LEADER", "ADMIN")
 
                         .requestMatchers("/admin-club/page", "/admin-club/edit-member", "/mess/accept/**", "/mess/all")
-                        .hasAnyRole("TEACHER", "CLUB_LEADER_TEACHER")
+                        .hasAnyRole("TEACHER", "CLUB_LEADER_TEACHER", "ADMIN")
 
-//                        .requestMatchers("/admin-club/create", "/admin-club/delete/**", "/alarm/announcement"
-//                        ).hasRole("CLUB_LEADER_TEACHER")
+                        .requestMatchers("/admin-club/create", "/admin-club/delete/**", "/alarm/announcement"
+                        ).hasAnyRole("CLUB_LEADER_TEACHER", "ADMIN")
 
                         .anyRequest().authenticated()
                 )
