@@ -45,3 +45,4 @@ jobs:
             DAEDONG_SECRET_KEY=${{ secrets.DAEDONG_SECRET_KEY }}
             PICK_SECRET_KEY=${{ secrets.PICK_SECRET_KEY }}
             ADMIN_ID=${{ secrets.ADMIN_ID }}
+
