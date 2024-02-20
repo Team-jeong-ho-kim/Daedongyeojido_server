@@ -17,6 +17,8 @@ public enum Part {
 
     CLUB_LEADER_TEACHER("전공동아리 담당 선생님"),
 
+    ADMIN("관리자"),
+
     ERROR("에러");
 
     private final String name;
