@@ -10,5 +10,8 @@ import lombok.NoArgsConstructor;
 public class BannerRequest {
 
     @NotBlank
+    private String secretKey;
+
+    @NotBlank
     private String bannerImgUrl;
 }
