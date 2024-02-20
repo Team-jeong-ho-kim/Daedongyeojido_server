@@ -17,7 +17,9 @@ import org.springframework.transaction.annotation.Transactional;
 public class LoginService {
 
     private final UserRepository userRepository;
+
     private final JwtTokenProvider jwtTokenProvider;
+
     private final XquareClient xquareClient;
 
     @Transactional
