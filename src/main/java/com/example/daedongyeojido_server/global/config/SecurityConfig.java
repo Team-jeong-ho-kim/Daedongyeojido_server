@@ -49,7 +49,7 @@ public class SecurityConfig {
 
                 .authorizeHttpRequests(authorize -> authorize
 
-                        .requestMatchers("/auth/**", "/main", "/club/info/**", "/user/all", "/main/banner/**")
+                        .requestMatchers("/auth/**", "/main", "/club/info/**", "/user/all", "/main/banner")
                         .permitAll()
 
                         .requestMatchers("/report/apply", "/report/cancel/**")
