@@ -42,3 +42,5 @@ jobs:
             AWS_ACCESS_KEY=${{ secrets.AWS_ACCESS_KEY }}
             SECRET_KEY=${{ secrets.SECRET_KEY }}
             XQUARE_URL=${{ secrets.XQUARE_URL }}
+            DAEDONG_SECRET_KEY=${{ secrets.DAEDONG_SECRET_KEY }}
+            PICK_SECRET_KEY=${{ secrets.PICK_SECRET_KEY }}
