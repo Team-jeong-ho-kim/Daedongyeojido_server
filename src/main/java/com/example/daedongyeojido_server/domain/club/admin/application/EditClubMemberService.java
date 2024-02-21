@@ -23,8 +23,13 @@ public class EditClubMemberService {
     public void editClubMember(EditClubMemberRequest request) {
         Club club = clubRepository.findByClubName(request.getClubName());
 
-        User teacher = userRepository.findByName(request.getTeacherName())
-                        .orElseThrow(()-> UserNotFoundException.EXCEPTION);
+        if(userRepository.findByName(request.getTeacherName()).isPresent()) {
+            User teacher = userRepository.findByName(request.getTeacherName())
+                    .orElseThrow(()-> UserNotFoundException.EXCEPTION);
+
+            teacher.addClubMember(teacher.getPart(), club);
+            club.editClubTeacher(teacher);
+        }
 
         for(int i=0; i<request.getClubMembers().size(); i++) {
             ClubMemberRequest clubMemberRequest = request.getClubMembers().get(i);
@@ -33,10 +38,7 @@ public class EditClubMemberService {
                             .orElseThrow(()->UserNotFoundException.EXCEPTION);
 
             club.addMember(student);
-            student.addClubMember(clubMemberRequest.getName(), clubMemberRequest.getPart(), club);
+            student.addClubMember(clubMemberRequest.getPart(), club);
         }
-
-        club.editClubTeacher(teacher);
-        teacher.addClubMember(teacher.getName(), teacher.getPart(), club);
     }
 }
