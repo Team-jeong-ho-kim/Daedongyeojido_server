@@ -64,8 +64,8 @@ public class Club {
     @Column(name = "mess_count")
     private Integer messCount = 0;
 
-    public void addMember(User user) {
-        this.clubMembers.add(user);
+    public void modifyMember(List<User> clubMembers) {
+        this.clubMembers = clubMembers;
     }
 
     public void addNotice(Notice notice) {
