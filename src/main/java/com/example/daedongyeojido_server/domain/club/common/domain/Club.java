@@ -65,7 +65,8 @@ public class Club {
     private Integer messCount = 0;
 
     public void modifyMember(List<User> clubMembers) {
-        this.clubMembers = clubMembers;
+        this.clubMembers.clear();
+        this.clubMembers.addAll(clubMembers);
     }
 
     public void addNotice(Notice notice) {
