@@ -11,6 +11,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class EditClubMemberService {
@@ -31,14 +34,18 @@ public class EditClubMemberService {
             club.editClubTeacher(teacher);
         }
 
+        List<User> clubMembers = new ArrayList<>();
+
         for(int i=0; i<request.getClubMembers().size(); i++) {
             ClubMemberRequest clubMemberRequest = request.getClubMembers().get(i);
 
             User student = userRepository.findByClassNumber(clubMemberRequest.getClassNumber())
                             .orElseThrow(()->UserNotFoundException.EXCEPTION);
 
-            club.addMember(student);
+            clubMembers.add(student);
             student.addClubMember(clubMemberRequest.getPart(), club);
         }
+
+        club.modifyMember(clubMembers);
     }
 }
