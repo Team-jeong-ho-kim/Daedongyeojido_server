@@ -22,6 +22,9 @@ public class Banner {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "banner_title", nullable = false)
+    private String bannerTitle;
+
     @Column(name = "banner_img_url", nullable = false)
     private String bannerImgUrl;
 }
