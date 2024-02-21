@@ -5,7 +5,7 @@ import com.example.daedongyeojido_server.domain.notice.domain.enums.Major;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Getter
 @AllArgsConstructor
@@ -17,7 +17,7 @@ public class NoticeResponse {
 
     private String clubName;
 
-    private LocalDateTime deadline;
+    private LocalDate deadline;
 
     private Boolean applyOrNot;
 

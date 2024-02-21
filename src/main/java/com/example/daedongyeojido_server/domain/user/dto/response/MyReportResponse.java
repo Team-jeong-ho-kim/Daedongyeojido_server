@@ -6,7 +6,7 @@ import com.example.daedongyeojido_server.domain.report.domain.enums.PassingResul
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Getter
 @AllArgsConstructor
@@ -18,7 +18,7 @@ public class MyReportResponse {
 
     private Major hopeMajor;
 
-    private LocalDateTime deadline;
+    private LocalDate deadline;
 
     private PassingResult passingResult;
 
