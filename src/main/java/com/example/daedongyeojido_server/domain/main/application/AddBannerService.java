@@ -25,6 +25,7 @@ public class AddBannerService {
 
         bannerRepository.save(
                 Banner.builder()
+                        .bannerTitle(request.getBannerTitle())
                         .bannerImgUrl(request.getBannerImgUrl())
                         .build());
     }

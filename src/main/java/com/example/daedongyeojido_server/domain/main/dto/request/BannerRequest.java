@@ -13,5 +13,8 @@ public class BannerRequest {
     private String secretKey;
 
     @NotBlank
+    private String bannerTitle;
+
+    @NotBlank
     private String bannerImgUrl;
 }
