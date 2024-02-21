@@ -37,5 +37,6 @@ public class EditClubMemberService {
         }
 
         club.editClubTeacher(teacher);
+        teacher.addClubMember(teacher.getName(), teacher.getPart(), club);
     }
 }
