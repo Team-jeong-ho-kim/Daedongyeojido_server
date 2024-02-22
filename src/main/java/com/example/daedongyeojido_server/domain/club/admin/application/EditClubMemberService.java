@@ -26,9 +26,9 @@ public class EditClubMemberService {
     public void editClubMember(EditClubMemberRequest request) {
         Club club = clubRepository.findByClubName(request.getClubName());
 
-        if(userRepository.findByName(request.getTeacherName()).isPresent()) {
+        if (userRepository.findByName(request.getTeacherName()).isPresent()) {
             User teacher = userRepository.findByName(request.getTeacherName())
-                    .orElseThrow(()-> UserNotFoundException.EXCEPTION);
+                    .orElseThrow(() -> UserNotFoundException.EXCEPTION);
 
             teacher.addClubMember(teacher.getPart(), club);
             club.editClubTeacher(teacher);
@@ -36,11 +36,11 @@ public class EditClubMemberService {
 
         List<User> clubMembers = new ArrayList<>();
 
-        for(int i=0; i<request.getClubMembers().size(); i++) {
+        for (int i = 0; i < request.getClubMembers().size(); i++) {
             ClubMemberRequest clubMemberRequest = request.getClubMembers().get(i);
 
             User student = userRepository.findByClassNumber(clubMemberRequest.getClassNumber())
-                            .orElseThrow(()->UserNotFoundException.EXCEPTION);
+                    .orElseThrow(() -> UserNotFoundException.EXCEPTION);
 
             clubMembers.add(student);
             student.addClubMember(clubMemberRequest.getPart(), club);

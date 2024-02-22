@@ -1,8 +1,8 @@
 package com.example.daedongyeojido_server.domain.club.admin.application;
 
+import com.example.daedongyeojido_server.domain.club.admin.dto.request.CreateClubRequest;
 import com.example.daedongyeojido_server.domain.club.common.dao.ClubRepository;
 import com.example.daedongyeojido_server.domain.club.common.domain.Club;
-import com.example.daedongyeojido_server.domain.club.admin.dto.request.CreateClubRequest;
 import com.example.daedongyeojido_server.domain.club.common.exception.ExistClubException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

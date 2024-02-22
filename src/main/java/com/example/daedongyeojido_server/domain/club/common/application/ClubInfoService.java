@@ -25,7 +25,6 @@ public class ClubInfoService {
 
         Club club = clubRepository.findByClubName(clubName);
 
-
         List<ClubMemberResponse> clubMemberResponses = userRepository.findAllByMyClub(club)
                 .stream()
                 .map(ClubMemberResponse::new)

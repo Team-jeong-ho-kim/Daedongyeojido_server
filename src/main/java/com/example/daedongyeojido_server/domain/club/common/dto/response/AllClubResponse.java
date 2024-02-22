@@ -4,8 +4,6 @@ import com.example.daedongyeojido_server.domain.club.common.domain.Club;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Getter
