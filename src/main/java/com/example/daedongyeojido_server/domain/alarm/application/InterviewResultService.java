@@ -27,10 +27,10 @@ public class InterviewResultService {
     @Transactional
     public void interviewResult(InterviewResultRequest request) {
         Report report = reportRepository.findById(request.getReportId())
-                .orElseThrow(()-> ReportNotFoundException.EXCEPTION);
+                .orElseThrow(() -> ReportNotFoundException.EXCEPTION);
 
         User user = userRepository.findByClassNumber(report.getClassNumber())
-                .orElseThrow(()-> UserNotFoundException.EXCEPTION);
+                .orElseThrow(() -> UserNotFoundException.EXCEPTION);
 
         Alarm alarm = alarmRepository.save(
                 Alarm.builder()
