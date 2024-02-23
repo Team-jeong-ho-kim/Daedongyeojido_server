@@ -1,6 +1,5 @@
 package com.example.daedongyeojido_server.domain.alarm.api;
 
-import com.example.daedongyeojido_server.domain.mess.application.AcceptMessService;
 import com.example.daedongyeojido_server.domain.alarm.application.CreateAnnouncementService;
 import com.example.daedongyeojido_server.domain.alarm.application.InterviewResultService;
 import com.example.daedongyeojido_server.domain.alarm.application.MyAlarmService;
@@ -27,7 +26,7 @@ public class AlarmController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/announcement")
-    public void createAnnouncement(@RequestBody @Valid CreateAnnouncementRequest request){
+    public void createAnnouncement(@RequestBody @Valid CreateAnnouncementRequest request) {
         createAnnouncementService.createAnnouncement(request);
     }
 
