@@ -15,6 +15,4 @@ public class MainResponse {
     private List<Banner> banners;
 
     private List<AllClubResponse> allClubResponses;
-
-    private List<AnnouncementResponse> announcement;
 }
