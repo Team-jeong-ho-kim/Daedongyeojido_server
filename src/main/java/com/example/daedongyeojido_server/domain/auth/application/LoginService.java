@@ -28,7 +28,7 @@ public class LoginService {
 
     @Transactional
     public LoginResponse login(LoginRequest request) {
-        if(request.getXquareId().equals(adminId)) {
+        if (request.getXquareId().equals(adminId)) {
             return userRepository.findByXquareId(request.getXquareId())
                     .map(user -> jwtTokenProvider.receiveToken(request.getXquareId()))
                     .orElseGet(() -> {
