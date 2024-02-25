@@ -55,6 +55,9 @@ public class SecurityConfig {
                         .requestMatchers("/report/apply", "/report/cancel/**")
                         .hasAnyRole("INDEPENDENT", "ADMIN")
 
+                        .requestMatchers("/report/applicant/**", "/report/report-info/**")
+                        .hasAnyRole("CLUB_MEMBER", "CLUB_LEADER", "ADMIN")
+
                         .requestMatchers("/club/modify", "/notice/create", "/notice/delete/**", "/mess/create", "/mess/delete/**", "/alarm/result")
                         .hasAnyRole("CLUB_LEADER", "ADMIN")
 
