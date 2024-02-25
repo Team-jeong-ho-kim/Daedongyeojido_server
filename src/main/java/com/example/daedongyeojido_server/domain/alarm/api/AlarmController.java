@@ -3,9 +3,11 @@ package com.example.daedongyeojido_server.domain.alarm.api;
 import com.example.daedongyeojido_server.domain.alarm.application.CreateAnnouncementService;
 import com.example.daedongyeojido_server.domain.alarm.application.InterviewResultService;
 import com.example.daedongyeojido_server.domain.alarm.application.MyAlarmService;
+import com.example.daedongyeojido_server.domain.alarm.application.QueryAnnouncementService;
 import com.example.daedongyeojido_server.domain.alarm.dto.request.CreateAnnouncementRequest;
 import com.example.daedongyeojido_server.domain.alarm.dto.request.InterviewResultRequest;
 import com.example.daedongyeojido_server.domain.alarm.dto.response.AlarmResponse;
+import com.example.daedongyeojido_server.domain.alarm.dto.response.AnnouncementResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -24,6 +26,8 @@ public class AlarmController {
 
     private final MyAlarmService myAlarmService;
 
+    private final QueryAnnouncementService queryAnnouncementService;
+
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/announcement")
     public void createAnnouncement(@RequestBody @Valid CreateAnnouncementRequest request) {
@@ -40,5 +44,11 @@ public class AlarmController {
     @GetMapping("/my-alarm")
     public List<AlarmResponse> myAlarm() {
         return myAlarmService.myAlarm();
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/announcement")
+    public List<AnnouncementResponse> queryAnnouncement() {
+        return queryAnnouncementService.queryAnnouncement();
     }
 }
