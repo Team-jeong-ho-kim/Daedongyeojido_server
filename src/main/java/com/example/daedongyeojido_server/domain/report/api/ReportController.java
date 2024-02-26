@@ -2,10 +2,12 @@ package com.example.daedongyeojido_server.domain.report.api;
 
 import com.example.daedongyeojido_server.domain.report.application.ApplyService;
 import com.example.daedongyeojido_server.domain.report.application.CancelApplyService;
+import com.example.daedongyeojido_server.domain.report.application.ModifyMemoService;
 import com.example.daedongyeojido_server.domain.report.application.QueryApplicantService;
 import com.example.daedongyeojido_server.domain.report.application.QueryMemoService;
 import com.example.daedongyeojido_server.domain.report.application.ReportInfoService;
 import com.example.daedongyeojido_server.domain.report.dto.request.ApplyRequest;
+import com.example.daedongyeojido_server.domain.report.dto.request.MemoRequest;
 import com.example.daedongyeojido_server.domain.report.dto.response.MemoResponse;
 import com.example.daedongyeojido_server.domain.report.dto.response.ReportInfoResponse;
 import com.example.daedongyeojido_server.domain.report.dto.response.ReportResponse;
@@ -14,6 +16,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -35,6 +38,8 @@ public class ReportController {
     private final ReportInfoService reportInfoService;
 
     private final QueryMemoService queryMemoService;
+
+    private final ModifyMemoService modifyMemoService;
 
     private final CancelApplyService cancelApplyService;
 
@@ -60,6 +65,12 @@ public class ReportController {
     @GetMapping("/memo/{reportId}")
     public MemoResponse queryMemo(@PathVariable Long reportId) {
         return queryMemoService.queryMemo(reportId);
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @PatchMapping("/memo/modify")
+    public void modifyMemo(@RequestBody @Valid MemoRequest request) {
+        modifyMemoService.modifyMemo(request);
     }
 
     @ResponseStatus(HttpStatus.OK)
