@@ -33,7 +33,6 @@ public enum ErrorCode {
     EXIST_MESS(409, "동일한 회식 신청이 존재합니다."),
 
     //alarm
-    ALARM_NOT_FOUND(404, "일치하는 알림이 존재하지 않습니다"),
     EXIST_ALARM(409, "동일한 알림이 존재합니다."),
     NOT_VALID_TEACHER(401, "적절하지 않은 선생님입니다."),
 
