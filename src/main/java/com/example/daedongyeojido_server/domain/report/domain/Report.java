@@ -50,6 +50,9 @@ public class Report {
     @Column(name = "learn", length = 100, nullable = false)
     private String learn;
 
+    @Column(name = "memo")
+    private String memo;
+
     @Column(name = "interview_start_time")
     private LocalDateTime interviewStartTime;
 
