@@ -7,7 +7,9 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum AlarmType {
 
-    PASS_RESULT("합격여부"),
+    REPORT_PASS_RESULT("서류합격여부"),
+
+    INTERVIEW_PASS_RESULT("면접합격여부"),
 
     MESS_ACCEPT("회식수락");
 
