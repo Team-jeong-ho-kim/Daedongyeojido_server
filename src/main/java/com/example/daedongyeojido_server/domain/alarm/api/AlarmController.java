@@ -1,8 +1,8 @@
 package com.example.daedongyeojido_server.domain.alarm.api;
 
-import com.example.daedongyeojido_server.domain.alarm.application.InterviewResultService;
 import com.example.daedongyeojido_server.domain.alarm.application.MyAlarmService;
-import com.example.daedongyeojido_server.domain.alarm.dto.request.InterviewResultRequest;
+import com.example.daedongyeojido_server.domain.alarm.application.ReportResultService;
+import com.example.daedongyeojido_server.domain.alarm.dto.request.ReportResultRequest;
 import com.example.daedongyeojido_server.domain.alarm.dto.response.AlarmResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -21,14 +21,14 @@ import java.util.List;
 @RequestMapping("/alarm")
 public class AlarmController {
 
-    private final InterviewResultService interviewResultService;
+    private final ReportResultService reportResultService;
 
     private final MyAlarmService myAlarmService;
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/result")
-    public void interviewResult(@RequestBody @Valid InterviewResultRequest request) {
-        interviewResultService.interviewResult(request);
+    public void interviewResult(@RequestBody @Valid ReportResultRequest request) {
+        reportResultService.reportResult(request);
     }
 
     @ResponseStatus(HttpStatus.OK)

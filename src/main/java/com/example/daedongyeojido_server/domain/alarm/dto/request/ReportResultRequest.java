@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class InterviewResultRequest {
+public class ReportResultRequest {
 
     @NotNull
     private Long reportId;

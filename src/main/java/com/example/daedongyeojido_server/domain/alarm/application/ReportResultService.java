@@ -3,7 +3,7 @@ package com.example.daedongyeojido_server.domain.alarm.application;
 import com.example.daedongyeojido_server.domain.alarm.dao.AlarmRepository;
 import com.example.daedongyeojido_server.domain.alarm.domain.Alarm;
 import com.example.daedongyeojido_server.domain.alarm.domain.enums.AlarmType;
-import com.example.daedongyeojido_server.domain.alarm.dto.request.InterviewResultRequest;
+import com.example.daedongyeojido_server.domain.alarm.dto.request.ReportResultRequest;
 import com.example.daedongyeojido_server.domain.report.dao.ReportRepository;
 import com.example.daedongyeojido_server.domain.report.domain.Report;
 import com.example.daedongyeojido_server.domain.report.exception.ReportNotFoundException;
@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
 
 @Service
 @RequiredArgsConstructor
-public class InterviewResultService {
+public class ReportResultService {
 
     private final AlarmRepository alarmRepository;
 
@@ -27,7 +27,7 @@ public class InterviewResultService {
     private final UserRepository userRepository;
 
     @Transactional
-    public void interviewResult(InterviewResultRequest request) {
+    public void reportResult(ReportResultRequest request) {
         Report report = reportRepository.findById(request.getReportId())
                 .orElseThrow(() -> ReportNotFoundException.EXCEPTION);
 
