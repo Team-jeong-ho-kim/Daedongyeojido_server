@@ -1,17 +1,18 @@
 package com.example.daedongyeojido_server.domain.alarm.api;
 
-import com.example.daedongyeojido_server.domain.alarm.application.CreateAnnouncementService;
 import com.example.daedongyeojido_server.domain.alarm.application.InterviewResultService;
 import com.example.daedongyeojido_server.domain.alarm.application.MyAlarmService;
-import com.example.daedongyeojido_server.domain.alarm.application.QueryAnnouncementService;
-import com.example.daedongyeojido_server.domain.alarm.dto.request.CreateAnnouncementRequest;
 import com.example.daedongyeojido_server.domain.alarm.dto.request.InterviewResultRequest;
 import com.example.daedongyeojido_server.domain.alarm.dto.response.AlarmResponse;
-import com.example.daedongyeojido_server.domain.alarm.dto.response.AnnouncementResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -20,19 +21,9 @@ import java.util.List;
 @RequestMapping("/alarm")
 public class AlarmController {
 
-    private final CreateAnnouncementService createAnnouncementService;
-
     private final InterviewResultService interviewResultService;
 
     private final MyAlarmService myAlarmService;
-
-    private final QueryAnnouncementService queryAnnouncementService;
-
-    @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping("/create-announcement")
-    public void createAnnouncement(@RequestBody @Valid CreateAnnouncementRequest request) {
-        createAnnouncementService.createAnnouncement(request);
-    }
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/result")
@@ -44,11 +35,5 @@ public class AlarmController {
     @GetMapping("/my-alarm")
     public List<AlarmResponse> myAlarm() {
         return myAlarmService.myAlarm();
-    }
-
-    @ResponseStatus(HttpStatus.OK)
-    @GetMapping("/query-announcement")
-    public List<AnnouncementResponse> queryAnnouncement() {
-        return queryAnnouncementService.queryAnnouncement();
     }
 }
