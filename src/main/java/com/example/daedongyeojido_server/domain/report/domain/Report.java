@@ -74,4 +74,8 @@ public class Report {
     public void reportResult(PassingResult passingResult) {
         this.reportPassingResult = passingResult;
     }
+
+    public void modifyMemo(String memo) {
+        this.memo = memo;
+    }
 }
