@@ -39,6 +39,7 @@ public enum ErrorCode {
     //image
     IMAGE_UPLOAD_FAIL(400, "이미지 업로드에 실패 했습니다."),
     WRONG_IMAGE(400, "잘못된 이미지 입니다."),
+    WRONG_ALARM_TYPE(400, "잘못된 타입의 알람 입니다."),
 
     // general
     BAD_REQUEST(400, "프론트 탓..."),
