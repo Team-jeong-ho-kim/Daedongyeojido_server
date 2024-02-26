@@ -7,8 +7,6 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum AlarmType {
 
-    ANNOUNCEMENT("공지사항"),
-
     PASS_RESULT("합격여부"),
 
     MESS_ACCEPT("회식수락");
