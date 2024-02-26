@@ -36,8 +36,14 @@ public class InterviewResultService {
         AlarmType alarmType;
 
         switch (request.getAlarmType()) {
-            case INTERVIEW_PASS_RESULT -> alarmType = AlarmType.INTERVIEW_PASS_RESULT;
-            case REPORT_PASS_RESULT -> alarmType = AlarmType.REPORT_PASS_RESULT;
+            case INTERVIEW_PASS_RESULT -> {
+                alarmType = AlarmType.INTERVIEW_PASS_RESULT;
+                report.interviewResult(request.getPassingResult());
+            }
+            case REPORT_PASS_RESULT ->  {
+                alarmType = AlarmType.REPORT_PASS_RESULT;
+                report.reportResult(request.getPassingResult());
+            }
             default -> throw WrongAlarmTypeException.EXCEPTION;
         }
 
@@ -51,8 +57,6 @@ public class InterviewResultService {
                         .alarmType(alarmType)
                         .user(user)
                         .build());
-
-        report.reportResult(request.getPassingResult());
 
         user.addAlarm(alarm);
     }

@@ -75,6 +75,10 @@ public class Report {
         this.reportPassingResult = passingResult;
     }
 
+    public void interviewResult(PassingResult passingResult) {
+        this.interviewPassingResult = passingResult;
+    }
+
     public void modifyMemo(String memo) {
         this.memo = memo;
     }
