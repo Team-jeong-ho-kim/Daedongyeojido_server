@@ -1,6 +1,6 @@
-package com.example.daedongyeojido_server.domain.alarm.dto.response;
+package com.example.daedongyeojido_server.domain.announcement.dto.response;
 
-import com.example.daedongyeojido_server.domain.alarm.domain.Alarm;
+import com.example.daedongyeojido_server.domain.announcement.domain.Announcement;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -16,7 +16,7 @@ public class AnnouncementResponse {
 
     private LocalDateTime createTime;
 
-    public AnnouncementResponse(Alarm announcement) {
+    public AnnouncementResponse(Announcement announcement) {
         title = announcement.getTitle();
         contents = announcement.getContents();
         createTime = announcement.getCreateTime();

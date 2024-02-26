@@ -1,4 +1,4 @@
-package com.example.daedongyeojido_server.domain.alarm.dto.request;
+package com.example.daedongyeojido_server.domain.announcement.dto.request;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
