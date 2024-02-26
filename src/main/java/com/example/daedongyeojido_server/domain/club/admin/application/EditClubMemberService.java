@@ -6,6 +6,7 @@ import com.example.daedongyeojido_server.domain.club.common.dao.ClubRepository;
 import com.example.daedongyeojido_server.domain.club.common.domain.Club;
 import com.example.daedongyeojido_server.domain.user.dao.UserRepository;
 import com.example.daedongyeojido_server.domain.user.domain.User;
+import com.example.daedongyeojido_server.domain.user.domain.enums.Part;
 import com.example.daedongyeojido_server.domain.user.exception.UserNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -26,12 +27,16 @@ public class EditClubMemberService {
     public void editClubMember(EditClubMemberRequest request) {
         Club club = clubRepository.findByClubName(request.getClubName());
 
-        if (userRepository.findByName(request.getTeacherName()).isPresent()) {
+            if (userRepository.findByName(request.getTeacherName()).isPresent()) {
             User teacher = userRepository.findByName(request.getTeacherName())
                     .orElseThrow(() -> UserNotFoundException.EXCEPTION);
 
             teacher.addClubMember(teacher.getPart(), club);
             club.editClubTeacher(teacher);
+        }
+
+        for (int i = 0; i < club.getClubMembers().size(); i++) {
+            club.getClubMembers().get(i).addClubMember(Part.INDEPENDENT, null);
         }
 
         List<User> clubMembers = new ArrayList<>();
