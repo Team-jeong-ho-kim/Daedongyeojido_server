@@ -10,6 +10,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
+
 @Service
 @RequiredArgsConstructor
 public class CreateAnnouncementService {
@@ -26,6 +28,7 @@ public class CreateAnnouncementService {
                 Alarm.builder()
                         .title(request.getTitle())
                         .contents(request.getContents())
+                        .createTime(LocalDateTime.now())
                         .alarmType(AlarmType.ANNOUNCEMENT)
                         .user(user)
                         .build());

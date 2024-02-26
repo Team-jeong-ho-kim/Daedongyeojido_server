@@ -7,6 +7,8 @@ import com.example.daedongyeojido_server.domain.user.domain.User;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Getter
 @Builder
@@ -29,6 +31,9 @@ public class Alarm {
 
     @Column(name = "user_name", length = 4)
     private String userName;
+
+    @Column(name = "create_time", nullable = false)
+    private LocalDateTime createTime;
 
     @Column(name = "passing_result")
     @Enumerated(EnumType.STRING)

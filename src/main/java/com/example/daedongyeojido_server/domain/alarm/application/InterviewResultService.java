@@ -14,6 +14,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
+
 @Service
 @RequiredArgsConstructor
 public class InterviewResultService {
@@ -36,6 +38,7 @@ public class InterviewResultService {
                 Alarm.builder()
                         .clubName(report.getNotice().getClubName().getClubName())
                         .userName(report.getName())
+                        .createTime(LocalDateTime.now())
                         .passingResult(request.getPassingResult())
                         .major(report.getNotice().getMajor())
                         .alarmType(AlarmType.PASS_RESULT)

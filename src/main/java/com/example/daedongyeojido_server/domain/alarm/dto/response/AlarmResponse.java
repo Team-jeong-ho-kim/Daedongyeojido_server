@@ -7,6 +7,8 @@ import com.example.daedongyeojido_server.domain.report.domain.enums.PassingResul
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+import java.time.LocalDateTime;
+
 @Getter
 @AllArgsConstructor
 public class AlarmResponse {
@@ -21,6 +23,8 @@ public class AlarmResponse {
 
     private String userName;
 
+    private LocalDateTime createTime;
+
     private PassingResult passingResult;
 
     private Major major;
@@ -33,6 +37,7 @@ public class AlarmResponse {
         contents = alarm.getContents();
         clubName = alarm.getClubName();
         userName = alarm.getUserName();
+        createTime = alarm.getCreateTime();
         passingResult = alarm.getPassingResult();
         major = alarm.getMajor();
         alarmType = alarm.getAlarmType();
