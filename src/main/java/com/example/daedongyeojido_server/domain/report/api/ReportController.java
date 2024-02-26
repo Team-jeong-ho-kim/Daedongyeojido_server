@@ -72,7 +72,7 @@ public class ReportController {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping("/memo/{reportId}")
+    @GetMapping("/query/memo/{reportId}")
     public MemoResponse queryMemo(@PathVariable Long reportId) {
         return queryMemoService.queryMemo(reportId);
     }
