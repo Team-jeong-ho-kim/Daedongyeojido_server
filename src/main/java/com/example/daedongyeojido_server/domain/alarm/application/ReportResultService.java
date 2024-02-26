@@ -41,7 +41,7 @@ public class ReportResultService {
                         .createTime(LocalDateTime.now())
                         .passingResult(request.getPassingResult())
                         .major(report.getNotice().getMajor())
-                        .alarmType(AlarmType.PASS_RESULT)
+                        .alarmType(AlarmType.REPORT_PASS_RESULT)
                         .user(user)
                         .build());
 
