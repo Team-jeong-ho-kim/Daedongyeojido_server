@@ -29,7 +29,7 @@ public class AlarmController {
     private final QueryAnnouncementService queryAnnouncementService;
 
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping("/announcement")
+    @PostMapping("/create-announcement")
     public void createAnnouncement(@RequestBody @Valid CreateAnnouncementRequest request) {
         createAnnouncementService.createAnnouncement(request);
     }
@@ -47,7 +47,7 @@ public class AlarmController {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping("/announcement")
+    @GetMapping("/query-announcement")
     public List<AnnouncementResponse> queryAnnouncement() {
         return queryAnnouncementService.queryAnnouncement();
     }

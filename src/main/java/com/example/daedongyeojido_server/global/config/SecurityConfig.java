@@ -64,7 +64,7 @@ public class SecurityConfig {
                         .requestMatchers("/admin-club/page", "/admin-club/edit-member", "/mess/accept/**", "/mess/all")
                         .hasAnyRole("TEACHER", "CLUB_LEADER_TEACHER", "ADMIN")
 
-                        .requestMatchers("/admin-club/create", "/admin-club/delete/**", "/alarm/announcement"
+                        .requestMatchers("/admin-club/create", "/admin-club/delete/**", "/alarm/create-announcement"
                         ).hasAnyRole("CLUB_LEADER_TEACHER", "ADMIN")
 
                         .anyRequest().authenticated()
