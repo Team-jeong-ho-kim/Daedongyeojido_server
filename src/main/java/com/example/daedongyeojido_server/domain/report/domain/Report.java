@@ -18,6 +18,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Getter
 @Builder
@@ -48,15 +50,25 @@ public class Report {
     @Column(name = "learn", length = 100, nullable = false)
     private String learn;
 
+    @Column(name = "interview_start_time")
+    private LocalDateTime interviewStartTime;
+
+    @Column(name = "interview_end_time")
+    private LocalDateTime interviewEndTime;
+
     @Enumerated(EnumType.STRING)
-    @Column(name = "passing_result", nullable = false)
-    private PassingResult passingResult;
+    @Column(name = "report_passing_result", nullable = false)
+    private PassingResult reportPassingResult;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "interview_passing_result", nullable = false)
+    private PassingResult interviewPassingResult;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "notice_id", nullable = false)
     private Notice notice;
 
-    public void interviewResult(PassingResult passingResult) {
-        this.passingResult = passingResult;
+    public void reportResult(PassingResult passingResult) {
+        this.reportPassingResult = passingResult;
     }
 }
