@@ -20,12 +20,6 @@ public class Alarm {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long alarmId;
 
-    @Column(name = "title", length = 20)
-    private String title;
-
-    @Column(name = "contents", length = 200)
-    private String contents;
-
     @Column(name = "club_name", length = 20)
     private String clubName;
 
