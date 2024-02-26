@@ -20,13 +20,16 @@ public class MyReportResponse {
 
     private LocalDate deadline;
 
-    private PassingResult passingResult;
+    private PassingResult reportPassingResult;
+
+    private PassingResult interviewPassingResult;
 
     public MyReportResponse(Report report) {
         id = report.getReportId();
         clubName = report.getNotice().getClubName().getClubName();
         hopeMajor = report.getNotice().getMajor();
         deadline = report.getNotice().getDeadline();
-        passingResult = report.getPassingResult();
+        reportPassingResult = report.getReportPassingResult();
+        interviewPassingResult = report.getInterviewPassingResult();
     }
 }
