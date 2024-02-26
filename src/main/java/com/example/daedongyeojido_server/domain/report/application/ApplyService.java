@@ -39,6 +39,7 @@ public class ApplyService {
                         .hopeMajor(request.getHopeMajor())
                         .learn(request.getLearn())
                         .reportPassingResult(PassingResult.WAIT)
+                        .interviewPassingResult(PassingResult.WAIT)
                         .notice(notice)
                         .build());
     }
