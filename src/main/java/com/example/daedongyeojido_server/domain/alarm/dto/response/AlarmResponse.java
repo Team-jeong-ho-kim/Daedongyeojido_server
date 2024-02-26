@@ -33,8 +33,6 @@ public class AlarmResponse {
 
     public AlarmResponse(Alarm alarm) {
         alarmId = alarm.getAlarmId();
-        title = alarm.getTitle();
-        contents = alarm.getContents();
         clubName = alarm.getClubName();
         userName = alarm.getUserName();
         createTime = alarm.getCreateTime();
