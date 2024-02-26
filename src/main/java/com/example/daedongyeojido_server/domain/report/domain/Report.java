@@ -78,4 +78,9 @@ public class Report {
     public void modifyMemo(String memo) {
         this.memo = memo;
     }
+
+    public void saveInterviewTime(LocalDateTime interviewStartTime, LocalDateTime interviewEndTime) {
+        this.interviewStartTime = interviewStartTime;
+        this.interviewEndTime = interviewEndTime;
+    }
 }
