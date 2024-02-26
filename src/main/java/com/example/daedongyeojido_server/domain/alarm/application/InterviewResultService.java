@@ -45,7 +45,7 @@ public class InterviewResultService {
                         .user(user)
                         .build());
 
-        report.interviewResult(request.getPassingResult());
+        report.reportResult(request.getPassingResult());
 
         user.addAlarm(alarm);
     }
