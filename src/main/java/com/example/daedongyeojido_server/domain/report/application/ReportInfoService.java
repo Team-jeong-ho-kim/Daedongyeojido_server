@@ -22,6 +22,7 @@ public class ReportInfoService {
         return ReportInfoResponse.builder()
                 .classNumber(report.getClassNumber())
                 .name(report.getName())
+                .reportPassingResult(report.getReportPassingResult())
                 .oneLiner(report.getOneLiner())
                 .introduction(report.getIntroduction())
                 .hopeMajor(report.getHopeMajor())
