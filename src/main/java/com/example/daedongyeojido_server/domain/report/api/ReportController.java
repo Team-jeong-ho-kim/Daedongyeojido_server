@@ -2,11 +2,13 @@ package com.example.daedongyeojido_server.domain.report.api;
 
 import com.example.daedongyeojido_server.domain.report.application.ApplyService;
 import com.example.daedongyeojido_server.domain.report.application.CancelApplyService;
+import com.example.daedongyeojido_server.domain.report.application.ChooseInterviewTimeService;
 import com.example.daedongyeojido_server.domain.report.application.ModifyMemoService;
 import com.example.daedongyeojido_server.domain.report.application.QueryApplicantService;
 import com.example.daedongyeojido_server.domain.report.application.QueryMemoService;
 import com.example.daedongyeojido_server.domain.report.application.ReportInfoService;
 import com.example.daedongyeojido_server.domain.report.dto.request.ApplyRequest;
+import com.example.daedongyeojido_server.domain.report.dto.request.InterviewTimeRequest;
 import com.example.daedongyeojido_server.domain.report.dto.request.MemoRequest;
 import com.example.daedongyeojido_server.domain.report.dto.response.MemoResponse;
 import com.example.daedongyeojido_server.domain.report.dto.response.ReportInfoResponse;
@@ -33,6 +35,8 @@ public class ReportController {
 
     private final ApplyService applyService;
 
+    private final ChooseInterviewTimeService chooseInterviewTImeService;
+
     private final QueryApplicantService queryReportService;
 
     private final ReportInfoService reportInfoService;
@@ -47,6 +51,12 @@ public class ReportController {
     @PostMapping("/apply")
     public void apply(@RequestBody @Valid ApplyRequest request) {
         applyService.apply(request);
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @PostMapping("/interview-time")
+    public void chooseInterviewTime(@RequestBody @Valid InterviewTimeRequest request) {
+        chooseInterviewTImeService.chooseInterviewTime(request);
     }
 
     @ResponseStatus(HttpStatus.OK)
