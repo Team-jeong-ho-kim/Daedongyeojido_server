@@ -4,7 +4,6 @@ import com.example.daedongyeojido_server.domain.announcement.dao.AnnouncementRep
 import com.example.daedongyeojido_server.domain.announcement.domain.Announcement;
 import com.example.daedongyeojido_server.domain.announcement.dto.request.CreateAnnouncementRequest;
 import com.example.daedongyeojido_server.domain.user.application.facade.UserFacade;
-import com.example.daedongyeojido_server.domain.user.domain.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
