@@ -72,13 +72,13 @@ public class ReportController {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping("/query/memo/{reportId}")
+    @GetMapping("/query-memo/{reportId}")
     public MemoResponse queryMemo(@PathVariable Long reportId) {
         return queryMemoService.queryMemo(reportId);
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @PatchMapping("/memo/modify")
+    @PatchMapping("/modify-memo")
     public void modifyMemo(@RequestBody @Valid MemoRequest request) {
         modifyMemoService.modifyMemo(request);
     }
