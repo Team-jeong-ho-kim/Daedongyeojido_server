@@ -52,13 +52,14 @@ public class SecurityConfig {
                         .requestMatchers("/auth/**", "/main", "/club/info/**", "/user/all", "/main/banner")
                         .permitAll()
 
-                        .requestMatchers("/report/apply", "/report/cancel/**", "/club/choose-interview-time")
+                        .requestMatchers("/report/apply", "/report/cancel/**", "/interview/choose-time", "/interview/query-time")
                         .hasAnyRole("INDEPENDENT", "ADMIN")
 
                         .requestMatchers("/report/applicant/**", "/report/report-info/**", "/report/query-memo/**", "/report/modify-memo")
                         .hasAnyRole("CLUB_MEMBER", "CLUB_LEADER", "ADMIN")
 
-                        .requestMatchers("/club/modify", "/notice/create", "/notice/delete/**", "/mess/create", "/mess/delete/**", "/alarm/interview-result")
+                        .requestMatchers("/club/modify", "/notice/create", "/notice/delete/**", 
+                                "/mess/create", "/mess/delete/**", "/alarm/interview-result", "/interview/modify-time")
                         .hasAnyRole("CLUB_LEADER", "ADMIN")
 
                         .requestMatchers("/admin-club/page", "/admin-club/edit-member", "/mess/accept/**", "/mess/all")
