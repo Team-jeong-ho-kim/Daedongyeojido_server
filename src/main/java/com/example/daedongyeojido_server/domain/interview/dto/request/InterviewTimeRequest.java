@@ -1,4 +1,4 @@
-package com.example.daedongyeojido_server.domain.club.common.dto.request;
+package com.example.daedongyeojido_server.domain.interview.dto.request;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;

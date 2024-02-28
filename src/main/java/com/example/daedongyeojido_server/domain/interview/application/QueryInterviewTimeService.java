@@ -1,7 +1,7 @@
-package com.example.daedongyeojido_server.domain.club.common.application;
+package com.example.daedongyeojido_server.domain.interview.application;
 
-import com.example.daedongyeojido_server.domain.club.common.dao.InterviewTimeRepository;
-import com.example.daedongyeojido_server.domain.club.common.dto.response.InterviewTimeResponse;
+import com.example.daedongyeojido_server.domain.interview.dao.InterviewTimeRepository;
+import com.example.daedongyeojido_server.domain.interview.dto.response.InterviewTimeResponse;
 import com.example.daedongyeojido_server.domain.report.dao.ReportRepository;
 import com.example.daedongyeojido_server.domain.report.domain.Report;
 import com.example.daedongyeojido_server.domain.report.exception.ReportNotFoundException;

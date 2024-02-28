@@ -1,4 +1,4 @@
-package com.example.daedongyeojido_server.domain.club.common.domain;
+package com.example.daedongyeojido_server.domain.interview.domain;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

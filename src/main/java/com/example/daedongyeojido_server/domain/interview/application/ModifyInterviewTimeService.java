@@ -1,8 +1,8 @@
-package com.example.daedongyeojido_server.domain.club.common.application;
+package com.example.daedongyeojido_server.domain.interview.application;
 
-import com.example.daedongyeojido_server.domain.club.common.dao.InterviewTimeRepository;
-import com.example.daedongyeojido_server.domain.club.common.domain.InterviewTime;
-import com.example.daedongyeojido_server.domain.club.common.dto.request.InterviewTimeRequest;
+import com.example.daedongyeojido_server.domain.interview.dao.InterviewTimeRepository;
+import com.example.daedongyeojido_server.domain.interview.domain.InterviewTime;
+import com.example.daedongyeojido_server.domain.interview.dto.request.InterviewTimeRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

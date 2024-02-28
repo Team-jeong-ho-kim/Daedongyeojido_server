@@ -1,4 +1,4 @@
-package com.example.daedongyeojido_server.domain.club.common.exception;
+package com.example.daedongyeojido_server.domain.interview.exception;
 
 import com.example.daedongyeojido_server.global.error.exception.BusinessException;
 import com.example.daedongyeojido_server.global.error.exception.ErrorCode;

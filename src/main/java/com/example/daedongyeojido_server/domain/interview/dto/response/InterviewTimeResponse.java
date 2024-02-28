@@ -1,6 +1,6 @@
-package com.example.daedongyeojido_server.domain.club.common.dto.response;
+package com.example.daedongyeojido_server.domain.interview.dto.response;
 
-import com.example.daedongyeojido_server.domain.club.common.domain.InterviewTime;
+import com.example.daedongyeojido_server.domain.interview.domain.InterviewTime;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

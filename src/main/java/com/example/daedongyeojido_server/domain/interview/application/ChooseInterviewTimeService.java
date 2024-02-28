@@ -1,9 +1,9 @@
-package com.example.daedongyeojido_server.domain.club.common.application;
+package com.example.daedongyeojido_server.domain.interview.application;
 
-import com.example.daedongyeojido_server.domain.club.common.dao.InterviewTimeRepository;
-import com.example.daedongyeojido_server.domain.club.common.domain.InterviewTime;
-import com.example.daedongyeojido_server.domain.club.common.dto.request.ChooseInterviewRequest;
-import com.example.daedongyeojido_server.domain.club.common.exception.InterviewTimeNotFoundException;
+import com.example.daedongyeojido_server.domain.interview.dao.InterviewTimeRepository;
+import com.example.daedongyeojido_server.domain.interview.domain.InterviewTime;
+import com.example.daedongyeojido_server.domain.interview.dto.request.ChooseInterviewRequest;
+import com.example.daedongyeojido_server.domain.interview.exception.InterviewTimeNotFoundException;
 import com.example.daedongyeojido_server.domain.report.application.facade.ReportFacade;
 import com.example.daedongyeojido_server.domain.report.domain.Report;
 import lombok.RequiredArgsConstructor;
