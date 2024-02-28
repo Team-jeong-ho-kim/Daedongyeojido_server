@@ -1,6 +1,6 @@
 package com.example.daedongyeojido_server.domain.club.common.dto.response;
 
-import com.example.daedongyeojido_server.domain.club.common.domain.Club;
+import com.example.daedongyeojido_server.domain.club.domain.Club;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

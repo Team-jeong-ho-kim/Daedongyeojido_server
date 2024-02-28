@@ -1,7 +1,7 @@
 package com.example.daedongyeojido_server.domain.user.domain;
 
 import com.example.daedongyeojido_server.domain.alarm.domain.Alarm;
-import com.example.daedongyeojido_server.domain.club.common.domain.Club;
+import com.example.daedongyeojido_server.domain.club.domain.Club;
 import com.example.daedongyeojido_server.domain.user.domain.enums.Part;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

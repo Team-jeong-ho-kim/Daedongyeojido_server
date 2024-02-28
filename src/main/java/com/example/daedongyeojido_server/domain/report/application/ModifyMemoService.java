@@ -1,6 +1,6 @@
 package com.example.daedongyeojido_server.domain.report.application;
 
-import com.example.daedongyeojido_server.domain.club.common.exception.ClubMisMatchException;
+import com.example.daedongyeojido_server.domain.club.exception.ClubMisMatchException;
 import com.example.daedongyeojido_server.domain.report.dao.ReportRepository;
 import com.example.daedongyeojido_server.domain.report.domain.Report;
 import com.example.daedongyeojido_server.domain.report.dto.request.MemoRequest;

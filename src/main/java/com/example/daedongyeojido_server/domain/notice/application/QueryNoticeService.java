@@ -1,7 +1,7 @@
 package com.example.daedongyeojido_server.domain.notice.application;
 
-import com.example.daedongyeojido_server.domain.club.common.dao.ClubRepository;
-import com.example.daedongyeojido_server.domain.club.common.domain.Club;
+import com.example.daedongyeojido_server.domain.club.dao.ClubRepository;
+import com.example.daedongyeojido_server.domain.club.domain.Club;
 import com.example.daedongyeojido_server.domain.notice.dao.NoticeRepository;
 import com.example.daedongyeojido_server.domain.notice.domain.Notice;
 import com.example.daedongyeojido_server.domain.notice.dto.response.NoticeResponse;

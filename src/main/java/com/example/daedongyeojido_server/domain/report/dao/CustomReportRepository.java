@@ -1,6 +1,6 @@
 package com.example.daedongyeojido_server.domain.report.dao;
 
-import com.example.daedongyeojido_server.domain.club.common.domain.Club;
+import com.example.daedongyeojido_server.domain.club.domain.Club;
 import com.example.daedongyeojido_server.domain.report.domain.Report;
 
 import java.util.List;

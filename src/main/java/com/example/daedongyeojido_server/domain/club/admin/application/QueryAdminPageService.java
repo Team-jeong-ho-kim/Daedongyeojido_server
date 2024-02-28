@@ -1,7 +1,7 @@
 package com.example.daedongyeojido_server.domain.club.admin.application;
 
 import com.example.daedongyeojido_server.domain.club.admin.dto.response.AdminPageResponse;
-import com.example.daedongyeojido_server.domain.club.common.dao.ClubRepository;
+import com.example.daedongyeojido_server.domain.club.dao.ClubRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -1,6 +1,6 @@
 package com.example.daedongyeojido_server.domain.mess.domain;
 
-import com.example.daedongyeojido_server.domain.club.common.domain.Club;
+import com.example.daedongyeojido_server.domain.club.domain.Club;
 import jakarta.persistence.Column;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;

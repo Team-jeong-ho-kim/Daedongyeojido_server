@@ -1,6 +1,6 @@
 package com.example.daedongyeojido_server.domain.notice.dao;
 
-import com.example.daedongyeojido_server.domain.club.common.domain.Club;
+import com.example.daedongyeojido_server.domain.club.domain.Club;
 import com.example.daedongyeojido_server.domain.notice.domain.Notice;
 import org.springframework.data.jpa.repository.JpaRepository;
 

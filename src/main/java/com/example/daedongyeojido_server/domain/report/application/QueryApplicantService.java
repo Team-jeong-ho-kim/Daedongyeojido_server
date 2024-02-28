@@ -1,7 +1,7 @@
 package com.example.daedongyeojido_server.domain.report.application;
 
-import com.example.daedongyeojido_server.domain.club.common.dao.ClubRepository;
-import com.example.daedongyeojido_server.domain.club.common.domain.Club;
+import com.example.daedongyeojido_server.domain.club.dao.ClubRepository;
+import com.example.daedongyeojido_server.domain.club.domain.Club;
 import com.example.daedongyeojido_server.domain.report.dao.CustomReportRepository;
 import com.example.daedongyeojido_server.domain.report.dto.response.ReportResponse;
 import lombok.RequiredArgsConstructor;
