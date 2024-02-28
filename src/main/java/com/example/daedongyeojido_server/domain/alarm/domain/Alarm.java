@@ -18,6 +18,7 @@ public class Alarm {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "alarm_id", nullable = false)
     private Long alarmId;
 
     @Column(name = "club_name", length = 20)
