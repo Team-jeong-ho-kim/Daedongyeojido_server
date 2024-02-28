@@ -1,7 +1,7 @@
 package com.example.daedongyeojido_server.domain.club.common.application;
 
 import com.example.daedongyeojido_server.domain.club.common.dao.InterviewTimeRepository;
-import com.example.daedongyeojido_server.domain.club.common.domain.InterviewTime;
+import com.example.daedongyeojido_server.domain.club.common.dto.response.InterviewTimeResponse;
 import com.example.daedongyeojido_server.domain.report.dao.ReportRepository;
 import com.example.daedongyeojido_server.domain.report.domain.Report;
 import com.example.daedongyeojido_server.domain.report.exception.ReportNotFoundException;
@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -20,10 +21,13 @@ public class QueryInterviewTimeService {
     private final InterviewTimeRepository interviewTimeRepository;
 
     @Transactional(readOnly = true)
-    public List<InterviewTime> queryInterviewTime(Long reportId) {
+    public List<InterviewTimeResponse> queryInterviewTime(Long reportId) {
         Report report = reportRepository.findById(reportId)
                 .orElseThrow(()-> ReportNotFoundException.EXCEPTION);
 
-        return interviewTimeRepository.findAllByClubName(report.getNotice().getClubName().getClubName());
+        return interviewTimeRepository.findAllByClubName(report.getNotice().getClubName().getClubName())
+                .stream()
+                .map(InterviewTimeResponse::new)
+                .collect(Collectors.toList());
     }
 }
