@@ -25,6 +25,15 @@ public class ChooseInterviewTimeService {
         InterviewTime interviewTime = interviewTimeRepository.findById(request.getInterviewTimeId())
                         .orElseThrow(()-> InterviewTimeNotFoundException.EXCEPTION);
 
+        if(!(report.getInterviewStartTime() == null)) {
+            interviewTimeRepository.save(
+                    InterviewTime.builder()
+                            .interviewStartTime(report.getInterviewStartTime())
+                            .interviewEndTime(report.getInterviewEndTime())
+                            .clubName(report.getNotice().getClubName().getClubName())
+                            .build());
+        }
+
         report.saveInterviewTime(interviewTime.getInterviewStartTime(), interviewTime.getInterviewEndTime());
         interviewTimeRepository.deleteById(request.getInterviewTimeId());
     }
