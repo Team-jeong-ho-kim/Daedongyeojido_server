@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface InterviewTimeRepository extends JpaRepository<InterviewTime, Long> {
     List<InterviewTime> findAllByClubName(String clubName);
+
+    void deleteAllByClubName(String clubName);
 }
