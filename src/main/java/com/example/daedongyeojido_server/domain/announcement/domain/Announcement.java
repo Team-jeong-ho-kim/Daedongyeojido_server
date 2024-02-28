@@ -14,6 +14,7 @@ public class Announcement {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "announcement_id", nullable = false)
     private Long announcementId;
 
     @Column(name = "title", length = 20, nullable = false)
