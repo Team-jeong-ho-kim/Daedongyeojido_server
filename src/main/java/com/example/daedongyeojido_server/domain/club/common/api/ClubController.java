@@ -3,6 +3,7 @@ package com.example.daedongyeojido_server.domain.club.common.api;
 import com.example.daedongyeojido_server.domain.club.common.application.ChooseInterviewTimeService;
 import com.example.daedongyeojido_server.domain.club.common.application.ClubInfoService;
 import com.example.daedongyeojido_server.domain.club.common.application.ModifyClubService;
+import com.example.daedongyeojido_server.domain.club.common.application.ModifyInterviewTimeService;
 import com.example.daedongyeojido_server.domain.club.common.application.QueryInterviewTimeService;
 import com.example.daedongyeojido_server.domain.club.common.domain.InterviewTime;
 import com.example.daedongyeojido_server.domain.club.common.dto.request.InterviewTimeRequest;
@@ -28,6 +29,8 @@ public class ClubController {
 
     private final ModifyClubService modifyClubService;
 
+    private final ModifyInterviewTimeService modifyInterviewTimeService;
+
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("/choose-interview-time")
     public void chooseInterviewTime(@RequestBody @Valid InterviewTimeRequest request) {
@@ -50,5 +53,11 @@ public class ClubController {
     @PatchMapping("/modify")
     public void modifyClub(@RequestBody @Valid ModifyClubRequest request) {
         modifyClubService.modifyClub(request);
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @PatchMapping("/modify-interview-time/{clubName}")
+    public void modifyInterviewTime(@PathVariable String clubName, @RequestBody @Valid List<InterviewTimeRequest> requests) {
+        modifyInterviewTimeService.modifyInterviewTime(clubName, requests);
     }
 }
