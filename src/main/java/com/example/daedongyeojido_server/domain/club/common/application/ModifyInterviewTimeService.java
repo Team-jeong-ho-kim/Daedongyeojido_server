@@ -24,6 +24,7 @@ public class ModifyInterviewTimeService {
                     InterviewTime.builder()
                             .interviewStartTime(requests.get(i).getInterviewStartTime())
                             .interviewEndTime(requests.get(i).getInterviewEndTime())
+                            .clubName(clubName)
                             .build());
         }
     }
