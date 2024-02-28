@@ -23,7 +23,7 @@ public class ClubController {
     private final ClubInfoService clubInfoService;
 
     @ResponseStatus(HttpStatus.OK)
-    @PostMapping("/interview-time")
+    @PostMapping("/choose-interview-time")
     public void chooseInterviewTime(@RequestBody @Valid InterviewTimeRequest request) {
         chooseInterviewTImeService.chooseInterviewTime(request);
     }
