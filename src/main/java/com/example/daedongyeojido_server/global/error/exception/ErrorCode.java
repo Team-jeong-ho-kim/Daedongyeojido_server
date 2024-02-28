@@ -19,6 +19,7 @@ public enum ErrorCode {
 
     // club
     CLUB_NOT_FOUND(404, "일치하는 동아리가 존재하지 않습니다."),
+    INTERVIEW_TIME_NOT_FOUND(404, "일치하는 면접시간이 존재하지 않습니다."),
     EXIST_CLUB(409, "동일한 이름의 동아리가 존재합니다."),
     CLUB_MIS_MATCH(401, "동아리가 일치하지 않습니다."),
 
