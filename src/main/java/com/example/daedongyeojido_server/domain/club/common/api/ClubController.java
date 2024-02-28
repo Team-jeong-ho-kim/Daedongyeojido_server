@@ -6,6 +6,7 @@ import com.example.daedongyeojido_server.domain.club.common.application.ModifyCl
 import com.example.daedongyeojido_server.domain.club.common.application.ModifyInterviewTimeService;
 import com.example.daedongyeojido_server.domain.club.common.application.QueryInterviewTimeService;
 import com.example.daedongyeojido_server.domain.club.common.domain.InterviewTime;
+import com.example.daedongyeojido_server.domain.club.common.dto.request.ChooseInterviewRequest;
 import com.example.daedongyeojido_server.domain.club.common.dto.request.InterviewTimeRequest;
 import com.example.daedongyeojido_server.domain.club.common.dto.request.ModifyClubRequest;
 import com.example.daedongyeojido_server.domain.club.common.dto.response.ClubInfoResponse;
@@ -33,7 +34,7 @@ public class ClubController {
 
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("/choose-interview-time")
-    public void chooseInterviewTime(@RequestBody @Valid InterviewTimeRequest request) {
+    public void chooseInterviewTime(@RequestBody @Valid ChooseInterviewRequest request) {
         chooseInterviewTImeService.chooseInterviewTime(request);
     }
 
