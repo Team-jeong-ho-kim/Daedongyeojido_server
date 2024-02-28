@@ -32,19 +32,19 @@ public class InterviewController {
     private final ModifyInterviewTimeService modifyInterviewTimeService;
 
     @ResponseStatus(HttpStatus.OK)
-    @PostMapping("/choose-interview-time")
+    @PostMapping("/choose-time")
     public void chooseInterviewTime(@RequestBody @Valid ChooseInterviewRequest request) {
         chooseInterviewTImeService.chooseInterviewTime(request);
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping("/query-interview-time/{reportId}")
+    @GetMapping("/query-time/{reportId}")
     public List<InterviewTimeResponse> queryInterviewTime(@PathVariable Long reportId) {
         return queryInterviewTimeService.queryInterviewTime(reportId);
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @PatchMapping("/modify-interview-time/{clubName}")
+    @PatchMapping("/modify-time/{clubName}")
     public void modifyInterviewTime(@PathVariable String clubName, @RequestBody @Valid List<InterviewTimeRequest> requests) {
         modifyInterviewTimeService.modifyInterviewTime(clubName, requests);
     }
