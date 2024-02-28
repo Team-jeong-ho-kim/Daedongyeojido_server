@@ -12,9 +12,6 @@ import java.time.LocalDateTime;
 public class InterviewTimeRequest {
 
     @NotNull
-    private Long reportId;
-
-    @NotNull
     private LocalDateTime interviewStartTime;
 
     @NotNull
