@@ -34,7 +34,7 @@ public class Club {
     @Column(name = "q_and_a", length = 300)
     private String qAndA;
 
-    @Column(name = "club_image_url", length = 20)
+    @Column(name = "club_image_url", length = 20, columnDefinition = "TEXT")
     private String clubImageUrl;
 
     @OneToOne(fetch = FetchType.LAZY)

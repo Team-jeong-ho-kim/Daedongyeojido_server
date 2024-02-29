@@ -25,6 +25,6 @@ public class Banner {
     @Column(name = "banner_title", nullable = false)
     private String bannerTitle;
 
-    @Column(name = "banner_img_url", nullable = false)
+    @Column(name = "banner_img_url", nullable = false, columnDefinition = "TEXT")
     private String bannerImgUrl;
 }
