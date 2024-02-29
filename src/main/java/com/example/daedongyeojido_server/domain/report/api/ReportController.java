@@ -4,10 +4,12 @@ import com.example.daedongyeojido_server.domain.report.application.ApplyService;
 import com.example.daedongyeojido_server.domain.report.application.CancelApplyService;
 import com.example.daedongyeojido_server.domain.report.application.ModifyMemoService;
 import com.example.daedongyeojido_server.domain.report.application.QueryApplicantService;
+import com.example.daedongyeojido_server.domain.report.application.QueryApplyPageService;
 import com.example.daedongyeojido_server.domain.report.application.QueryMemoService;
 import com.example.daedongyeojido_server.domain.report.application.ReportInfoService;
 import com.example.daedongyeojido_server.domain.report.dto.request.ApplyRequest;
 import com.example.daedongyeojido_server.domain.report.dto.request.MemoRequest;
+import com.example.daedongyeojido_server.domain.report.dto.response.ApplyPageResponse;
 import com.example.daedongyeojido_server.domain.report.dto.response.MemoResponse;
 import com.example.daedongyeojido_server.domain.report.dto.response.ReportInfoResponse;
 import com.example.daedongyeojido_server.domain.report.dto.response.ReportResponse;
@@ -33,6 +35,8 @@ public class ReportController {
 
     private final ApplyService applyService;
 
+    private final QueryApplyPageService queryApplyPageService;
+
     private final QueryApplicantService queryReportService;
 
     private final ReportInfoService reportInfoService;
@@ -47,6 +51,12 @@ public class ReportController {
     @PostMapping("/apply")
     public void apply(@RequestBody @Valid ApplyRequest request) {
         applyService.apply(request);
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/apply/{noticeId}")
+    public ApplyPageResponse queryApplyPage(@PathVariable Long noticeId) {
+        return queryApplyPageService.queryApplyPage(noticeId);
     }
 
     @ResponseStatus(HttpStatus.OK)
