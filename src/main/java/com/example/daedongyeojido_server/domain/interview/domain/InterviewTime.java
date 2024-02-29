@@ -1,15 +1,7 @@
 package com.example.daedongyeojido_server.domain.interview.domain;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
@@ -31,7 +23,6 @@ public class InterviewTime {
     @Column(name = "interview_end_time", nullable = false)
     private LocalDateTime interviewEndTime;
 
-
-    @Column(name = "club_name", nullable = false)
+    @Column(name = "club_name", length = 20, nullable = false)
     private String clubName;
 }
