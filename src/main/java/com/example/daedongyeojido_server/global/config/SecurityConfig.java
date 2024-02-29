@@ -52,7 +52,7 @@ public class SecurityConfig {
                         .requestMatchers("/auth/**", "/main", "/club/info/**", "/user/all", "/main/banner")
                         .permitAll()
 
-                        .requestMatchers("/report/apply", "/report/cancel/**", "/interview/choose-time", "/interview/query-time")
+                        .requestMatchers("/report/apply/**", "/report/cancel/**", "/interview/choose-time", "/interview/query-time")
                         .hasAnyRole("INDEPENDENT", "ADMIN")
 
                         .requestMatchers("/report/applicant/**", "/report/report-info/**", "/report/query-memo/**", "/report/modify-memo")
