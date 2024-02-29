@@ -11,4 +11,3 @@ public class ReportNotFoundException extends BusinessException {
         super(ErrorCode.REPORT_NOT_FOUND);
     }
 }
-

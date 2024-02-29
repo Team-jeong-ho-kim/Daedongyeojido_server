@@ -40,8 +40,8 @@ public class QueryNoticeService {
                 .map(NoticeResponse::new)
                 .collect(Collectors.toList());
 
-        for(int i=0; i<noticeResponses.size(); i++) {
-            if(!(reportRepository.findAllByClassNumberAndNotice(user.getClassNumber(), notices.get(i)).isEmpty())) {
+        for (int i = 0; i < noticeResponses.size(); i++) {
+            if (!(reportRepository.findAllByClassNumberAndNotice(user.getClassNumber(), notices.get(i)).isEmpty())) {
                 noticeResponses.get(i).apply();
             }
         }

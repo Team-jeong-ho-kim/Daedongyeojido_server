@@ -40,7 +40,7 @@ public class InterviewResultService {
                 alarmType = AlarmType.INTERVIEW_PASS_RESULT;
                 report.interviewResult(request.getPassingResult());
             }
-            case REPORT_PASS_RESULT ->  {
+            case REPORT_PASS_RESULT -> {
                 alarmType = AlarmType.REPORT_PASS_RESULT;
                 report.reportResult(request.getPassingResult());
             }

@@ -28,7 +28,7 @@ public class ApplyService {
         User user = userFacade.currentUser();
 
         Notice notice = noticeRepository.findById(request.getNoticeId())
-                .orElseThrow(()-> NoticeNotFoundException.EXCEPTION);
+                .orElseThrow(() -> NoticeNotFoundException.EXCEPTION);
 
         reportRepository.save(
                 Report.builder()

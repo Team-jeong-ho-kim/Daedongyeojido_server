@@ -14,6 +14,6 @@ public class ReportFacade {
 
     public Report reportFacade(Long reportId) {
         return reportRepository.findById(reportId)
-                .orElseThrow(()-> ReportNotFoundException.EXCEPTION);
+                .orElseThrow(() -> ReportNotFoundException.EXCEPTION);
     }
 }

@@ -1,10 +1,10 @@
 package com.example.daedongyeojido_server.domain.user.application;
 
 import com.example.daedongyeojido_server.domain.report.dao.ReportRepository;
+import com.example.daedongyeojido_server.domain.user.application.facade.UserFacade;
 import com.example.daedongyeojido_server.domain.user.domain.User;
 import com.example.daedongyeojido_server.domain.user.dto.response.MyInfoResponse;
 import com.example.daedongyeojido_server.domain.user.dto.response.MyReportResponse;
-import com.example.daedongyeojido_server.domain.user.application.facade.UserFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

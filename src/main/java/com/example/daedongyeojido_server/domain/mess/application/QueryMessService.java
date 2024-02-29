@@ -32,8 +32,8 @@ public class QueryMessService {
                 .map(QueryMessResponse::new)
                 .collect(Collectors.toList());
 
-        for(int i=0; i<queryMessResponses.size(); i++) {
-            if(messes.get(i).getAcceptTeachers().contains(teacher.getName())) {
+        for (int i = 0; i < queryMessResponses.size(); i++) {
+            if (messes.get(i).getAcceptTeachers().contains(teacher.getName())) {
                 queryMessResponses.get(i).accept();
             }
         }

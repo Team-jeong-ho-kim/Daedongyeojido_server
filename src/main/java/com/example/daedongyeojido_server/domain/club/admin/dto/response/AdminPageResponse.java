@@ -20,7 +20,7 @@ public class AdminPageResponse {
     private List<MemberResponse> memberResponses;
 
     public AdminPageResponse(Club club) {
-        if(club.getTeacher() == null) teacherName = "null";
+        if (club.getTeacher() == null) teacherName = "null";
         else teacherName = club.getTeacher().getName();
 
         clubName = club.getClubName();
