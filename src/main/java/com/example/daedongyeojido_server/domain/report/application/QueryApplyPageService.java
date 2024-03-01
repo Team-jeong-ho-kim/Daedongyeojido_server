@@ -17,7 +17,7 @@ public class QueryApplyPageService {
     @Transactional(readOnly = true)
     public ApplyPageResponse queryApplyPage(Long noticeId) {
         Notice notice = noticeRepository.findById(noticeId)
-                .orElseThrow(()-> NoticeNotFoundException.EXCEPTION);
+                .orElseThrow(() -> NoticeNotFoundException.EXCEPTION);
 
         return ApplyPageResponse.builder()
                 .clubName(notice.getClubName().getClubName())

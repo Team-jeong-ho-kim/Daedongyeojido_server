@@ -39,10 +39,9 @@ public class AcceptMessService {
             throw NotValidTeacherException.EXCEPTION;
         }
 
-        if(mess.getAcceptTeachers().contains(teacher.getName())) {
+        if (mess.getAcceptTeachers().contains(teacher.getName())) {
             mess.acceptOrCancelMess(-1, teacher.getName());
-        }
-        else {
+        } else {
             mess.acceptOrCancelMess(1, teacher.getName());
         }
 

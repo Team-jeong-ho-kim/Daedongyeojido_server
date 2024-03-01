@@ -1,20 +1,8 @@
 package com.example.daedongyeojido_server.domain.mess.domain;
 
 import com.example.daedongyeojido_server.domain.club.domain.Club;
-import jakarta.persistence.Column;
-import jakarta.persistence.ElementCollection;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -54,10 +42,9 @@ public class Mess {
     public void acceptOrCancelMess(int i, String teacherName) {
         this.MessAccept += i;
 
-        if(i>0) {
+        if (i > 0) {
             this.acceptTeachers.add(teacherName);
-        }
-        else {
+        } else {
             this.acceptTeachers.remove(teacherName);
         }
     }

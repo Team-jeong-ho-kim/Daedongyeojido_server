@@ -19,7 +19,7 @@ public class ModifyInterviewTimeService {
     public void modifyInterviewTime(String clubName, List<InterviewTimeRequest> requests) {
         interviewTimeRepository.deleteAllByClubName(clubName);
 
-        for(int i=0; i<requests.size(); i++) {
+        for (int i = 0; i < requests.size(); i++) {
             interviewTimeRepository.save(
                     InterviewTime.builder()
                             .interviewStartTime(requests.get(i).getInterviewStartTime())

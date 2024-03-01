@@ -18,10 +18,9 @@ public class AllUserResponse {
     private String myClub;
 
     public AllUserResponse(User user) {
-        if(user.getMyClub() == null) {
+        if (user.getMyClub() == null) {
             myClub = "null";
-        }
-        else {
+        } else {
             myClub = user.getMyClub().getClubName();
         }
 

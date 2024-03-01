@@ -17,7 +17,7 @@ public class ReportInfoService {
     @Transactional(readOnly = true)
     public ReportInfoResponse reportInfo(Long reportId) {
         Report report = reportRepository.findById(reportId)
-                .orElseThrow(()-> ReportNotFoundException.EXCEPTION);
+                .orElseThrow(() -> ReportNotFoundException.EXCEPTION);
 
         return ReportInfoResponse.builder()
                 .classNumber(report.getClassNumber())

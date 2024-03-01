@@ -1,12 +1,6 @@
 package com.example.daedongyeojido_server.domain.report.api;
 
-import com.example.daedongyeojido_server.domain.report.application.ApplyService;
-import com.example.daedongyeojido_server.domain.report.application.CancelApplyService;
-import com.example.daedongyeojido_server.domain.report.application.ModifyMemoService;
-import com.example.daedongyeojido_server.domain.report.application.QueryApplicantService;
-import com.example.daedongyeojido_server.domain.report.application.QueryApplyPageService;
-import com.example.daedongyeojido_server.domain.report.application.QueryMemoService;
-import com.example.daedongyeojido_server.domain.report.application.ReportInfoService;
+import com.example.daedongyeojido_server.domain.report.application.*;
 import com.example.daedongyeojido_server.domain.report.dto.request.ApplyRequest;
 import com.example.daedongyeojido_server.domain.report.dto.request.MemoRequest;
 import com.example.daedongyeojido_server.domain.report.dto.response.ApplyPageResponse;
@@ -16,15 +10,7 @@ import com.example.daedongyeojido_server.domain.report.dto.response.ReportRespon
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 

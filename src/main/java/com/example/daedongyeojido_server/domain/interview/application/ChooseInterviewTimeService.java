@@ -23,9 +23,9 @@ public class ChooseInterviewTimeService {
         Report report = reportFacade.reportFacade(request.getReportId());
 
         InterviewTime interviewTime = interviewTimeRepository.findById(request.getInterviewTimeId())
-                        .orElseThrow(()-> InterviewTimeNotFoundException.EXCEPTION);
+                .orElseThrow(() -> InterviewTimeNotFoundException.EXCEPTION);
 
-        if(!(report.getInterviewStartTime() == null)) {
+        if (!(report.getInterviewStartTime() == null)) {
             interviewTimeRepository.save(
                     InterviewTime.builder()
                             .interviewStartTime(report.getInterviewStartTime())

@@ -36,7 +36,8 @@ public class LoginService {
                         userRepository.save(user);
                         return jwtTokenProvider.receiveToken(request.getXquareId());
                     });
-        };
+        }
+        ;
 
         XquareUserResponse xquareUser = xquareClient.xquareUser(request.getXquareId());
         String classNumber = getClassNumber(xquareUser);

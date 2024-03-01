@@ -3,7 +3,6 @@ package com.example.daedongyeojido_server.domain.user.dto.response;
 import com.example.daedongyeojido_server.domain.notice.domain.enums.Major;
 import com.example.daedongyeojido_server.domain.report.domain.Report;
 import com.example.daedongyeojido_server.domain.report.domain.enums.PassingResult;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

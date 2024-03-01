@@ -23,7 +23,7 @@ public class QueryInterviewTimeService {
     @Transactional(readOnly = true)
     public List<InterviewTimeResponse> queryInterviewTime(Long reportId) {
         Report report = reportRepository.findById(reportId)
-                .orElseThrow(()-> ReportNotFoundException.EXCEPTION);
+                .orElseThrow(() -> ReportNotFoundException.EXCEPTION);
 
         return interviewTimeRepository.findAllByClubName(report.getNotice().getClubName().getClubName())
                 .stream()

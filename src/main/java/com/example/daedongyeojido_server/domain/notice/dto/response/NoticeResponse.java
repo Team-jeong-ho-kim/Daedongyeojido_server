@@ -33,4 +33,3 @@ public class NoticeResponse {
         this.applyOrNot = true;
     }
 }
-
