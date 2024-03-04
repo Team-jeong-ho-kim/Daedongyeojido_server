@@ -45,6 +45,7 @@ public class ClubInfoService {
                 .qAndA(club.getQAndA())
                 .clubImageUrl(club.getClubImageUrl())
                 .tags(club.getTags())
+                .teacherName(club.getTeacher().getName())
                 .clubMembers(clubMemberResponses)
                 .questResponses(questResponses)
                 .build();

@@ -28,6 +28,8 @@ public class ClubInfoResponse {
 
     private List<String> tags;
 
+    private String teacherName;
+
     private List<ClubMemberResponse> clubMembers;
 
     private List<QuestResponse> questResponses;
