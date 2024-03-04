@@ -15,6 +15,6 @@ public class QuestRequest {
     private String clubName;
 
     @NotBlank
-    @Size(max = 50, message = "질문은 20글자 이하여야 합니다.")
+    @Size(max = 30, message = "질문은 30글자 이하여야 합니다.")
     private String question;
 }
