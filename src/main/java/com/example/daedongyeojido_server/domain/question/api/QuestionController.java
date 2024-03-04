@@ -1,7 +1,9 @@
 package com.example.daedongyeojido_server.domain.question.api;
 
+import com.example.daedongyeojido_server.domain.question.application.AnswerQuestionService;
 import com.example.daedongyeojido_server.domain.question.application.QueryQuestionService;
 import com.example.daedongyeojido_server.domain.question.application.QuestClubService;
+import com.example.daedongyeojido_server.domain.question.dto.request.AnswerRequest;
 import com.example.daedongyeojido_server.domain.question.dto.request.QuestRequest;
 import com.example.daedongyeojido_server.domain.question.dto.response.QuestResponse;
 import jakarta.validation.Valid;
@@ -24,12 +26,20 @@ public class QuestionController {
 
     private final QuestClubService questClubService;
 
+    private final AnswerQuestionService answerQuestionService;
+
     private final QueryQuestionService queryQuestionService;
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
     public void questClub(@RequestBody @Valid QuestRequest request) {
         questClubService.questClub(request);
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @PostMapping
+    public void answerQuest(@RequestBody @Valid AnswerRequest request) {
+        answerQuestionService.answerQuest(request);
     }
 
     @ResponseStatus(HttpStatus.OK)
