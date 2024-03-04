@@ -43,7 +43,7 @@ public class QuestionController {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping("/{clubName}")
+    @GetMapping("/query/{clubName}")
     public List<QuestResponse> queryQuest(@PathVariable String clubName) {
         return queryQuestionService.queryQuestion(clubName);
     }
