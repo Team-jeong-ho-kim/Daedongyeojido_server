@@ -4,6 +4,7 @@ import com.example.daedongyeojido_server.domain.club.common.dto.response.ClubInf
 import com.example.daedongyeojido_server.domain.club.common.dto.response.ClubMemberResponse;
 import com.example.daedongyeojido_server.domain.club.dao.ClubRepository;
 import com.example.daedongyeojido_server.domain.club.domain.Club;
+import com.example.daedongyeojido_server.domain.question.dto.response.QuestResponse;
 import com.example.daedongyeojido_server.domain.user.dao.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -30,6 +31,11 @@ public class ClubInfoService {
                 .map(ClubMemberResponse::new)
                 .collect(Collectors.toList());
 
+        List<QuestResponse> questResponses = club.getClubQuests()
+                .stream()
+                .map(QuestResponse::new)
+                .collect(Collectors.toList());
+
         return ClubInfoResponse.builder()
                 .clubName(club.getClubName())
                 .title(club.getTitle())
@@ -40,6 +46,7 @@ public class ClubInfoService {
                 .clubImageUrl(club.getClubImageUrl())
                 .tags(club.getTags())
                 .clubMembers(clubMemberResponses)
+                .questResponses(questResponses)
                 .build();
     }
 }
