@@ -31,13 +31,13 @@ public class QuestionController {
     private final QueryQuestionService queryQuestionService;
 
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping
+    @PostMapping("/quest")
     public void questClub(@RequestBody @Valid QuestRequest request) {
         questClubService.questClub(request);
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @PostMapping
+    @PostMapping("/answer")
     public void answerQuest(@RequestBody @Valid AnswerRequest request) {
         answerQuestionService.answerQuest(request);
     }
