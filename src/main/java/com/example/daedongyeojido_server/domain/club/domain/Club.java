@@ -1,7 +1,7 @@
 package com.example.daedongyeojido_server.domain.club.domain;
 
 import com.example.daedongyeojido_server.domain.notice.domain.Notice;
-import com.example.daedongyeojido_server.domain.question.domain.QandA;
+import com.example.daedongyeojido_server.domain.question.domain.ClubQuest;
 import com.example.daedongyeojido_server.domain.user.domain.User;
 import jakarta.persistence.Column;
 import jakarta.persistence.ElementCollection;
@@ -63,7 +63,7 @@ public class Club {
     private List<Notice> notices = new ArrayList<>();
 
     @OneToMany(mappedBy = "club", orphanRemoval = true)
-    private List<QandA> questions = new ArrayList<>();
+    private List<ClubQuest> clubQuests = new ArrayList<>();
 
     @Column(name = "mess_count")
     private Integer messCount = 0;
@@ -75,6 +75,10 @@ public class Club {
 
     public void addNotice(Notice notice) {
         this.notices.add(notice);
+    }
+
+    public void addClubQuest(ClubQuest clubQuest) {
+        this.clubQuests.add(clubQuest);
     }
 
     public void modifyClub(String title, String introduction, String project, String weWant, String qAndA, String clubImageUrl, List<String> tags) {
