@@ -1,6 +1,6 @@
 package com.example.daedongyeojido_server.domain.question.dto.response;
 
-import com.example.daedongyeojido_server.domain.question.domain.QandA;
+import com.example.daedongyeojido_server.domain.question.domain.ClubQuest;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -14,9 +14,9 @@ public class QuestResponse {
 
     private String answer;
 
-    public QuestResponse(QandA qandA) {
-        questionId = qandA.getQuestionId();
-        question = qandA.getQuestion();
-        answer = qandA.getAnswer();
+    public QuestResponse(ClubQuest clubQuest) {
+        questionId = clubQuest.getClubQuestId();
+        question = clubQuest.getQuestion();
+        answer = clubQuest.getAnswer();
     }
 }
