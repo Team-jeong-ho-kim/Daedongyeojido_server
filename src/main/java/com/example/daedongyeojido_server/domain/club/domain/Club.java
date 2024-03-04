@@ -1,9 +1,21 @@
 package com.example.daedongyeojido_server.domain.club.domain;
 
 import com.example.daedongyeojido_server.domain.notice.domain.Notice;
+import com.example.daedongyeojido_server.domain.question.domain.QandA;
 import com.example.daedongyeojido_server.domain.user.domain.User;
-import jakarta.persistence.*;
-import lombok.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,6 +61,9 @@ public class Club {
 
     @OneToMany(mappedBy = "clubName", orphanRemoval = true)
     private List<Notice> notices = new ArrayList<>();
+
+    @OneToMany(mappedBy = "club", orphanRemoval = true)
+    private List<QandA> questions = new ArrayList<>();
 
     @Column(name = "mess_count")
     private Integer messCount = 0;
