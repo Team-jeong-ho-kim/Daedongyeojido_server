@@ -20,12 +20,12 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class QandA {
+public class ClubQuest {
 
     @Id
-    @Column(name = "question_id", nullable = false)
+    @Column(name = "club_quest_id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long questionId;
+    private Long clubQuestId;
 
     @Column(name = "question", nullable = false)
     private String question;
@@ -36,4 +36,8 @@ public class QandA {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "club_name", nullable = false)
     private Club club;
+
+    public void answerQuestion(String answer) {
+        this.answer = answer;
+    }
 }
