@@ -23,9 +23,7 @@ public class ModifyMemoService {
         Report report = reportRepository.findById(request.getReportId())
                 .orElseThrow(() -> ReportNotFoundException.EXCEPTION);
 
-        if (!(userFacade.currentUser().getMyClub().equals(report.getNotice().getClubName()))) {
-            throw ClubMisMatchException.EXCEPTION;
-        }
+        if(userFacade.currentUser().getMyClub() != report.getNotice().getClubName()) throw ClubMisMatchException.EXCEPTION;
 
         report.modifyMemo(request.getMemo());
     }
