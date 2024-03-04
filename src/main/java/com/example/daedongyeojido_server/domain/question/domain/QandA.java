@@ -1,10 +1,14 @@
 package com.example.daedongyeojido_server.domain.question.domain;
 
+import com.example.daedongyeojido_server.domain.club.domain.Club;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,7 +20,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Question {
+public class QandA {
 
     @Id
     @Column(name = "question_id", nullable = false)
@@ -28,4 +32,8 @@ public class Question {
 
     @Column(name = "answer")
     private String answer;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "club_name", nullable = false)
+    private Club club;
 }
