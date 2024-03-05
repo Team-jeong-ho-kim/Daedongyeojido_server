@@ -4,6 +4,7 @@ import com.example.daedongyeojido_server.domain.club.common.dto.request.ModifyCl
 import com.example.daedongyeojido_server.domain.club.dao.ClubRepository;
 import com.example.daedongyeojido_server.domain.club.domain.Club;
 import com.example.daedongyeojido_server.domain.club.exception.ClubMisMatchException;
+import com.example.daedongyeojido_server.domain.club.exception.DuplicatedTagsException;
 import com.example.daedongyeojido_server.domain.user.application.facade.UserFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -21,6 +22,8 @@ public class ModifyClubService {
     public void modifyClub(ModifyClubRequest request) {
         if (!(userFacade.currentUser().getMyClub().getClubName().equals(request.getClubName())))
             throw ClubMisMatchException.EXCEPTION;
+
+        if(request.getTags().size() != request.getTags().stream().distinct().count()) throw DuplicatedTagsException.EXCEPTION;
 
         Club club = clubRepository.findByClubName(request.getClubName());
 
