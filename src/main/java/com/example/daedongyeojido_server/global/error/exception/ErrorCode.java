@@ -32,6 +32,7 @@ public enum ErrorCode {
 
     // report
     REPORT_NOT_FOUND(404, "일치하는 지원서가 존재하지 않습니다."),
+    ALREADY_APPLY_USER(409, "이미 이 동아리에 지원한 유저 입니다."),
 
     // mess
     MESS_NOT_FOUND(404, "일치하는 회식이 존재하지 않습니다"),
