@@ -2,9 +2,8 @@ package com.example.daedongyeojido_server.domain.interview.application;
 
 import com.example.daedongyeojido_server.domain.interview.dao.InterviewTimeRepository;
 import com.example.daedongyeojido_server.domain.interview.dto.response.InterviewTimeResponse;
-import com.example.daedongyeojido_server.domain.report.dao.ReportRepository;
+import com.example.daedongyeojido_server.domain.report.application.facade.ReportFacade;
 import com.example.daedongyeojido_server.domain.report.domain.Report;
-import com.example.daedongyeojido_server.domain.report.exception.ReportNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,14 +15,13 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class QueryInterviewTimeService {
 
-    private final ReportRepository reportRepository;
+    private final ReportFacade reportFacade;
 
     private final InterviewTimeRepository interviewTimeRepository;
 
     @Transactional(readOnly = true)
     public List<InterviewTimeResponse> queryInterviewTime(Long reportId) {
-        Report report = reportRepository.findById(reportId)
-                .orElseThrow(() -> ReportNotFoundException.EXCEPTION);
+        Report report = reportFacade.reportFacade(reportId);
 
         return interviewTimeRepository.findAllByClubName(report.getNotice().getClubName().getClubName())
                 .stream()
