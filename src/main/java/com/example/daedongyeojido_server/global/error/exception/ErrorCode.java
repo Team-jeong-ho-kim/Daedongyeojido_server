@@ -22,6 +22,7 @@ public enum ErrorCode {
     INTERVIEW_TIME_NOT_FOUND(404, "일치하는 면접시간이 존재하지 않습니다."),
     EXIST_CLUB(409, "동일한 이름의 동아리가 존재합니다."),
     CLUB_MIS_MATCH(401, "동아리가 일치하지 않습니다."),
+    DUPLICATED_TAGS(409, "중복되는 태그가 존재합니다."),
 
     // clubQuest
     CLUB_QUEST_NOT_FOUND(404, "일치하는 동아리 질문이 존재하지 않습니다."),
