@@ -19,7 +19,7 @@ spring:
 jwt:
   header: Authorization
   prefix: Bearer
-  secret: lhjljlasndflasjdkfasdkfnasdasjidkflajsdkfahsdfjkafewfawefwaefeawfw
+  secret: ${SECRET}
   accessExpiration: 604800
   refreshExpiration: 271000
 redis:
