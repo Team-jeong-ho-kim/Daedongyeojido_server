@@ -20,8 +20,8 @@ jwt:
   header: Authorization
   prefix: Bearer
   secret: ${SECRET}
-  accessExpiration: 604800
-  refreshExpiration: 271000
+  accessExpiration: 271000
+  refreshExpiration: 604800
 redis:
     host: ${REDIS_HOST}
     port: 6379
