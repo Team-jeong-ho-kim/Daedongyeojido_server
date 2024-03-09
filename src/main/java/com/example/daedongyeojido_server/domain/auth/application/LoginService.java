@@ -2,7 +2,6 @@ package com.example.daedongyeojido_server.domain.auth.application;
 
 import com.example.daedongyeojido_server.domain.auth.dto.request.LoginRequest;
 import com.example.daedongyeojido_server.domain.auth.dto.response.LoginResponse;
-import com.example.daedongyeojido_server.domain.user.application.facade.UserFacade;
 import com.example.daedongyeojido_server.domain.user.dao.UserRepository;
 import com.example.daedongyeojido_server.domain.user.domain.User;
 import com.example.daedongyeojido_server.domain.user.domain.enums.Part;
@@ -25,8 +24,6 @@ public class LoginService {
 
     private final JwtTokenProvider jwtTokenProvider;
 
-    private final UserFacade userFacade;
-
     private final XquareClient xquareClient;
 
     private final PasswordEncoder passwordEncoder;
@@ -48,22 +45,22 @@ public class LoginService {
 
         XquareUserResponse xquareUserResponse = xquareClient.xquareUser(request.getAccount_id(), request.getPassword());
 
-        if(userRepository.existsByUserId(xquareUserResponse.getId())) {
+        if(userRepository.existsByUserId(xquareUserResponse.getId().toString())) {
             User user = userRepository.findByAccountId(request.getAccount_id())
                     .orElseThrow(()-> UserNotFoundException.EXCEPTION);
 
-            if(!passwordEncoder.matches(user.getPassword(), xquareUserResponse.getPassword())) throw PasswordMisMatchException.EXCEPTION;
+            if(!passwordEncoder.matches(xquareUserResponse.getPassword(), user.getPassword())) throw PasswordMisMatchException.EXCEPTION;
 
             return jwtTokenProvider.receiveToken(request.getAccount_id());
         }
 
         else {
             String num = xquareUserResponse.getNum()<10 ? '0' + Integer.toString(xquareUserResponse.getNum()) : Integer.toString(xquareUserResponse.getNum());
-            String classNumber = Integer.toString(xquareUserResponse.getGrade()) + Integer.toString(xquareUserResponse.getClass_num()) + num;
+            String classNumber = xquareUserResponse.getGrade().toString() + xquareUserResponse.getClass_num().toString() + num;
 
             userRepository.save(
                     User.builder()
-                    .userId(xquareUserResponse.getId())
+                    .userId(xquareUserResponse.getId().toString())
                     .accountId(xquareUserResponse.getAccount_id())
                     .password(xquareUserResponse.getPassword())
                     .name(xquareUserResponse.getName())
