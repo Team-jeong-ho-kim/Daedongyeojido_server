@@ -16,4 +16,6 @@ public interface UserRepository extends JpaRepository<User, UUID> {
     List<User> findAllByMyClub(Club myClub);
 
     Optional<User> findByName(String name);
+
+    Boolean existsByUserId(UUID userId);
 }
