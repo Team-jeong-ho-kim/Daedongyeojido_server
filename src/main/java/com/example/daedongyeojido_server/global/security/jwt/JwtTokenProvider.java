@@ -91,17 +91,17 @@ public class JwtTokenProvider {
         }
     }
 
-    public LoginResponse receiveToken(String xquareId) {
+    public LoginResponse receiveToken(String accountId) {
 
         Date  now = new Date();
 
-        User user = userRepository.findByXquareId(xquareId)
+        User user = userRepository.findByAccountId(accountId)
                 .orElseThrow(() -> UserNotFoundException.EXCEPTION);
 
         return LoginResponse
                 .builder()
-                .accessToken(createAccessToken(xquareId))
-                .refreshToken(createRefreshToken(xquareId))
+                .accessToken(createAccessToken(accountId))
+                .refreshToken(createRefreshToken(accountId))
                 .accessExpiredAt(new Date(now.getTime() + jwtProperties.getAccessExpiration()))
                 .refreshExpiredAt(new Date(now.getTime() + jwtProperties.getRefreshExpiration()))
                 .part(user.getPart())

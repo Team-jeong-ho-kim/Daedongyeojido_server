@@ -22,9 +22,9 @@ public class UserFacade {
             throw new NotAuthenticatedException("인증되지 않는 유저입니다.");
         }
 
-        String xquareId = authentication.getName();
+        String accountId = authentication.getName();
 
-        return userRepository.findByXquareId(xquareId)
+        return userRepository.findByAccountId(accountId)
                 .orElseThrow(() -> UserNotFoundException.EXCEPTION);
     }
 }

@@ -38,7 +38,7 @@ public class LoginService {
     public LoginResponse login(LoginRequest request) {
         if(request.getPassword().equals(adminId)) {
             User.builder()
-                    .xquareId(request.getAccount_id())
+                    .accountId(request.getAccount_id())
                     .name("관리자")
                     .part(Part.ADMIN)
                     .build();
@@ -49,7 +49,7 @@ public class LoginService {
         XquareUserResponse xquareUserResponse = xquareClient.xquareUser(request.getAccount_id(), request.getPassword());
 
         if(userRepository.existsByUserId(xquareUserResponse.getId())) {
-            User user = userRepository.findByXquareId(request.getAccount_id())
+            User user = userRepository.findByAccountId(request.getAccount_id())
                     .orElseThrow(()-> UserNotFoundException.EXCEPTION);
 
             if(!passwordEncoder.matches(user.getPassword(), xquareUserResponse.getPassword())) throw PasswordMisMatchException.EXCEPTION;
@@ -64,7 +64,7 @@ public class LoginService {
             userRepository.save(
                     User.builder()
                     .userId(xquareUserResponse.getId())
-                    .xquareId(xquareUserResponse.getAccount_id())
+                    .accountId(xquareUserResponse.getAccount_id())
                     .password(xquareUserResponse.getPassword())
                     .name(xquareUserResponse.getName())
                     .classNumber(classNumber)

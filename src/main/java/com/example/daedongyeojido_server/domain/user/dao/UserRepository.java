@@ -9,7 +9,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface UserRepository extends JpaRepository<User, UUID> {
-    Optional<User> findByXquareId(String xquareId);
+    Optional<User> findByAccountId(String accountId);
 
     Optional<User> findByClassNumber(String classNumber);
 

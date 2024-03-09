@@ -15,8 +15,8 @@ public class CustomUserDetailsService implements UserDetailsService {
     private final UserRepository userRepository;
 
     @Override
-    public UserDetails loadUserByUsername(String xquareId) {
-        User user = userRepository.findByXquareId(xquareId)
+    public UserDetails loadUserByUsername(String accountId) {
+        User user = userRepository.findByAccountId(accountId)
                 .orElseThrow(()->UserNotFoundException.EXCEPTION);
 
         return new CustomUserDetails(user);
