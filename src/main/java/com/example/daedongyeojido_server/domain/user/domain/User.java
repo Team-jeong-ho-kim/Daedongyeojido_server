@@ -3,12 +3,22 @@ package com.example.daedongyeojido_server.domain.user.domain;
 import com.example.daedongyeojido_server.domain.alarm.domain.Alarm;
 import com.example.daedongyeojido_server.domain.club.domain.Club;
 import com.example.daedongyeojido_server.domain.user.domain.enums.Part;
-import jakarta.persistence.*;
-import lombok.*;
-import org.hibernate.annotations.GenericGenerator;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
-import java.util.UUID;
 
 @Entity
 @Getter
@@ -18,13 +28,8 @@ import java.util.UUID;
 public class User {
 
     @Id
-    @GeneratedValue(generator = "uuid2")
-    @GenericGenerator(name = "uuid2", strategy = "uuid2")
-    @Column(
-            columnDefinition = "BINARY(16)",
-            nullable = false
-    )
-    private UUID userId;
+    @Column(name = "user_id", nullable = false)
+    private String userId;
 
     @Column(name = "account_id", nullable = false)
     private String accountId;
