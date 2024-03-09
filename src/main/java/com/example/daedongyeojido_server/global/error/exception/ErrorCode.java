@@ -16,6 +16,7 @@ public enum ErrorCode {
 
     // user
     USER_NOT_FOUND(404, "일치하는 유저가 존재하지 않습니다."),
+    PASSWORD_MIS_MATCH(401, "비밀번호가 일치하지 않습니다."),
 
     // club
     CLUB_NOT_FOUND(404, "일치하는 동아리가 존재하지 않습니다."),
