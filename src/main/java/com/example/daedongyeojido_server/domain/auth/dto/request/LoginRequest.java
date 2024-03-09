@@ -10,7 +10,8 @@ import lombok.NoArgsConstructor;
 public class LoginRequest {
 
     @NotBlank
-    private String xquareId;
+    private String account_id;
 
+    @NotBlank
     private String password;
 }
