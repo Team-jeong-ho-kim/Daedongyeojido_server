@@ -1,15 +1,14 @@
 package com.example.daedongyeojido_server.infra.feign;
 
-import com.example.daedongyeojido_server.infra.feign.dto.request.XquareUserRequest;
 import com.example.daedongyeojido_server.infra.feign.dto.response.XquareUserResponse;
-import jakarta.validation.Valid;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @FeignClient(name = "xquare-client", url = "${key.xquare-api-url}")
 public interface XquareClient {
 
-    @GetMapping("/user-data")
-    XquareUserResponse xquareUser(@RequestBody @Valid XquareUserRequest request);
+    @RequestMapping(method = RequestMethod.GET, value = "/user-data")
+    XquareUserResponse xquareUser(@RequestParam("account_id") String accountId, @RequestParam("password") String password);
 }
