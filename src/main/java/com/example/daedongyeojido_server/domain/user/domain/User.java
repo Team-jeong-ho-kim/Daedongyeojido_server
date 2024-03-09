@@ -24,10 +24,13 @@ public class User {
             columnDefinition = "BINARY(16)",
             nullable = false
     )
-    private UUID userId = UUID.randomUUID();
+    private UUID userId;
 
-    @Column(name = "xquare_id", nullable = false)
-    private String xquareId;
+    @Column(name = "account_id", nullable = false)
+    private String accountId;
+
+    @Column(name = "password")
+    private String password;
 
     @Column(name = "class_number", length = 4)
     private String classNumber;
