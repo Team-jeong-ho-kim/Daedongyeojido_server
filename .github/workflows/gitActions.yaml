@@ -41,7 +41,7 @@ jobs:
             REDIS_HOST=${{ secrets.REDIS_HOST }}
             AWS_ACCESS_KEY=${{ secrets.AWS_ACCESS_KEY }}
             SECRET_KEY=${{ secrets.SECRET_KEY }}
-            XQUARE_URL=${{ secrets.XQUARE_URL }}
+            LOGIN_URL=${{ secrets.LOGIN_URL }}
             DAEDONG_SECRET_KEY=${{ secrets.DAEDONG_SECRET_KEY }}
             PICK_SECRET_KEY=${{ secrets.PICK_SECRET_KEY }}
             ADMIN_ID=${{ secrets.ADMIN_ID }}
