@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@FeignClient(name = "xquare-client", url = "${key.xquare-api-url}")
+@FeignClient(name = "xquare-client", url = "${key.login-api-url}")
 public interface XquareClient {
 
     @RequestMapping(method = RequestMethod.GET, value = "/user-data")
