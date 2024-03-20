@@ -38,7 +38,7 @@ public class Notice {
     @Column(name = "notice_explain", nullable = false, length = 100)
     private String noticeExplain;
 
-    @OneToMany(mappedBy = "noticeId", orphanRemoval = true)
+    @OneToMany(mappedBy = "notice", orphanRemoval = true)
     private List<Field> fields;
 
     @OneToOne(fetch = FetchType.LAZY)

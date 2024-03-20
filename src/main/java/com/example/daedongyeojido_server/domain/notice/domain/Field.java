@@ -34,6 +34,6 @@ public class Field {
     private String toDo;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "notice_id", nullable = false)
-    private Notice noticeId;
+    @JoinColumn(name = "notice", nullable = false)
+    private Notice notice;
 }

@@ -58,6 +58,7 @@ public class CreateNoticeService {
                     Field.builder()
                             .major(fieldRequest.getMajor())
                             .toDo(fieldRequest.getToDo())
+                            .notice(notice)
                             .build());
 
             notice.addField(field);
@@ -67,12 +68,14 @@ public class CreateNoticeService {
                 StartAndEndTime.builder()
                         .startDay(request.getRecruitDay().getStartDay())
                         .endDay(request.getRecruitDay().getEndDay())
+                        .notice(notice)
                         .build());
 
         StartAndEndTime interviewDay = startEndEndTimeRepository.save(
                 StartAndEndTime.builder()
                         .startDay(request.getInterviewDay().getStartDay())
                         .endDay(request.getInterviewDay().getEndDay())
+                        .notice(notice)
                         .build());
 
         notice.setRecruitDay(recruitDay);
