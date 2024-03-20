@@ -21,7 +21,6 @@ public class QueryApplyPageService {
 
         return ApplyPageResponse.builder()
                 .clubName(notice.getClubName().getClubName())
-                .major(notice.getMajor())
                 .build();
     }
 }

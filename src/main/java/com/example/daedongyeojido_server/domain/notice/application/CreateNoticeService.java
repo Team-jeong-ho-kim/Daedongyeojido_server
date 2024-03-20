@@ -2,18 +2,33 @@ package com.example.daedongyeojido_server.domain.notice.application;
 
 import com.example.daedongyeojido_server.domain.club.dao.ClubRepository;
 import com.example.daedongyeojido_server.domain.club.domain.Club;
+import com.example.daedongyeojido_server.domain.club.exception.ClubMisMatchException;
+import com.example.daedongyeojido_server.domain.notice.dao.FieldRepository;
 import com.example.daedongyeojido_server.domain.notice.dao.NoticeRepository;
+import com.example.daedongyeojido_server.domain.notice.dao.StartEndEndTimeRepository;
+import com.example.daedongyeojido_server.domain.notice.domain.Field;
 import com.example.daedongyeojido_server.domain.notice.domain.Notice;
+import com.example.daedongyeojido_server.domain.notice.domain.StartAndEndTime;
 import com.example.daedongyeojido_server.domain.notice.dto.request.CreateNoticeRequest;
+import com.example.daedongyeojido_server.domain.notice.dto.request.FieldRequest;
+import com.example.daedongyeojido_server.domain.user.application.facade.UserFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class CreateNoticeService {
 
+    private final UserFacade userFacade;
+
     private final NoticeRepository noticeRepository;
+
+    private final FieldRepository fieldRepository;
+
+    private final StartEndEndTimeRepository startEndEndTimeRepository;
 
     private final ClubRepository clubRepository;
 
@@ -21,13 +36,48 @@ public class CreateNoticeService {
     public void createNotice(CreateNoticeRequest request) {
         Club club = clubRepository.findByClubName(request.getClubName());
 
+        if(!userFacade.currentUser().getMyClub().equals(club)) throw ClubMisMatchException.EXCEPTION;
+
         Notice notice = noticeRepository.save(
                 Notice.builder()
-                        .major(request.getMajor())
-                        .deadline(request.getDeadline())
                         .clubName(club)
+                        .noticeTitle(request.getNoticeTitle())
+                        .noticeExplain(request.getNoticeExplain())
+                        .applyMethod(request.getApplyMethod())
+                        .inquiry(request.getInquiry())
+                        .weWant(request.getWeWant())
+                        .assignment(request.getAssignment())
                         .build());
 
-        club.addNotice(notice);
+        List<FieldRequest> fields = request.getFields();
+
+        for(int i=0; i<fields.size(); i++) {
+            FieldRequest fieldRequest = fields.get(i);
+
+            Field field = fieldRepository.save(
+                    Field.builder()
+                            .major(fieldRequest.getMajor())
+                            .toDo(fieldRequest.getToDo())
+                            .build());
+
+            notice.addField(field);
+        }
+
+        StartAndEndTime recruitDay = startEndEndTimeRepository.save(
+                StartAndEndTime.builder()
+                        .startDay(request.getRecruitDay().getStartDay())
+                        .endDay(request.getRecruitDay().getEndDay())
+                        .build());
+
+        StartAndEndTime interviewDay = startEndEndTimeRepository.save(
+                StartAndEndTime.builder()
+                        .startDay(request.getInterviewDay().getStartDay())
+                        .endDay(request.getInterviewDay().getEndDay())
+                        .build());
+
+        notice.setRecruitDay(recruitDay);
+        notice.setInterviewDay(interviewDay);
+
+        club.addNotice(notice); // 이렇게 하지 말고 동아리 이름으로 조회 ㄱㄱ
     }
 }

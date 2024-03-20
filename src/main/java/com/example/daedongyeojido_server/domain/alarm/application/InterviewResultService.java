@@ -53,7 +53,6 @@ public class InterviewResultService {
                         .userName(report.getName())
                         .createTime(LocalDateTime.now())
                         .passingResult(request.getPassingResult())
-                        .major(report.getNotice().getMajor())
                         .alarmType(alarmType)
                         .user(user)
                         .build());

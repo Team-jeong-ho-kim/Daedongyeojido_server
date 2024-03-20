@@ -23,9 +23,7 @@ public class NoticeResponse {
 
     public NoticeResponse(Notice notice) {
         id = notice.getNoticeId();
-        major = notice.getMajor();
         clubName = notice.getClubName().getClubName();
-        deadline = notice.getDeadline();
         applyOrNot = false;
     }
 

@@ -32,7 +32,6 @@ public class ReportResponse {
         reportId = report.getReportId();
         classNumber = report.getClassNumber();
         name = report.getName();
-        hopeMajor = report.getNotice().getMajor();
         interviewStartTime = report.getInterviewStartTime();
         interviewEndTime = report.getInterviewEndTime();
         reportPassingResult = report.getReportPassingResult();
