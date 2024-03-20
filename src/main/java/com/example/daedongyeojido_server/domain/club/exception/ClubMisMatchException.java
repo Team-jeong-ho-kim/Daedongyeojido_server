@@ -8,6 +8,6 @@ public class ClubMisMatchException extends BusinessException {
     public static final BusinessException EXCEPTION = new ClubMisMatchException();
 
     public ClubMisMatchException() {
-        super(ErrorCode.CLUB_NOT_FOUND);
+        super(ErrorCode.CLUB_MIS_MATCH);
     }
 }
