@@ -43,9 +43,6 @@ public class Club {
     @Column(name = "we_want", length = 300)
     private String weWant;
 
-    @Column(name = "q_and_a", length = 300)
-    private String qAndA;
-
     @Column(name = "club_image_url", length = 20, columnDefinition = "TEXT")
     private String clubImageUrl;
 
@@ -86,7 +83,6 @@ public class Club {
         this.introduction = introduction;
         this.project = project;
         this.weWant = weWant;
-        this.qAndA = qAndA;
         this.clubImageUrl = clubImageUrl;
         this.tags = tags;
     }

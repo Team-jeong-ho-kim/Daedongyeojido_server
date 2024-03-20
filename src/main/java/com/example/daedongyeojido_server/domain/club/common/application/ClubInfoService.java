@@ -42,7 +42,6 @@ public class ClubInfoService {
                 .introduction(club.getIntroduction())
                 .project(club.getProject())
                 .weWant(club.getWeWant())
-                .qAndA(club.getQAndA())
                 .clubImageUrl(club.getClubImageUrl())
                 .tags(club.getTags())
                 .teacherName((club.getTeacher() == null) ? "null" : club.getTeacher().getName())
