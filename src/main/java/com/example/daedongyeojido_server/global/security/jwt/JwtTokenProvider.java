@@ -36,12 +36,12 @@ public class JwtTokenProvider {
     private final RefreshTokenRepository refreshTokenRepository;
 
     // access token 생성
-    public String createAccessToken(String xquareId) {
+    public String createAccessToken(String accountId) {
 
         Date now = new Date();
 
         return Jwts.builder()
-                .setSubject(xquareId)
+                .setSubject(accountId)
                 .claim("type", "access")
                 .setIssuedAt(now)
                 .setExpiration(new Date(now.getTime() + jwtProperties.getAccessExpiration() * 1000))
@@ -49,7 +49,7 @@ public class JwtTokenProvider {
                 .compact();
     }
 
-    public String createRefreshToken(String xquareId) {
+    public String createRefreshToken(String accountId) {
 
         Date now = new Date();
 
@@ -62,7 +62,7 @@ public class JwtTokenProvider {
 
         refreshTokenRepository.save(
                 RefreshToken.builder()
-                        .xquareId(xquareId)
+                        .accountId(accountId)
                         .token(refreshToken)
                         .timeToLive(jwtProperties.getRefreshExpiration())
                         .build());
