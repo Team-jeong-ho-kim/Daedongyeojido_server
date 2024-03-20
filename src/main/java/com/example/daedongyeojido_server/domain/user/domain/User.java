@@ -34,6 +34,9 @@ public class User {
     @Column(name = "account_id", nullable = false)
     private String accountId;
 
+    @Column(name = "password", nullable = false)
+    private String password;
+
     @Column(name = "class_number", length = 4)
     private String classNumber;
 
