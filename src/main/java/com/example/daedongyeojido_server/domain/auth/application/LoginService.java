@@ -28,7 +28,7 @@ public class LoginService {
 
     @Transactional
     public LoginResponse login(LoginRequest request) {
-        if(request.getPassword().equals(adminId)) {
+        if(request.getAccount_id().equals(adminId)) {
             User.builder()
                     .accountId(request.getAccount_id())
                     .name("관리자")
@@ -51,7 +51,6 @@ public class LoginService {
                 User.builder()
                     .userId(xquareUserResponse.getId().toString())
                     .accountId(xquareUserResponse.getAccount_id())
-                    .password(xquareUserResponse.getPassword())
                     .name(xquareUserResponse.getName())
                     .classNumber(classNumber)
                     .part(xquareUserResponse.getUser_role().equals("STU") ? Part.INDEPENDENT : Part.TEACHER)
