@@ -16,8 +16,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-
 @Service
 @RequiredArgsConstructor
 public class CreateNoticeService {
@@ -43,25 +41,22 @@ public class CreateNoticeService {
                         .clubName(club)
                         .noticeTitle(request.getNoticeTitle())
                         .noticeExplain(request.getNoticeExplain())
+                        .fields(request.getFields().stream().map(Field::new).toList())
                         .applyMethod(request.getApplyMethod())
                         .inquiry(request.getInquiry())
                         .weWant(request.getWeWant())
                         .assignment(request.getAssignment())
                         .build());
 
-        List<FieldRequest> fields = request.getFields();
+        for(int i = 0;i<request.getFields().size(); i++) {
+            FieldRequest fieldRequest = request.getFields().get(i);
 
-        for(int i=0; i<fields.size(); i++) {
-            FieldRequest fieldRequest = fields.get(i);
-
-            Field field = fieldRepository.save(
+            fieldRepository.save(
                     Field.builder()
                             .major(fieldRequest.getMajor())
                             .toDo(fieldRequest.getToDo())
                             .notice(notice)
                             .build());
-
-            notice.addField(field);
         }
 
         StartAndEndTime recruitDay = startEndEndTimeRepository.save(
