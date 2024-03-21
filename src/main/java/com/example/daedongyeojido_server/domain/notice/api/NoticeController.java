@@ -2,8 +2,10 @@ package com.example.daedongyeojido_server.domain.notice.api;
 
 import com.example.daedongyeojido_server.domain.notice.application.CreateNoticeService;
 import com.example.daedongyeojido_server.domain.notice.application.DeleteNoticeService;
-import com.example.daedongyeojido_server.domain.notice.application.QueryNoticeService;
+import com.example.daedongyeojido_server.domain.notice.application.QueryAllNoticeService;
+import com.example.daedongyeojido_server.domain.notice.application.QueryNoticeInfoService;
 import com.example.daedongyeojido_server.domain.notice.dto.request.CreateNoticeRequest;
+import com.example.daedongyeojido_server.domain.notice.dto.response.NoticeInfoResponse;
 import com.example.daedongyeojido_server.domain.notice.dto.response.NoticeResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +21,9 @@ public class NoticeController {
 
     private final CreateNoticeService createNoticeService;
 
-    private final QueryNoticeService queryNoticeService;
+    private final QueryAllNoticeService queryAllNoticeService;
+
+    private final QueryNoticeInfoService queryNoticeInfoService;
 
     private final DeleteNoticeService deleteNoticeService;
 
@@ -30,9 +34,15 @@ public class NoticeController {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping("/{clubName}")
-    public List<NoticeResponse> queryNotice(@PathVariable String clubName) {
-        return queryNoticeService.queryNotice(clubName);
+    @GetMapping("/all")
+    public List<NoticeResponse> queryAllNotice() {
+        return queryAllNoticeService.queryAllNotice();
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/info/{noticeId}")
+    public NoticeInfoResponse queryNoticeInfo(@PathVariable Long noticeId) {
+        return queryNoticeInfoService.queryNoticeInfo(noticeId);
     }
 
     @ResponseStatus(HttpStatus.OK)
