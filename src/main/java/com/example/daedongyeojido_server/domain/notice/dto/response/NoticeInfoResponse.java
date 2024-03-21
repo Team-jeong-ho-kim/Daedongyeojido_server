@@ -17,6 +17,8 @@ public class NoticeInfoResponse {
 
     private String noticeExplain;
 
+    private String clubExplain;
+
     private List<FieldResponse> fields;
 
     private StartAndEndTimeResponse recruitDay;

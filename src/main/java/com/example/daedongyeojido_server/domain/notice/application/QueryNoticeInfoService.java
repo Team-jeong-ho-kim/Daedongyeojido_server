@@ -26,6 +26,7 @@ public class QueryNoticeInfoService {
                 .clubName(notice.getClubName().getClubName())
                 .noticeTitle(notice.getNoticeTitle())
                 .noticeExplain(notice.getNoticeExplain())
+                .clubExplain(notice.getClubExplain())
                 .fields(notice.getFields().stream().map(FieldResponse::new).toList())
                 .recruitDay(new StartAndEndTimeResponse(notice.getRecruitDay().getStartDay(), notice.getRecruitDay().getEndDay()))
                 .applyMethod(notice.getApplyMethod())

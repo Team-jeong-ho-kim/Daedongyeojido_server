@@ -41,6 +41,7 @@ public class CreateNoticeService {
                         .clubName(club)
                         .noticeTitle(request.getNoticeTitle())
                         .noticeExplain(request.getNoticeExplain())
+                        .clubExplain(request.getClubExplain())
                         .fields(request.getFields().stream().map(Field::new).toList())
                         .applyMethod(request.getApplyMethod())
                         .inquiry(request.getInquiry())

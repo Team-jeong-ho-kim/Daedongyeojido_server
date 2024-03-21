@@ -36,8 +36,11 @@ public class Notice {
     @Column(name = "notice_title", nullable = false, length = 20)
     private String noticeTitle;
 
-    @Column(name = "notice_explain", nullable = false, length = 100)
+    @Column(name = "notice_explain", nullable = false, length = 30)
     private String noticeExplain;
+
+    @Column(name = "club_explain", nullable = false, length = 100)
+    private String clubExplain;
 
     @OneToMany(mappedBy = "notice", orphanRemoval = true)
     private List<Field> fields = new ArrayList<>();

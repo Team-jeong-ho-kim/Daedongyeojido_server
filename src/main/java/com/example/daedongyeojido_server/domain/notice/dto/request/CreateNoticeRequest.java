@@ -23,6 +23,9 @@ public class CreateNoticeRequest {
     @NotBlank
     private String noticeExplain;
 
+    @NotBlank
+    private String clubExplain;
+
     @NotNull
     private List<FieldRequest> fields;
 
