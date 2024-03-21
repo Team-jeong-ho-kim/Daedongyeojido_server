@@ -1,6 +1,7 @@
 package com.example.daedongyeojido_server.domain.notice.domain;
 
 import com.example.daedongyeojido_server.domain.notice.domain.enums.Major;
+import com.example.daedongyeojido_server.domain.notice.dto.request.FieldRequest;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -36,4 +37,9 @@ public class Field {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "notice", nullable = false)
     private Notice notice;
+
+    public Field(FieldRequest request) {
+        this.major = request.getMajor();
+        this.toDo = request.getToDo();
+    }
 }
