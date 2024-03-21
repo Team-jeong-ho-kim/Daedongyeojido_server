@@ -18,6 +18,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -39,7 +40,7 @@ public class Notice {
     private String noticeExplain;
 
     @OneToMany(mappedBy = "notice", orphanRemoval = true)
-    private List<Field> fields;
+    private List<Field> fields = new ArrayList<>();
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "recruit_day")
@@ -67,10 +68,6 @@ public class Notice {
 
     @OneToMany(mappedBy = "notice", orphanRemoval = true)
     private List<Report> reports;
-
-    public void addField(Field field) {
-        this.fields.add(field);
-    }
 
     public void setRecruitDay(StartAndEndTime startAndEndTime) {
         this.recruitDay = startAndEndTime;
