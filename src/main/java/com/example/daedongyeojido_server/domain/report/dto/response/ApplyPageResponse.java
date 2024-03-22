@@ -1,16 +1,19 @@
 package com.example.daedongyeojido_server.domain.report.dto.response;
 
-import com.example.daedongyeojido_server.domain.notice.domain.enums.Major;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+
+import java.util.List;
 
 @Getter
 @Builder
 @AllArgsConstructor
 public class ApplyPageResponse {
 
-    private String clubName;
+    private String name;
 
-    private Major major;
+    private String classNumber;
+
+    private List<QuestionResponse> questions;
 }
