@@ -2,6 +2,7 @@ package com.example.daedongyeojido_server.domain.user.domain;
 
 import com.example.daedongyeojido_server.domain.alarm.domain.Alarm;
 import com.example.daedongyeojido_server.domain.club.domain.Club;
+import com.example.daedongyeojido_server.domain.notice.domain.enums.Major;
 import com.example.daedongyeojido_server.domain.user.domain.enums.Part;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -43,6 +44,16 @@ public class User {
     @Column(name = "name", length = 4, nullable = false)
     private String name;
 
+    @Column(name = "profile_image_url")
+    private String profileImageUrl;
+
+    @Column(name = "oneliner", length = 20)
+    private String oneliner;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "major")
+    private Major major;
+
     @Enumerated(EnumType.STRING)
     @Column(name = "part", nullable = false)
     private Part part;
@@ -59,7 +70,15 @@ public class User {
         this.myClub = clubName;
     }
 
+    public void changeMajor(Major major) {
+        this.major = major;
+    }
+
     public void addAlarm(Alarm alarm) {
-        alarms.add(alarm);
+        this.alarms.add(alarm);
+    }
+
+    public void updateProfile(String profileImageUrl) {
+        this.profileImageUrl = profileImageUrl;
     }
 }
