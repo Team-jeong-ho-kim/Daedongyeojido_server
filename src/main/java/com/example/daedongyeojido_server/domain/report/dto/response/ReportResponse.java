@@ -18,8 +18,6 @@ public class ReportResponse {
 
     private String name;
 
-    private Major hopeMajor;
-
     private LocalDateTime interviewStartTime;
 
     private LocalDateTime interviewEndTime;
