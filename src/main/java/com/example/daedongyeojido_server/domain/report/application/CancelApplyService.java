@@ -12,7 +12,7 @@ public class CancelApplyService {
     private final ReportRepository reportRepository;
 
     @Transactional
-    public void cancelApply(Long applyId) {
-        reportRepository.deleteById(applyId);
+    public void cancelApply(Long reportId) {
+        reportRepository.deleteById(reportId);
     }
 }
