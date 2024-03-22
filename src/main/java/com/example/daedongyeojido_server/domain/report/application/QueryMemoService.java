@@ -26,6 +26,7 @@ public class QueryMemoService {
         return MemoResponse.builder()
                 .classNumber(report.getClassNumber())
                 .name(report.getName())
+                .major(report.getMajor())
                 .interviewPassingResult(report.getInterviewPassingResult())
                 .memo(report.getMemo())
                 .build();
