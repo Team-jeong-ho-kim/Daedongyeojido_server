@@ -41,6 +41,8 @@ public class MyInfoService {
                 .name(user.getName())
                 .part(user.getPart())
                 .myClub(clubName)
+                .profileImageUrl(user.getProfileImageUrl())
+                .major(user.getMajor())
                 .myReport(myReportResponses)
                 .build();
     }
