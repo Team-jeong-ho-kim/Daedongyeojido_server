@@ -51,7 +51,7 @@ public class User {
     private String oneliner;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "major")
+    @Column(name = "major", nullable = false)
     private Major major;
 
     @Enumerated(EnumType.STRING)
