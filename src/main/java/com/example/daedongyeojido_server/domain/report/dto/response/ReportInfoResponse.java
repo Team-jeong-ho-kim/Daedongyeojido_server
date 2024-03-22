@@ -1,5 +1,6 @@
 package com.example.daedongyeojido_server.domain.report.dto.response;
 
+import com.example.daedongyeojido_server.domain.report.domain.enums.PassingResult;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -16,6 +17,8 @@ public class ReportInfoResponse {
     private String name;
 
     private String introduce;
+
+    private PassingResult reportPassingResult;
 
     private List<ReportQuestResponse> noticeQuests;
 }
