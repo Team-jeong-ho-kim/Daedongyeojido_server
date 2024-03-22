@@ -1,9 +1,9 @@
 package com.example.daedongyeojido_server.domain.report.api;
 
+import com.example.daedongyeojido_server.domain.notice.application.QueryApplyPageService;
 import com.example.daedongyeojido_server.domain.report.application.*;
 import com.example.daedongyeojido_server.domain.report.dto.request.ApplyRequest;
 import com.example.daedongyeojido_server.domain.report.dto.request.MemoRequest;
-import com.example.daedongyeojido_server.domain.report.dto.response.ApplyPageResponse;
 import com.example.daedongyeojido_server.domain.report.dto.response.MemoResponse;
 import com.example.daedongyeojido_server.domain.report.dto.response.ReportInfoResponse;
 import com.example.daedongyeojido_server.domain.report.dto.response.ReportResponse;
@@ -37,12 +37,6 @@ public class ReportController {
     @PostMapping("/apply")
     public void apply(@RequestBody @Valid ApplyRequest request) {
         applyService.apply(request);
-    }
-
-    @ResponseStatus(HttpStatus.OK)
-    @GetMapping("/apply/{noticeId}")
-    public ApplyPageResponse queryApplyPage(@PathVariable Long noticeId) {
-        return queryApplyPageService.queryApplyPage(noticeId);
     }
 
     @ResponseStatus(HttpStatus.OK)
