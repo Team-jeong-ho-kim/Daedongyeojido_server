@@ -2,6 +2,7 @@ package com.example.daedongyeojido_server.domain.report.domain;
 
 import com.example.daedongyeojido_server.domain.notice.domain.NoticeQuest;
 import com.example.daedongyeojido_server.domain.report.dto.request.ReportQuestRequest;
+import com.example.daedongyeojido_server.domain.report.dto.request.SaveReportQuestRequest;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -37,4 +38,9 @@ public class ReportQuest {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "report", nullable = false)
     private Report report;
+
+    public ReportQuest(SaveReportQuestRequest request) {
+        this.question = request.getQuestion();
+        this.answer = request.getAnswer();
+    }
 }
