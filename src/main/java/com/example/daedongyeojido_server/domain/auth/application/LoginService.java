@@ -2,6 +2,7 @@ package com.example.daedongyeojido_server.domain.auth.application;
 
 import com.example.daedongyeojido_server.domain.auth.dto.request.LoginRequest;
 import com.example.daedongyeojido_server.domain.auth.dto.response.LoginResponse;
+import com.example.daedongyeojido_server.domain.notice.domain.enums.Major;
 import com.example.daedongyeojido_server.domain.user.dao.UserRepository;
 import com.example.daedongyeojido_server.domain.user.domain.User;
 import com.example.daedongyeojido_server.domain.user.domain.enums.Part;
@@ -48,6 +49,7 @@ public class LoginService {
                     .accountId(request.getAccount_id())
                     .password(passwordEncoder.encode(request.getPassword()))
                     .name("관리자")
+                    .major(Major.UNDEFINED)
                     .part(Part.ADMIN)
                     .build());
 
@@ -66,6 +68,7 @@ public class LoginService {
                     .password(xquareUserResponse.getPassword())
                     .name(xquareUserResponse.getName())
                     .classNumber(classNumber)
+                    .major(Major.UNDEFINED)
                     .part(xquareUserResponse.getUser_role().equals("STU") ? Part.INDEPENDENT : Part.TEACHER)
                     .build());
 
