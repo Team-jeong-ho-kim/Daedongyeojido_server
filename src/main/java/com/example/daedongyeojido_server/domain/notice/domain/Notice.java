@@ -72,11 +72,18 @@ public class Notice {
     @OneToMany(mappedBy = "notice", orphanRemoval = true)
     private List<Report> reports;
 
+    @OneToMany(mappedBy = "notice", orphanRemoval = true)
+    private List<NoticeQuest> noticeQuests;
+
     public void setRecruitDay(StartAndEndTime startAndEndTime) {
         this.recruitDay = startAndEndTime;
     }
 
     public void setInterviewDay(StartAndEndTime startAndEndTime) {
         this.interviewDay = startAndEndTime;
+    }
+
+    public void addQuest(NoticeQuest noticeQuest) {
+        this.noticeQuests.add(noticeQuest);
     }
 }
