@@ -4,6 +4,7 @@ import com.example.daedongyeojido_server.domain.club.exception.ClubMisMatchExcep
 import com.example.daedongyeojido_server.domain.report.application.facade.ReportFacade;
 import com.example.daedongyeojido_server.domain.report.domain.Report;
 import com.example.daedongyeojido_server.domain.report.dto.response.ReportInfoResponse;
+import com.example.daedongyeojido_server.domain.report.dto.response.ReportQuestResponse;
 import com.example.daedongyeojido_server.domain.user.application.facade.UserFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -26,11 +27,8 @@ public class ReportInfoService {
         return ReportInfoResponse.builder()
                 .classNumber(report.getClassNumber())
                 .name(report.getName())
-                .reportPassingResult(report.getReportPassingResult())
-                .oneLiner(report.getOneLiner())
-                .introduction(report.getIntroduction())
-                .hopeMajor(report.getHopeMajor())
-                .learn(report.getLearn())
+                .introduce(report.getIntroduce())
+                .noticeQuests(report.getReportQuests().stream().map(ReportQuestResponse::new).toList())
                 .build();
     }
 }
