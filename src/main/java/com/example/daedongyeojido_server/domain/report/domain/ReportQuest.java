@@ -1,5 +1,7 @@
 package com.example.daedongyeojido_server.domain.report.domain;
 
+import com.example.daedongyeojido_server.domain.notice.domain.NoticeQuest;
+import com.example.daedongyeojido_server.domain.report.dto.request.ReportQuestRequest;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -29,7 +31,7 @@ public class ReportQuest {
     @Column(name = "question", nullable = false, length = 30)
     private String question;
 
-    @Column(name = "answer", length = 200)
+    @Column(name = "answer", nullable = false, length = 200)
     private String answer;
 
     @ManyToOne(fetch = FetchType.LAZY)
