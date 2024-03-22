@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 public class ReportQuestRequest {
 
     @NotNull
-    private String question;
+    private Long noticeQuestId;
 
     @NotBlank
     private String answer;
