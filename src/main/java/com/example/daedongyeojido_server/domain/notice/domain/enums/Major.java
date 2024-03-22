@@ -7,6 +7,8 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum Major {
 
+    UNDEFINED("미정"),
+
     FRONT("프론트엔드"),
 
     BACK("백엔드"),
