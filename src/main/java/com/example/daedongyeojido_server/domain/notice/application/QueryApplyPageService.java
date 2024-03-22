@@ -1,10 +1,10 @@
-package com.example.daedongyeojido_server.domain.report.application;
+package com.example.daedongyeojido_server.domain.notice.application;
 
 import com.example.daedongyeojido_server.domain.notice.dao.NoticeRepository;
 import com.example.daedongyeojido_server.domain.notice.domain.Notice;
+import com.example.daedongyeojido_server.domain.notice.dto.response.ApplyPageResponse;
+import com.example.daedongyeojido_server.domain.notice.dto.response.NoticeQuestResponse;
 import com.example.daedongyeojido_server.domain.notice.exception.NoticeNotFoundException;
-import com.example.daedongyeojido_server.domain.report.dto.response.ApplyPageResponse;
-import com.example.daedongyeojido_server.domain.report.dto.response.QuestionResponse;
 import com.example.daedongyeojido_server.domain.user.application.facade.UserFacade;
 import com.example.daedongyeojido_server.domain.user.domain.User;
 import lombok.RequiredArgsConstructor;
@@ -29,7 +29,7 @@ public class QueryApplyPageService {
         return ApplyPageResponse.builder()
                 .name(user.getName())
                 .classNumber(user.getClassNumber())
-                .questions(notice.getReportQuests().stream().map(QuestionResponse::new).toList())
+                .questions(notice.getNoticeQuests().stream().map(NoticeQuestResponse::new).toList())
                 .build();
     }
 }

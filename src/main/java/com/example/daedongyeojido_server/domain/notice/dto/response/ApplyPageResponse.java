@@ -1,4 +1,4 @@
-package com.example.daedongyeojido_server.domain.report.dto.response;
+package com.example.daedongyeojido_server.domain.notice.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,5 +15,5 @@ public class ApplyPageResponse {
 
     private String classNumber;
 
-    private List<QuestionResponse> questions;
+    private List<NoticeQuestResponse> questions;
 }
