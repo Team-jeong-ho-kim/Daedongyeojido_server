@@ -1,6 +1,7 @@
 package com.example.daedongyeojido_server.domain.report.domain;
 
 import com.example.daedongyeojido_server.domain.notice.domain.Notice;
+import com.example.daedongyeojido_server.domain.notice.domain.enums.Major;
 import com.example.daedongyeojido_server.domain.report.domain.enums.PassingResult;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -20,6 +21,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -43,8 +45,12 @@ public class Report {
     @Column(name = "introduce", length = 200, nullable = false)
     private String introduce;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "major", nullable = false)
+    private Major major;
+
     @OneToMany(mappedBy = "report", orphanRemoval = true)
-    private List<ReportQuest> reportQuests;
+    private List<ReportQuest> reportQuests = new ArrayList<>();
 
     @Column(name = "memo")
     private String memo;
@@ -56,11 +62,11 @@ public class Report {
     private LocalDateTime interviewEndTime;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "report_passing_result")
+    @Column(name = "report_passing_result", nullable = false)
     private PassingResult reportPassingResult;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "interview_passing_result")
+    @Column(name = "interview_passing_result", nullable = false)
     private PassingResult interviewPassingResult;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -82,9 +88,5 @@ public class Report {
     public void saveInterviewTime(LocalDateTime interviewStartTime, LocalDateTime interviewEndTime) {
         this.interviewStartTime = interviewStartTime;
         this.interviewEndTime = interviewEndTime;
-    }
-
-    public void addReportQuest(ReportQuest reportQuest) {
-        this.reportQuests.add(reportQuest);
     }
 }
