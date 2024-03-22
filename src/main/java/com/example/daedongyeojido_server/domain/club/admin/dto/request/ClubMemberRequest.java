@@ -1,5 +1,6 @@
 package com.example.daedongyeojido_server.domain.club.admin.dto.request;
 
+import com.example.daedongyeojido_server.domain.notice.domain.enums.Major;
 import com.example.daedongyeojido_server.domain.user.domain.enums.Part;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -19,4 +20,7 @@ public class ClubMemberRequest {
 
     @NotNull
     private Part part;
+
+    @NotNull
+    private Major major;
 }

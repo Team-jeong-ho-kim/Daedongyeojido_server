@@ -5,6 +5,7 @@ import com.example.daedongyeojido_server.domain.club.admin.dto.request.ClubMembe
 import com.example.daedongyeojido_server.domain.club.admin.dto.request.EditClubMemberRequest;
 import com.example.daedongyeojido_server.domain.club.dao.ClubRepository;
 import com.example.daedongyeojido_server.domain.club.domain.Club;
+import com.example.daedongyeojido_server.domain.notice.domain.enums.Major;
 import com.example.daedongyeojido_server.domain.user.application.facade.UserFacade;
 import com.example.daedongyeojido_server.domain.user.dao.UserRepository;
 import com.example.daedongyeojido_server.domain.user.domain.User;
@@ -41,7 +42,7 @@ public class EditClubMemberService {
         }
 
         for (int i = 0; i < club.getClubMembers().size(); i++) {
-            club.getClubMembers().get(i).addClubMember(Part.INDEPENDENT, null);
+            club.getClubMembers().get(i).addClubMember(Part.INDEPENDENT, Major.UNDEFINED, null);
         }
 
         List<User> clubMembers = new ArrayList<>();
@@ -53,7 +54,7 @@ public class EditClubMemberService {
                     .orElseThrow(() -> UserNotFoundException.EXCEPTION);
 
             clubMembers.add(student);
-            student.addClubMember(clubMemberRequest.getPart(), club);
+            student.addClubMember(clubMemberRequest.getPart(), clubMemberRequest.getMajor(), club);
         }
 
         club.modifyMember(clubMembers);
