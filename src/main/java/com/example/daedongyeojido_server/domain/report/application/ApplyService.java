@@ -1,13 +1,13 @@
 package com.example.daedongyeojido_server.domain.report.application;
 
-import com.example.daedongyeojido_server.domain.notice.dao.NoticeRepository;
+import com.example.daedongyeojido_server.domain.notice.application.facade.NoticeFacade;
 import com.example.daedongyeojido_server.domain.notice.domain.Notice;
-import com.example.daedongyeojido_server.domain.notice.exception.NoticeNotFoundException;
 import com.example.daedongyeojido_server.domain.report.dao.CustomReportRepository;
 import com.example.daedongyeojido_server.domain.report.dao.ReportRepository;
 import com.example.daedongyeojido_server.domain.report.domain.Report;
-import com.example.daedongyeojido_server.domain.report.domain.enums.PassingResult;
+import com.example.daedongyeojido_server.domain.report.domain.ReportQuest;
 import com.example.daedongyeojido_server.domain.report.dto.request.ApplyRequest;
+import com.example.daedongyeojido_server.domain.report.dto.request.ReportQuestRequest;
 import com.example.daedongyeojido_server.domain.report.exception.AlreadyApplyUserException;
 import com.example.daedongyeojido_server.domain.user.application.facade.UserFacade;
 import com.example.daedongyeojido_server.domain.user.domain.User;
@@ -21,7 +21,7 @@ public class ApplyService {
 
     private final UserFacade userFacade;
 
-    private final NoticeRepository noticeRepository;
+    private final NoticeFacade noticeFacade;
 
     private final CustomReportRepository customReportRepository;
 
@@ -31,22 +31,28 @@ public class ApplyService {
     public void apply(ApplyRequest request) {
         User user = userFacade.currentUser();
 
-        Notice notice = noticeRepository.findById(request.getNoticeId())
-                .orElseThrow(() -> NoticeNotFoundException.EXCEPTION);
+        Notice notice = noticeFacade.noticeFacade(request.getNoticeId());
 
         if(!(customReportRepository.findClubReport(notice.getClubName()).isEmpty())) throw AlreadyApplyUserException.EXCEPTION;
 
-        reportRepository.save(
+        Report report = reportRepository.save(
                 Report.builder()
                         .classNumber(user.getClassNumber())
                         .name(user.getName())
-                        .oneLiner(request.getOneLiner())
-                        .introduction(request.getIntroduction())
-                        .hopeMajor(request.getHopeMajor())
-                        .learn(request.getLearn())
-                        .reportPassingResult(PassingResult.WAIT)
-                        .interviewPassingResult(PassingResult.WAIT)
+                        .introduce(request.getIntroduce())
                         .notice(notice)
                         .build());
+
+        for(int i=0; i<request.getReportQuests().size(); i++) {
+               ReportQuestRequest reportQuestRequest = request.getReportQuests().get(i);
+
+               ReportQuest reportQuest = ReportQuest.builder()
+                       .question(reportQuestRequest.getQuestion())
+                       .answer(reportQuestRequest.getAnswer())
+                       .report(report)
+                       .build();
+
+               report.addReportQuest(reportQuest);
+        }
     }
 }
