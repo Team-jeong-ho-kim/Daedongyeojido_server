@@ -46,12 +46,6 @@ public class Report {
     @OneToMany(mappedBy = "report", orphanRemoval = true)
     private List<ReportQuest> reportQuests;
 
-    @Column(name = "hope_major", length = 100, nullable = false)
-    private String hopeMajor;
-
-    @Column(name = "learn", length = 100, nullable = false)
-    private String learn;
-
     @Column(name = "memo")
     private String memo;
 
@@ -62,11 +56,11 @@ public class Report {
     private LocalDateTime interviewEndTime;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "report_passing_result", nullable = false)
+    @Column(name = "report_passing_result")
     private PassingResult reportPassingResult;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "interview_passing_result", nullable = false)
+    @Column(name = "interview_passing_result")
     private PassingResult interviewPassingResult;
 
     @ManyToOne(fetch = FetchType.LAZY)
