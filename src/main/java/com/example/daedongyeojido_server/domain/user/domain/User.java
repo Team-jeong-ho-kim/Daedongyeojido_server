@@ -65,8 +65,9 @@ public class User {
     @JoinColumn(name = "my_club")
     private Club myClub;
 
-    public void addClubMember(Part part, Club clubName) {
+    public void addClubMember(Part part, Major major, Club clubName) {
         this.part = part;
+        this.major = major;
         this.myClub = clubName;
     }
 
