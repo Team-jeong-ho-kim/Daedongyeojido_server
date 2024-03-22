@@ -28,6 +28,7 @@ public class ReportInfoService {
                 .classNumber(report.getClassNumber())
                 .name(report.getName())
                 .introduce(report.getIntroduce())
+                .reportPassingResult(report.getReportPassingResult())
                 .noticeQuests(report.getReportQuests().stream().map(ReportQuestResponse::new).toList())
                 .build();
     }
