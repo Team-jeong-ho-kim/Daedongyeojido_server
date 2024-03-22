@@ -1,11 +1,14 @@
 package com.example.daedongyeojido_server.domain.report.domain;
 
+import com.example.daedongyeojido_server.domain.notice.domain.Field;
 import com.example.daedongyeojido_server.domain.notice.domain.Notice;
 import com.example.daedongyeojido_server.domain.report.domain.enums.PassingResult;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -25,53 +28,13 @@ public class Report {
     @Column(name = "name", length = 4, nullable = false)
     private String name;
 
-    @Column(name = "one_liner", length = 20, nullable = false)
-    private String oneLiner;
+    @Column(name = "introduce", length = 200, nullable = false)
+    private String introduce;
 
-    @Column(name = "introduction", length = 100, nullable = false)
-    private String introduction;
-
-    @Column(name = "hope_major", length = 100, nullable = false)
-    private String hopeMajor;
-
-    @Column(name = "learn", length = 100, nullable = false)
-    private String learn;
-
-    @Column(name = "memo")
-    private String memo;
-
-    @Column(name = "interview_start_time")
-    private LocalDateTime interviewStartTime;
-
-    @Column(name = "interview_end_time")
-    private LocalDateTime interviewEndTime;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "report_passing_result", nullable = false)
-    private PassingResult reportPassingResult;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "interview_passing_result", nullable = false)
-    private PassingResult interviewPassingResult;
+    @OneToMany(mappedBy = "report", orphanRemoval = true)
+    private List<ReportQuest> reportQuests = new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "notice_id", nullable = false)
+    @JoinColumn(name = "notice", nullable = false)
     private Notice notice;
-
-    public void reportResult(PassingResult passingResult) {
-        this.reportPassingResult = passingResult;
-    }
-
-    public void interviewResult(PassingResult passingResult) {
-        this.interviewPassingResult = passingResult;
-    }
-
-    public void modifyMemo(String memo) {
-        this.memo = memo;
-    }
-
-    public void saveInterviewTime(LocalDateTime interviewStartTime, LocalDateTime interviewEndTime) {
-        this.interviewStartTime = interviewStartTime;
-        this.interviewEndTime = interviewEndTime;
-    }
 }
