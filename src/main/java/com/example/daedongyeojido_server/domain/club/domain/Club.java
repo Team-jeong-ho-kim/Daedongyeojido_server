@@ -37,14 +37,11 @@ public class Club {
     @Column(name = "introduction", length = 500)
     private String introduction;
 
-    @Column(name = "project", length = 300)
-    private String project;
-
-    @Column(name = "we_want", length = 300)
-    private String weWant;
-
     @Column(name = "club_image_url", length = 20, columnDefinition = "TEXT")
     private String clubImageUrl;
+
+    @Column(name = "club_banner_url", columnDefinition = "TEXT")
+    private String clubBannerUrl;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "teacher")
@@ -78,12 +75,11 @@ public class Club {
         this.clubQuests.add(clubQuest);
     }
 
-    public void modifyClub(String title, String introduction, String project, String weWant, String qAndA, String clubImageUrl, List<String> tags) {
+    public void modifyClub(String title, String introduction, String clubImageUrl, String clubBannerUrl, List<String> tags) {
         this.title = title;
         this.introduction = introduction;
-        this.project = project;
-        this.weWant = weWant;
         this.clubImageUrl = clubImageUrl;
+        this.clubBannerUrl = clubBannerUrl;
         this.tags = tags;
     }
 
