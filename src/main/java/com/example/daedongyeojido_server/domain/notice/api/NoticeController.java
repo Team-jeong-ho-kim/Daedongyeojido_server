@@ -7,9 +7,11 @@ import com.example.daedongyeojido_server.domain.notice.application.QueryAllNotic
 import com.example.daedongyeojido_server.domain.notice.application.QueryApplyPageService;
 import com.example.daedongyeojido_server.domain.notice.application.QueryNoticeInfoService;
 import com.example.daedongyeojido_server.domain.notice.application.SelectMajorService;
+import com.example.daedongyeojido_server.domain.notice.application.UpdateNoticeService;
 import com.example.daedongyeojido_server.domain.notice.dto.request.CreateNoticeRequest;
 import com.example.daedongyeojido_server.domain.notice.dto.request.MajorRequest;
 import com.example.daedongyeojido_server.domain.notice.dto.request.NoticeQuestRequest;
+import com.example.daedongyeojido_server.domain.notice.dto.request.UpdateNoticeRequest;
 import com.example.daedongyeojido_server.domain.notice.dto.response.NoticeInfoResponse;
 import com.example.daedongyeojido_server.domain.notice.dto.response.NoticeResponse;
 import com.example.daedongyeojido_server.domain.notice.dto.response.ApplyPageResponse;
@@ -36,6 +38,8 @@ public class NoticeController {
     private final QueryAllNoticeService queryAllNoticeService;
 
     private final QueryNoticeInfoService queryNoticeInfoService;
+
+    private final UpdateNoticeService updateNoticeService;
 
     private final DeleteNoticeService deleteNoticeService;
 
@@ -73,6 +77,12 @@ public class NoticeController {
     @GetMapping("/info/{noticeId}")
     public NoticeInfoResponse queryNoticeInfo(@PathVariable Long noticeId) {
         return queryNoticeInfoService.queryNoticeInfo(noticeId);
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @PatchMapping("/update")
+    public void updateNotice(@RequestBody @Valid UpdateNoticeRequest request) {
+        updateNoticeService.updateNotice(request);
     }
 
     @ResponseStatus(HttpStatus.OK)
