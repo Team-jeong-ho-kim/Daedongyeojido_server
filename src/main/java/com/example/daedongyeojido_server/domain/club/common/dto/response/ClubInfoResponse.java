@@ -18,13 +18,9 @@ public class ClubInfoResponse {
 
     private String introduction;
 
-    private String project;
-
-    private String weWant;
-
-    private String qAndA;
-
     private String clubImageUrl;
+
+    private String clubBannerUrl;
 
     private List<String> tags;
 
