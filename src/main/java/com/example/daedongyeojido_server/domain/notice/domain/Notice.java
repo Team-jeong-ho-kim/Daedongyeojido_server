@@ -2,6 +2,7 @@ package com.example.daedongyeojido_server.domain.notice.domain;
 
 import com.example.daedongyeojido_server.domain.club.domain.Club;
 import com.example.daedongyeojido_server.domain.report.domain.Report;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -42,7 +43,7 @@ public class Notice {
     @Column(name = "club_explain", nullable = false, length = 100)
     private String clubExplain;
 
-    @OneToMany(mappedBy = "notice", orphanRemoval = true)
+    @OneToMany(mappedBy = "notice", orphanRemoval = true, cascade = CascadeType.REMOVE)
     private List<Field> fields = new ArrayList<>();
 
     @OneToOne(fetch = FetchType.LAZY)
@@ -85,5 +86,20 @@ public class Notice {
 
     public void addQuest(NoticeQuest noticeQuest) {
         this.noticeQuests.add(noticeQuest);
+    }
+
+    public void updateNotice(String noticeTitle, String noticeExplain, String clubExplain,
+                             String applyMethod, String inquiry, String weWant, String assignment) {
+        this.noticeTitle = noticeTitle;
+        this.noticeExplain = noticeExplain;
+        this.clubExplain = clubExplain;
+        this.applyMethod = applyMethod;
+        this.inquiry = inquiry;
+        this.weWant = weWant;
+        this.assignment = assignment;
+    }
+
+    public void addField(Field field) {
+        this.fields.add(field);
     }
 }
