@@ -34,9 +34,9 @@ public class AcceptMessService {
         Mess mess = messRepository.findById(messId)
                 .orElseThrow(() -> MessNotFoundException.EXCEPTION);
 
-        if (teacher.getPart() != Part.CLUB_LEADER_TEACHER && teacher != mess.getMyClub().getTeacher()) {
-            throw NotValidTeacherException.EXCEPTION;
-        }
+//        if (teacher.getPart() != Part.CLUB_LEADER_TEACHER && teacher != mess.getMyClub().getTeacher()) {
+//            throw NotValidTeacherException.EXCEPTION;
+//        }
 
         if (mess.getAcceptTeachers().contains(teacher.getName())) {
             mess.acceptOrCancelMess(-1, teacher.getName());
