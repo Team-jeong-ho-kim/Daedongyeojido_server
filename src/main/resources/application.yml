@@ -42,6 +42,7 @@ key:
   daedong-secret-key: ${DAEDONG_SECRET_KEY}
   pick-secret-key: ${PICK_SECRET_KEY}
   admin-id: ${ADMIN_ID}
+  reverie-id: ${REVERIE_ID}
 
 server:
   servlet:
