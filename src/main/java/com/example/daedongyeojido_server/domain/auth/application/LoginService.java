@@ -32,6 +32,9 @@ public class LoginService {
     @Value("${key.admin-id}")
     private String adminId;
 
+    @Value("${key.reverie-id}")
+    private String reverieId;
+
     @Transactional
     public LoginResponse login(LoginRequest request) {
         if(userRepository.existsByAccountId(request.getAccount_id())) {
@@ -51,6 +54,19 @@ public class LoginService {
                     .name("관리자")
                     .major(Major.UNDEFINED)
                     .part(Part.ADMIN)
+                    .build());
+
+            return jwtTokenProvider.receiveToken(request.getAccount_id());
+        }
+
+        if(request.getAccount_id().equals(reverieId)) {
+            userRepository.save(User.builder()
+                    .userId("reverie")
+                    .accountId(request.getAccount_id())
+                    .password(passwordEncoder.encode(request.getPassword()))
+                    .name("래벨리")
+                    .major(Major.UNDEFINED)
+                    .part(Part.REVERIE)
                     .build());
 
             return jwtTokenProvider.receiveToken(request.getAccount_id());
