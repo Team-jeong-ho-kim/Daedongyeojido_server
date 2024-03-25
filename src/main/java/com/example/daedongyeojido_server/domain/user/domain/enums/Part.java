@@ -17,6 +17,8 @@ public enum Part {
 
     ADMIN("관리자"),
 
+    REVERIE("래벨리"),
+
     ERROR("에러");
 
     private final String name;
