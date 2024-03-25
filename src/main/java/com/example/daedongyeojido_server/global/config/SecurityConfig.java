@@ -76,9 +76,12 @@ public class SecurityConfig {
                                 "/mess/create", "/mess/delete/**", "/alarm/interview-result", "/interview/modify-time")
                         .hasAnyRole("CLUB_LEADER", "ADMIN")
 
-                        .requestMatchers("/admin-club/create", "/admin-club/delete/**", "/announcement/create",
-                                "/admin-club/page", "/admin-club/edit-member", "/mess/accept/**", "/mess/all"
-                        ).hasAnyRole( "ADMIN")
+                        .requestMatchers("/admin-club/create", "/admin-club/delete/**", "/admin-club/page",
+                                "/admin-club/edit-member", "/mess/accept/**", "/mess/all"
+                        ).hasRole( "ADMIN")
+
+                        .requestMatchers("/announcement/create")
+                        .hasRole("REVERIE")
 
                         .anyRequest().authenticated()
                 )
