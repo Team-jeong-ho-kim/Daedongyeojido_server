@@ -15,5 +15,7 @@ public class ApplyPageResponse {
 
     private String classNumber;
 
+    private List<MajorResponse> majors;
+
     private List<NoticeQuestResponse> questions;
 }

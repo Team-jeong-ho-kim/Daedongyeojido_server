@@ -3,6 +3,7 @@ package com.example.daedongyeojido_server.domain.notice.application;
 import com.example.daedongyeojido_server.domain.notice.dao.NoticeRepository;
 import com.example.daedongyeojido_server.domain.notice.domain.Notice;
 import com.example.daedongyeojido_server.domain.notice.dto.response.ApplyPageResponse;
+import com.example.daedongyeojido_server.domain.notice.dto.response.MajorResponse;
 import com.example.daedongyeojido_server.domain.notice.dto.response.NoticeQuestResponse;
 import com.example.daedongyeojido_server.domain.notice.exception.NoticeNotFoundException;
 import com.example.daedongyeojido_server.domain.user.application.facade.UserFacade;
@@ -29,6 +30,7 @@ public class QueryApplyPageService {
         return ApplyPageResponse.builder()
                 .name(user.getName())
                 .classNumber(user.getClassNumber())
+                .majors(notice.getFields().stream().map(MajorResponse::new).toList())
                 .questions(notice.getNoticeQuests().stream().map(NoticeQuestResponse::new).toList())
                 .build();
     }
