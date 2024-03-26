@@ -1,12 +1,10 @@
 package com.example.daedongyeojido_server.domain.club.admin.application;
 
-import com.example.daedongyeojido_server.domain.alarm.exception.NotValidTeacherException;
 import com.example.daedongyeojido_server.domain.club.admin.dto.request.ClubMemberRequest;
 import com.example.daedongyeojido_server.domain.club.admin.dto.request.EditClubMemberRequest;
 import com.example.daedongyeojido_server.domain.club.dao.ClubRepository;
 import com.example.daedongyeojido_server.domain.club.domain.Club;
 import com.example.daedongyeojido_server.domain.notice.domain.enums.Major;
-import com.example.daedongyeojido_server.domain.user.application.facade.UserFacade;
 import com.example.daedongyeojido_server.domain.user.dao.UserRepository;
 import com.example.daedongyeojido_server.domain.user.domain.User;
 import com.example.daedongyeojido_server.domain.user.domain.enums.Part;
@@ -23,8 +21,6 @@ import java.util.List;
 public class EditClubMemberService {
 
     private final ClubRepository clubRepository;
-
-    private final UserFacade userFacade;
 
     private final UserRepository userRepository;
 
