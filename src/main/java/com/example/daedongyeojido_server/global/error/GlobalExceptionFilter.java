@@ -1,6 +1,6 @@
 package com.example.daedongyeojido_server.global.error;
 
-import com.example.daedongyeojido_server.global.error.exception.BusinessException;
+import com.example.daedongyeojido_server.global.error.exception.DaedongException;
 import com.example.daedongyeojido_server.global.error.exception.ErrorCode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.FilterChain;
@@ -25,7 +25,7 @@ public class GlobalExceptionFilter extends OncePerRequestFilter {
 
         try {
             filterChain.doFilter(request,response);
-        } catch (BusinessException e){
+        } catch (DaedongException e){
             ErrorCode errorCode = e.getErrorCode();
             writerErrorResponse(response, errorCode.getStatusCode(), ErrorResponse.of(errorCode, errorCode.getMessage()));
         } catch (Exception e){

@@ -1,6 +1,6 @@
 package com.example.daedongyeojido_server.global.error;
 
-import com.example.daedongyeojido_server.global.error.exception.BusinessException;
+import com.example.daedongyeojido_server.global.error.exception.DaedongException;
 import com.example.daedongyeojido_server.global.error.exception.ErrorCode;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.exception.ConstraintViolationException;
@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class GlobalExceptionHandler {
 
     //비즈니스 로직에서의 에러
-    @ExceptionHandler(BusinessException.class)
-    public ResponseEntity<ErrorResponse> handleBusinessException(BusinessException e) {
+    @ExceptionHandler(DaedongException.class)
+    public ResponseEntity<ErrorResponse> handleDaedongException(DaedongException e) {
 
         ErrorCode errorCode = e.getErrorCode();
         ErrorResponse response = ErrorResponse.of(errorCode, errorCode.getMessage());

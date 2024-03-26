@@ -5,6 +5,6 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class BusinessException extends RuntimeException {
+public class DaedongException extends RuntimeException {
     private final ErrorCode errorCode;
 }
