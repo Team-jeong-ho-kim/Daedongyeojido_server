@@ -44,6 +44,9 @@ public class User {
     @Column(name = "name", length = 4, nullable = false)
     private String name;
 
+    @Column(name = "github_link")
+    private String githubLink;
+
     @Column(name = "profile_image_url")
     private String profileImageUrl;
 
