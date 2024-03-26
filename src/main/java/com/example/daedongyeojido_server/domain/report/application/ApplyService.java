@@ -64,7 +64,7 @@ public class ApplyService {
                         .classNumber(user.getClassNumber())
                         .name(user.getName())
                         .introduce(request.getIntroduce())
-                        .major(user.getMajor())
+                        .major(request.getMajor())
                         .reportQuests(saveReportQuestRequests.stream().map(ReportQuest::new).toList())
                         .reportPassingResult(PassingResult.WAIT)
                         .interviewPassingResult(PassingResult.WAIT)
