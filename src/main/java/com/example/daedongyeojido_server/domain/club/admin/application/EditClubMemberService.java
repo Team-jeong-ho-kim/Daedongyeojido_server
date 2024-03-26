@@ -32,8 +32,6 @@ public class EditClubMemberService {
     public void editClubMember(EditClubMemberRequest request) {
         Club club = clubRepository.findByClubName(request.getClubName());
 
-        if(club.getTeacher() != userFacade.currentUser()) throw NotValidTeacherException.EXCEPTION;
-
         if (userRepository.findByName(request.getTeacherName()).isPresent()) {
             User teacher = userRepository.findByName(request.getTeacherName())
                     .orElseThrow(() -> UserNotFoundException.EXCEPTION);
