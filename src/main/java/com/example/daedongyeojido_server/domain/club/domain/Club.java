@@ -53,8 +53,9 @@ public class Club {
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> tags = new ArrayList<>();
 
-    @OneToMany(mappedBy = "clubName", orphanRemoval = true)
-    private List<Notice> notices = new ArrayList<>();
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "notice")
+    private Notice notice;
 
     @OneToMany
     private List<ClubQuest> clubQuests = new ArrayList<>();
@@ -68,7 +69,7 @@ public class Club {
     }
 
     public void addNotice(Notice notice) {
-        this.notices.add(notice);
+        this.notice = notice;
     }
 
     public void addClubQuest(ClubQuest clubQuest) {

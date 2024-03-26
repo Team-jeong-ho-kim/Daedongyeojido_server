@@ -66,8 +66,8 @@ public class Notice {
     @Column(name = "assignment", nullable = false, length = 200)
     private String assignment;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "club_name", nullable = false)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "club")
     private Club clubName;
 
     @OneToMany(mappedBy = "notice", orphanRemoval = true)
