@@ -27,6 +27,7 @@ public class DeleteNoticeService {
 
         fieldRepository.deleteAllByNotice(notice);
         startEndEndTimeRepository.deleteAllByNotice(notice);
+        notice.getClubName().addNotice(null);
         noticeRepository.deleteById(noticeId);
     }
 }
