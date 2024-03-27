@@ -22,7 +22,7 @@ public class MyInfoResponse {
 
     private String githubLink;
 
-    private Club club;
+    private String clubName;
 
     private Part part;
 
