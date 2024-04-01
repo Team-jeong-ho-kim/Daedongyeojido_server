@@ -5,6 +5,9 @@ import com.example.daedongyeojido_server.domain.notice.domain.Notice;
 import com.example.daedongyeojido_server.domain.notice.dto.response.FieldResponse;
 import com.example.daedongyeojido_server.domain.notice.dto.response.NoticeInfoResponse;
 import com.example.daedongyeojido_server.domain.notice.dto.response.StartAndEndTimeResponse;
+import com.example.daedongyeojido_server.domain.report.dao.CustomReportRepository;
+import com.example.daedongyeojido_server.domain.user.application.facade.UserFacade;
+import com.example.daedongyeojido_server.domain.user.domain.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,11 +18,18 @@ public class QueryNoticeInfoService {
 
     private final NoticeFacade noticeFacade;
 
+    private final UserFacade userFacade;
+
+    private final CustomReportRepository customReportRepository;
+
     @Transactional(readOnly = true)
     public NoticeInfoResponse queryNoticeInfo(Long noticeId) {
         Notice notice = noticeFacade.noticeFacade(noticeId);
 
+        User user = userFacade.currentUser();
+
         return NoticeInfoResponse.builder()
+                .isApply((customReportRepository.findByClassNumber(user.getClassNumber()) == null) ? false : true)
                 .clubName(notice.getClubName().getClubName())
                 .noticeTitle(notice.getNoticeTitle())
                 .noticeExplain(notice.getNoticeExplain())
