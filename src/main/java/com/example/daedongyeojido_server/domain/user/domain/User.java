@@ -73,11 +73,7 @@ public class User {
         this.major = major;
         this.myClub = clubName;
     }
-
-    public void changeMajor(Major major) {
-        this.major = major;
-    }
-
+    
     public void addAlarm(Alarm alarm) {
         this.alarms.add(alarm);
     }
