@@ -6,10 +6,8 @@ import com.example.daedongyeojido_server.domain.notice.application.DeleteNoticeS
 import com.example.daedongyeojido_server.domain.notice.application.QueryAllNoticeService;
 import com.example.daedongyeojido_server.domain.notice.application.QueryApplyPageService;
 import com.example.daedongyeojido_server.domain.notice.application.QueryNoticeInfoService;
-import com.example.daedongyeojido_server.domain.notice.application.SelectMajorService;
 import com.example.daedongyeojido_server.domain.notice.application.UpdateNoticeService;
 import com.example.daedongyeojido_server.domain.notice.dto.request.CreateNoticeRequest;
-import com.example.daedongyeojido_server.domain.notice.dto.request.MajorRequest;
 import com.example.daedongyeojido_server.domain.notice.dto.request.NoticeQuestRequest;
 import com.example.daedongyeojido_server.domain.notice.dto.request.UpdateNoticeRequest;
 import com.example.daedongyeojido_server.domain.notice.dto.response.NoticeInfoResponse;
@@ -29,8 +27,6 @@ public class NoticeController {
 
     private final CreateNoticeService createNoticeService;
 
-    private final SelectMajorService selectMajorService;
-
     private final AddNoticeQuestService addNoticeQuestService;
 
     private final QueryApplyPageService queryApplyPageService;
@@ -47,12 +43,6 @@ public class NoticeController {
     @PostMapping("/create")
     public void createNotice(@RequestBody @Valid CreateNoticeRequest request) {
         createNoticeService.createNotice(request);
-    }
-
-    @ResponseStatus(HttpStatus.OK)
-    @PostMapping("/select")
-    public void selectMajor(@RequestBody @Valid MajorRequest request) {
-        selectMajorService.selectMajor(request);
     }
 
     @ResponseStatus(HttpStatus.CREATED)
