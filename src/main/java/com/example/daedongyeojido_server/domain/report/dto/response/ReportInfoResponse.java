@@ -18,8 +18,6 @@ public class ReportInfoResponse {
 
     private String introduce;
 
-    private Boolean isApply;
-
     private PassingResult reportPassingResult;
 
     private List<ReportQuestResponse> noticeQuests;
