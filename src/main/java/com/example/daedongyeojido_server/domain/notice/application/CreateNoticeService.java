@@ -11,6 +11,7 @@ import com.example.daedongyeojido_server.domain.notice.domain.Notice;
 import com.example.daedongyeojido_server.domain.notice.domain.StartAndEndTime;
 import com.example.daedongyeojido_server.domain.notice.dto.request.CreateNoticeRequest;
 import com.example.daedongyeojido_server.domain.notice.dto.request.FieldRequest;
+import com.example.daedongyeojido_server.domain.notice.exception.DuplicatedNoticeTitleException;
 import com.example.daedongyeojido_server.domain.user.application.facade.UserFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -35,6 +36,8 @@ public class CreateNoticeService {
         Club club = clubRepository.findByClubName(request.getClubName());
 
         if(!userFacade.currentUser().getMyClub().equals(club)) throw ClubMisMatchException.EXCEPTION;
+
+        if(noticeRepository.existsByNoticeTitle(request.getNoticeTitle())) throw DuplicatedNoticeTitleException.EXCEPTION;
 
         Notice notice = noticeRepository.save(
                 Notice.builder()
