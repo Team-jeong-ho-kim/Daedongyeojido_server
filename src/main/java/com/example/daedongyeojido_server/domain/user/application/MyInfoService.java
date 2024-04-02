@@ -41,7 +41,6 @@ public class MyInfoService {
                 .name(user.getName())
                 .githubLink(user.getGithubLink())
                 .oneliner(user.getOneliner())
-                .clubName(user.getMyClub().getClubName())
                 .part(user.getPart())
                 .myClub(clubName)
                 .profileImageUrl(user.getProfileImageUrl())

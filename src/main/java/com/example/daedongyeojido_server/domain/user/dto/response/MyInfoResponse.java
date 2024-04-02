@@ -22,8 +22,6 @@ public class MyInfoResponse {
 
     private String githubLink;
 
-    private String clubName;
-
     private Part part;
 
     private String myClub;
