@@ -11,4 +11,7 @@ public interface XquareClient {
 
     @RequestMapping(method = RequestMethod.GET, value = "/user-data")
     XquareUserResponse xquareUser(@RequestParam("account_id") String accountId, @RequestParam("password") String password);
+
+    @RequestMapping(method = RequestMethod.PATCH, value = "/modify-profile")
+    void modifyProfile(@RequestParam("account_id") String accountId, @RequestParam("profile_img_url") String profileImgUrl);
 }
