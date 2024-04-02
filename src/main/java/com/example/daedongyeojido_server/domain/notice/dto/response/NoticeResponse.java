@@ -21,6 +21,7 @@ public class NoticeResponse {
     public NoticeResponse(Notice notice) {
         id = notice.getNoticeId();
         clubName = notice.getClubName().getClubName();
+        noticeTitle = notice.getNoticeTitle();
         recruitDay = new StartAndEndTimeResponse(notice.getRecruitDay().getStartDay(), notice.getRecruitDay().getEndDay());
         clubImageUrl = notice.getClubName().getClubImageUrl();
     }
