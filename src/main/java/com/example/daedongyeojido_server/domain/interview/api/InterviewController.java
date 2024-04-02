@@ -1,9 +1,12 @@
 package com.example.daedongyeojido_server.domain.interview.api;
 
 import com.example.daedongyeojido_server.domain.interview.application.ChooseInterviewTimeService;
+import com.example.daedongyeojido_server.domain.interview.application.DeleteInterviewTimeService;
 import com.example.daedongyeojido_server.domain.interview.application.ModifyInterviewTimeService;
+import com.example.daedongyeojido_server.domain.interview.application.QueryClubInterviewTimeService;
 import com.example.daedongyeojido_server.domain.interview.application.QueryInterviewTimeService;
 import com.example.daedongyeojido_server.domain.interview.dto.request.ChooseInterviewRequest;
+import com.example.daedongyeojido_server.domain.interview.dto.request.DeleteInterviewTimeRequest;
 import com.example.daedongyeojido_server.domain.interview.dto.request.InterviewTimeRequest;
 import com.example.daedongyeojido_server.domain.interview.dto.response.InterviewTimeResponse;
 import jakarta.validation.Valid;
@@ -22,7 +25,11 @@ public class InterviewController {
 
     private final QueryInterviewTimeService queryInterviewTimeService;
 
+    private final QueryClubInterviewTimeService queryClubInterviewTimeService;
+
     private final ModifyInterviewTimeService modifyInterviewTimeService;
+
+    private final DeleteInterviewTimeService deleteInterviewTimeService;
 
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("/choose-time")
@@ -37,8 +44,20 @@ public class InterviewController {
     }
 
     @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/club-time/{clubName}")
+    public List<InterviewTimeResponse> queryClubInterviewTime(@PathVariable String clubName) {
+        return queryClubInterviewTimeService.queryClubInterviewTime(clubName);
+    }
+
+    @ResponseStatus(HttpStatus.OK)
     @PatchMapping("/modify-time/{clubName}")
     public void modifyInterviewTime(@PathVariable String clubName, @RequestBody @Valid List<InterviewTimeRequest> requests) {
         modifyInterviewTimeService.modifyInterviewTime(clubName, requests);
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @DeleteMapping("/delete-time")
+    private void deleteInterviewTime(@RequestBody @Valid DeleteInterviewTimeRequest request) {
+        deleteInterviewTimeService.deleteInterviewTime(request);
     }
 }
