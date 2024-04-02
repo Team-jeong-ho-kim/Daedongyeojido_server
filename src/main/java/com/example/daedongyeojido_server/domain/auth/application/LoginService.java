@@ -86,6 +86,7 @@ public class LoginService {
                     .classNumber(classNumber)
                     .major(Major.UNDEFINED)
                     .part(xquareUserResponse.getUser_role().equals("STU") ? Part.INDEPENDENT : Part.TEACHER)
+                    .profileImageUrl(xquareUserResponse.getProfileImgUrl())
                     .build());
 
         return jwtTokenProvider.receiveToken(xquareUserResponse.getAccount_id());

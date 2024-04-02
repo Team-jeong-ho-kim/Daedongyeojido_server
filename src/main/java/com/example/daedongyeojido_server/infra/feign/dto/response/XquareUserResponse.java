@@ -24,4 +24,6 @@ public class XquareUserResponse {
     private Integer num;
 
     private String user_role;
+
+    private String profileImgUrl;
 }
