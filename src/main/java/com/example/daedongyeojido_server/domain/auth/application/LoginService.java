@@ -6,7 +6,7 @@ import com.example.daedongyeojido_server.domain.notice.domain.enums.Major;
 import com.example.daedongyeojido_server.domain.user.dao.UserRepository;
 import com.example.daedongyeojido_server.domain.user.domain.User;
 import com.example.daedongyeojido_server.domain.user.domain.enums.Part;
-import com.example.daedongyeojido_server.domain.user.exception.PasswordMisMatchException;
+import com.example.daedongyeojido_server.domain.user.exception.PasswordMismatchException;
 import com.example.daedongyeojido_server.domain.user.exception.UserNotFoundException;
 import com.example.daedongyeojido_server.global.security.jwt.JwtTokenProvider;
 import com.example.daedongyeojido_server.infra.feign.XquareClient;
@@ -41,7 +41,7 @@ public class LoginService {
             User user = userRepository.findByAccountId(request.getAccount_id())
                     .orElseThrow(()-> UserNotFoundException.EXCEPTION);
 
-            if(!passwordEncoder.matches(request.getPassword(), user.getPassword())) throw PasswordMisMatchException.EXCEPTION;
+            if(!passwordEncoder.matches(request.getPassword(), user.getPassword())) throw PasswordMismatchException.EXCEPTION;
 
             return jwtTokenProvider.receiveToken(request.getAccount_id());
         }
