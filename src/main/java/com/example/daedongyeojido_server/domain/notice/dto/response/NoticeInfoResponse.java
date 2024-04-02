@@ -11,8 +11,6 @@ import java.util.List;
 @AllArgsConstructor
 public class NoticeInfoResponse {
 
-    private Boolean isApply;
-
     private String clubName;
 
     private String noticeTitle;
