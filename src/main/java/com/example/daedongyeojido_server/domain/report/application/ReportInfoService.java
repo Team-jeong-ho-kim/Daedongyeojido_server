@@ -2,7 +2,6 @@ package com.example.daedongyeojido_server.domain.report.application;
 
 import com.example.daedongyeojido_server.domain.club.exception.ClubMisMatchException;
 import com.example.daedongyeojido_server.domain.report.application.facade.ReportFacade;
-import com.example.daedongyeojido_server.domain.report.dao.CustomReportRepository;
 import com.example.daedongyeojido_server.domain.report.domain.Report;
 import com.example.daedongyeojido_server.domain.report.dto.response.ReportInfoResponse;
 import com.example.daedongyeojido_server.domain.report.dto.response.ReportQuestResponse;
@@ -19,8 +18,6 @@ public class ReportInfoService {
     private final ReportFacade reportFacade;
 
     private final UserFacade userFacade;
-
-    private final CustomReportRepository customReportRepository;
 
     @Transactional(readOnly = true)
     public ReportInfoResponse reportInfo(Long reportId) {
