@@ -32,6 +32,7 @@ public enum ErrorCode {
     // notice
     NOTICE_NOT_FOUND(404, "일치하는 공고가 존재하지 않습니다."),
     NOTICE_QUEST_NOT_FOUND(404, "일치하는 공고 질문이 존재하지 않습니다."),
+    DUPLICATED_NOTICE_TITLE(409, "중복되는 공고 이름이 존재합니다."),
 
     // report
     REPORT_NOT_FOUND(404, "일치하는 지원서가 존재하지 않습니다."),
