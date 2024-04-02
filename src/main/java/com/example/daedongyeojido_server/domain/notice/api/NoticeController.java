@@ -6,6 +6,7 @@ import com.example.daedongyeojido_server.domain.notice.application.DeleteNoticeS
 import com.example.daedongyeojido_server.domain.notice.application.QueryAllNoticeService;
 import com.example.daedongyeojido_server.domain.notice.application.QueryApplyPageService;
 import com.example.daedongyeojido_server.domain.notice.application.QueryNoticeInfoService;
+import com.example.daedongyeojido_server.domain.notice.application.SearchNoticeService;
 import com.example.daedongyeojido_server.domain.notice.application.UpdateNoticeService;
 import com.example.daedongyeojido_server.domain.notice.dto.request.CreateNoticeRequest;
 import com.example.daedongyeojido_server.domain.notice.dto.request.NoticeQuestRequest;
@@ -34,6 +35,8 @@ public class NoticeController {
     private final QueryAllNoticeService queryAllNoticeService;
 
     private final QueryNoticeInfoService queryNoticeInfoService;
+
+    private final SearchNoticeService searchNoticeService;
 
     private final UpdateNoticeService updateNoticeService;
 
@@ -67,6 +70,12 @@ public class NoticeController {
     @GetMapping("/info/{noticeId}")
     public NoticeInfoResponse queryNoticeInfo(@PathVariable Long noticeId) {
         return queryNoticeInfoService.queryNoticeInfo(noticeId);
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/search-notice/{noticeTitle}")
+    public NoticeResponse searchNotice(@PathVariable String noticeTitle) {
+        return searchNoticeService.searchNotice(noticeTitle);
     }
 
     @ResponseStatus(HttpStatus.OK)
