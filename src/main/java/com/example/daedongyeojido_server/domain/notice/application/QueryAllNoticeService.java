@@ -2,6 +2,7 @@ package com.example.daedongyeojido_server.domain.notice.application;
 
 import com.example.daedongyeojido_server.domain.notice.dao.NoticeRepository;
 import com.example.daedongyeojido_server.domain.notice.domain.Notice;
+import com.example.daedongyeojido_server.domain.notice.dto.response.AllNoticeResponse;
 import com.example.daedongyeojido_server.domain.notice.dto.response.NoticeResponse;
 import com.example.daedongyeojido_server.domain.report.dao.ReportRepository;
 import com.example.daedongyeojido_server.domain.user.application.facade.UserFacade;
@@ -24,7 +25,7 @@ public class QueryAllNoticeService {
     private final ReportRepository reportRepository;
 
     @Transactional(readOnly = true)
-    public List<NoticeResponse> queryAllNotice() {
+    public AllNoticeResponse queryAllNotice() {
         List<Notice> allNotice = noticeRepository.findAll();
 
         User user = userFacade.currentUser();
@@ -40,6 +41,6 @@ public class QueryAllNoticeService {
             }
         }
 
-        return noticeResponses;
+        return new AllNoticeResponse(noticeRepository.existsByClubName(user.getMyClub()), noticeResponses);
     }
 }

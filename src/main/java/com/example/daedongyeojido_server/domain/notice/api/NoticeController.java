@@ -11,6 +11,7 @@ import com.example.daedongyeojido_server.domain.notice.application.UpdateNoticeS
 import com.example.daedongyeojido_server.domain.notice.dto.request.CreateNoticeRequest;
 import com.example.daedongyeojido_server.domain.notice.dto.request.NoticeQuestRequest;
 import com.example.daedongyeojido_server.domain.notice.dto.request.UpdateNoticeRequest;
+import com.example.daedongyeojido_server.domain.notice.dto.response.AllNoticeResponse;
 import com.example.daedongyeojido_server.domain.notice.dto.response.NoticeInfoResponse;
 import com.example.daedongyeojido_server.domain.notice.dto.response.NoticeResponse;
 import com.example.daedongyeojido_server.domain.notice.dto.response.ApplyPageResponse;
@@ -62,7 +63,7 @@ public class NoticeController {
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/all")
-    public List<NoticeResponse> queryAllNotice() {
+    public AllNoticeResponse queryAllNotice() {
         return queryAllNoticeService.queryAllNotice();
     }
 
