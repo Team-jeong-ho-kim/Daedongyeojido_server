@@ -6,21 +6,25 @@ import com.example.daedongyeojido_server.domain.notice.application.DeleteNoticeS
 import com.example.daedongyeojido_server.domain.notice.application.QueryAllNoticeService;
 import com.example.daedongyeojido_server.domain.notice.application.QueryApplyPageService;
 import com.example.daedongyeojido_server.domain.notice.application.QueryNoticeInfoService;
-import com.example.daedongyeojido_server.domain.notice.application.SearchNoticeService;
 import com.example.daedongyeojido_server.domain.notice.application.UpdateNoticeService;
 import com.example.daedongyeojido_server.domain.notice.dto.request.CreateNoticeRequest;
 import com.example.daedongyeojido_server.domain.notice.dto.request.NoticeQuestRequest;
 import com.example.daedongyeojido_server.domain.notice.dto.request.UpdateNoticeRequest;
 import com.example.daedongyeojido_server.domain.notice.dto.response.AllNoticeResponse;
-import com.example.daedongyeojido_server.domain.notice.dto.response.NoticeInfoResponse;
-import com.example.daedongyeojido_server.domain.notice.dto.response.NoticeResponse;
 import com.example.daedongyeojido_server.domain.notice.dto.response.ApplyPageResponse;
+import com.example.daedongyeojido_server.domain.notice.dto.response.NoticeInfoResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
@@ -36,8 +40,6 @@ public class NoticeController {
     private final QueryAllNoticeService queryAllNoticeService;
 
     private final QueryNoticeInfoService queryNoticeInfoService;
-
-    private final SearchNoticeService searchNoticeService;
 
     private final UpdateNoticeService updateNoticeService;
 
@@ -71,12 +73,6 @@ public class NoticeController {
     @GetMapping("/info/{noticeId}")
     public NoticeInfoResponse queryNoticeInfo(@PathVariable Long noticeId) {
         return queryNoticeInfoService.queryNoticeInfo(noticeId);
-    }
-
-    @ResponseStatus(HttpStatus.OK)
-    @GetMapping("/search-notice/{noticeTitle}")
-    public NoticeResponse searchNotice(@PathVariable String noticeTitle) {
-        return searchNoticeService.searchNotice(noticeTitle);
     }
 
     @ResponseStatus(HttpStatus.OK)
