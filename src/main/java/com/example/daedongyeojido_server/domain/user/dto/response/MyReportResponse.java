@@ -32,6 +32,8 @@ public class MyReportResponse {
     public MyReportResponse(Report report) {
         id = report.getReportId();
         clubName = report.getNotice().getClubName().getClubName();
+        hopeMajor = report.getMajor();
+        deadline = report.getNotice().getRecruitDay().getEndDay();
         reportPassingResult = report.getReportPassingResult();
         interviewPassingResult = report.getInterviewPassingResult();
         interviewStartTime = report.getInterviewStartTime();
