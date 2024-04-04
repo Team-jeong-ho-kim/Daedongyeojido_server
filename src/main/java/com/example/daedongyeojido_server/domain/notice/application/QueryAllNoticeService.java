@@ -8,6 +8,7 @@ import com.example.daedongyeojido_server.domain.report.dao.ReportRepository;
 import com.example.daedongyeojido_server.domain.user.application.facade.UserFacade;
 import com.example.daedongyeojido_server.domain.user.domain.User;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -35,7 +36,7 @@ public class QueryAllNoticeService {
                 .map(NoticeResponse::new)
                 .collect(Collectors.toList());
 
-        if(userFacade.currentUser()==null) user = null;
+        if(SecurityContextHolder.getContext().getAuthentication()==null) user = null;
         else {
             user = userFacade.currentUser() ;
 
