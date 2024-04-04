@@ -66,7 +66,7 @@ public class SecurityConfig {
                         .permitAll()
 
                         .requestMatchers("/notice/apply/**", "/report/apply/**", "/report/cancel/**",
-                                "/interview/choose-time", "/interview/query-time", "/notice/select")
+                                "/interview/choose-time", "/interview/query-time", "/notice/select", "/report/report-info/**")
                         .hasAnyRole("INDEPENDENT", "ADMIN")
 
                         .requestMatchers("/report/applicant/**", "/report/report-info/**", "/report/query-memo/**", "/report/modify-memo", "/question/query/**")
