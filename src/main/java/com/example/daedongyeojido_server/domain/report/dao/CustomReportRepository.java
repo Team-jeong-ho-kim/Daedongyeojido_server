@@ -7,6 +7,4 @@ import java.util.List;
 
 public interface CustomReportRepository {
     List<Report> findClubReport(Club club);
-
-    Report findByClassNumber(String classNumber);
 }

@@ -22,11 +22,4 @@ public class CustomReportRepositoryImpl implements CustomReportRepository {
                 .where(report.notice.clubName.eq(club))
                 .fetch();
     }
-
-    public Report findByClassNumber(String classNumber) {
-        return queryFactory
-                .selectFrom(report)
-                .where(report.classNumber.eq(classNumber))
-                .fetchOne();
-    }
 }
