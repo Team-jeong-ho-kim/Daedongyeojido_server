@@ -85,7 +85,7 @@ public class NoticeController {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping("/all-quest")
+    @GetMapping("/all-quest/{noticeId}")
     public List<NoticeQuestResponse> queryAllNoticeQuest(@PathVariable Long noticeId) {
         return queryAllNoticeQuestService.queryAllNoticeQuest(noticeId);
     }
