@@ -1,12 +1,12 @@
 package com.example.daedongyeojido_server.domain.report.application;
 
-import com.example.daedongyeojido_server.domain.club.exception.ClubMisMatchException;
 import com.example.daedongyeojido_server.domain.report.application.facade.ReportFacade;
 import com.example.daedongyeojido_server.domain.report.domain.Report;
 import com.example.daedongyeojido_server.domain.report.dto.response.ReportInfoResponse;
 import com.example.daedongyeojido_server.domain.report.dto.response.ReportQuestResponse;
 import com.example.daedongyeojido_server.domain.user.application.facade.UserFacade;
 import com.example.daedongyeojido_server.domain.user.domain.User;
+import com.example.daedongyeojido_server.domain.user.exception.InvalidUserException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,7 +25,7 @@ public class ReportInfoService {
 
         User user = userFacade.currentUser();
 
-        if(user.getMyClub() != report.getNotice().getClubName()) throw ClubMisMatchException.EXCEPTION;
+        if(user.getMyClub() != report.getNotice().getClubName() && user.getClassNumber().equals(report.getClassNumber())) throw InvalidUserException.EXCEPTION;
 
         return ReportInfoResponse.builder()
                 .classNumber(report.getClassNumber())
