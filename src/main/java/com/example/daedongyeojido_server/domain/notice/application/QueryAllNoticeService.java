@@ -28,19 +28,25 @@ public class QueryAllNoticeService {
     public AllNoticeResponse queryAllNotice() {
         List<Notice> allNotice = noticeRepository.findAll();
 
-        User user = userFacade.currentUser();
+        User user;
 
         List<NoticeResponse> noticeResponses = allNotice
                 .stream()
                 .map(NoticeResponse::new)
                 .collect(Collectors.toList());
 
-        for (int i = 0; i < noticeResponses.size(); i++) {
-            if (!(reportRepository.findAllByClassNumberAndNotice(user.getClassNumber(), allNotice.get(i)).isEmpty())) {
-                noticeResponses.get(i).apply();
+        if(userFacade.currentUser()==null) user = null;
+        else {
+            user = userFacade.currentUser() ;
+
+
+            for (int i = 0; i < noticeResponses.size(); i++) {
+                if (!(reportRepository.findAllByClassNumberAndNotice(user.getClassNumber(), allNotice.get(i)).isEmpty())) {
+                    noticeResponses.get(i).apply();
+                }
             }
         }
 
-        return new AllNoticeResponse(noticeRepository.existsByClubName(user.getMyClub()), noticeResponses);
+        return new AllNoticeResponse(noticeRepository.existsByClubName((user == null) ? null : user.getMyClub()), noticeResponses);
     }
 }
