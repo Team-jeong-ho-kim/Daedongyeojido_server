@@ -5,7 +5,6 @@ import com.example.daedongyeojido_server.domain.notice.dao.NoticeQuestRepository
 import com.example.daedongyeojido_server.domain.notice.domain.Notice;
 import com.example.daedongyeojido_server.domain.notice.domain.NoticeQuest;
 import com.example.daedongyeojido_server.domain.notice.exception.NoticeQuestNotFoundException;
-import com.example.daedongyeojido_server.domain.report.dao.CustomReportRepository;
 import com.example.daedongyeojido_server.domain.report.dao.ReportQuestRepository;
 import com.example.daedongyeojido_server.domain.report.dao.ReportRepository;
 import com.example.daedongyeojido_server.domain.report.domain.Report;
@@ -32,8 +31,6 @@ public class ApplyService {
 
     private final NoticeFacade noticeFacade;
 
-    private final CustomReportRepository customReportRepository;
-
     private final ReportRepository reportRepository;
 
     private final NoticeQuestRepository noticeQuestRepository;
@@ -46,7 +43,7 @@ public class ApplyService {
 
         Notice notice = noticeFacade.noticeFacade(request.getNoticeId());
 
-        if(!(customReportRepository.findByClassNumber(user.getClassNumber()) == null)) throw AlreadyApplyUserException.EXCEPTION;
+        if(!(reportRepository.findAllByClassNumberAndNotice(user.getClassNumber(), notice) == null)) throw AlreadyApplyUserException.EXCEPTION;
 
         List<SaveReportQuestRequest> saveReportQuestRequests = new ArrayList<>();
 
