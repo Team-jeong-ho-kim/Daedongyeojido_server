@@ -27,4 +27,18 @@ public class UserFacade {
         return userRepository.findByAccountId(accountId)
                 .orElseThrow(() -> UserNotFoundException.EXCEPTION);
     }
+
+    public User currentNullUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if (authentication == null || !authentication.isAuthenticated()) {
+            throw new NotAuthenticatedException("인증되지 않는 유저입니다.");
+        }
+
+        String accountId = authentication.getName();
+
+        if(!userRepository.existsByAccountId(accountId)) return null;
+        else return userRepository.findByAccountId(accountId)
+                .orElseThrow(()->UserNotFoundException.EXCEPTION);
+    }
 }
