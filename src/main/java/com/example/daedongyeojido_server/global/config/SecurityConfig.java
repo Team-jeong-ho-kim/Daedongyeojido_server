@@ -72,8 +72,8 @@ public class SecurityConfig {
                         .requestMatchers("/report/applicant/**", "/report/query-memo/**", "/report/modify-memo", "/question/query/**")
                         .hasAnyRole("CLUB_MEMBER", "CLUB_LEADER", "ADMIN")
 
-                        .requestMatchers("/club/modify", "/notice/create", "/notice/update", "/notice/delete/**", "/question/answer", "/notice/add-quest",
-                                "/mess/create", "/mess/delete/**", "/alarm/interview-result", "/interview/modify-time", "/interview/club-time/**", "/interview/delete-time/**")
+                        .requestMatchers("/club/modify", "/notice/create", "/notice/update", "/notice/delete/**", "/question/answer", "/notice/add-quest", "/notice/all-quest",
+                                "notice/delete-noticeQuest/**", "/mess/create", "/mess/delete/**", "/alarm/interview-result", "/interview/modify-time", "/interview/club-time/**", "/interview/delete-time/**")
                         .hasAnyRole("CLUB_LEADER", "ADMIN")
 
                         .requestMatchers("/admin-club/create", "/admin-club/delete/**", "/admin-club/page",
