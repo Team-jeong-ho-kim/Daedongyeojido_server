@@ -66,10 +66,10 @@ public class SecurityConfig {
                         .permitAll()
 
                         .requestMatchers("/notice/apply/**", "/report/apply/**", "/report/cancel/**",
-                                "/interview/choose-time", "/interview/query-time", "/notice/select", "/report/report-info/**")
+                                "/interview/choose-time", "/interview/query-time", "/notice/select")
                         .hasAnyRole("INDEPENDENT", "ADMIN")
 
-                        .requestMatchers("/report/applicant/**", "/report/report-info/**", "/report/query-memo/**", "/report/modify-memo", "/question/query/**")
+                        .requestMatchers("/report/applicant/**", "/report/query-memo/**", "/report/modify-memo", "/question/query/**")
                         .hasAnyRole("CLUB_MEMBER", "CLUB_LEADER", "ADMIN")
 
                         .requestMatchers("/club/modify", "/notice/create", "/notice/update", "/notice/delete/**", "/question/answer", "/notice/add-quest",
