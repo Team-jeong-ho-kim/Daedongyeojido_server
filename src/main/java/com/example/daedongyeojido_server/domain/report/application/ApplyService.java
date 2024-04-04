@@ -43,7 +43,7 @@ public class ApplyService {
 
         Notice notice = noticeFacade.noticeFacade(request.getNoticeId());
 
-        if(!(reportRepository.findAllByClassNumberAndNotice(user.getClassNumber(), notice) == null)) throw AlreadyApplyUserException.EXCEPTION;
+        if(reportRepository.existsByClassNumberAndNotice(user.getClassNumber(), notice)) throw AlreadyApplyUserException.EXCEPTION;
 
         List<SaveReportQuestRequest> saveReportQuestRequests = new ArrayList<>();
 

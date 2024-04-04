@@ -9,5 +9,7 @@ import java.util.List;
 public interface ReportRepository extends JpaRepository<Report, Long> {
     List<Report> findAllByClassNumberAndNotice(String classNumber, Notice notice);
 
+    Boolean existsByClassNumberAndNotice(String classNumber, Notice notice);
+
     List<Report> findAllByClassNumber(String classNumber);
 }
