@@ -1,6 +1,6 @@
 package com.example.daedongyeojido_server.domain.user.domain;
 
-import com.example.daedongyeojido_server.domain.alarm.domain.Alarm;
+import  com.example.daedongyeojido_server.domain.alarm.domain.Alarm;
 import com.example.daedongyeojido_server.domain.club.domain.Club;
 import com.example.daedongyeojido_server.domain.notice.domain.enums.Major;
 import com.example.daedongyeojido_server.domain.user.domain.enums.Part;
