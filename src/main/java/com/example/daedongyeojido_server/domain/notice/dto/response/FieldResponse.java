@@ -11,10 +11,10 @@ public class FieldResponse {
 
     private Major major;
 
-    private String todo;
+    private String toDo;
 
     public FieldResponse(Field field) {
         major = field.getMajor();
-        todo = field.getToDo();
+        toDo = field.getToDo();
     }
 }
