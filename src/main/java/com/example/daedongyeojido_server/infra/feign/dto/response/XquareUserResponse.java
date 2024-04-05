@@ -26,4 +26,6 @@ public class XquareUserResponse {
     private String user_role;
 
     private String profileImgUrl;
+
+    private String clubName;
 }

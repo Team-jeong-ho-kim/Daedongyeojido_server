@@ -2,6 +2,8 @@ package com.example.daedongyeojido_server.domain.auth.application;
 
 import com.example.daedongyeojido_server.domain.auth.dto.request.LoginRequest;
 import com.example.daedongyeojido_server.domain.auth.dto.response.LoginResponse;
+import com.example.daedongyeojido_server.domain.club.dao.ClubRepository;
+import com.example.daedongyeojido_server.domain.club.domain.Club;
 import com.example.daedongyeojido_server.domain.notice.domain.enums.Major;
 import com.example.daedongyeojido_server.domain.user.dao.UserRepository;
 import com.example.daedongyeojido_server.domain.user.domain.User;
@@ -24,6 +26,8 @@ public class LoginService {
     private final UserRepository userRepository;
 
     private final JwtTokenProvider jwtTokenProvider;
+
+    private final ClubRepository clubRepository;
 
     private final XquareClient xquareClient;
 
@@ -77,6 +81,8 @@ public class LoginService {
         String num = xquareUserResponse.getNum()<10 ? '0' + Integer.toString(xquareUserResponse.getNum()) : Integer.toString(xquareUserResponse.getNum());
         String classNumber = xquareUserResponse.getGrade().toString() + xquareUserResponse.getClass_num().toString() + num;
 
+        Club club = clubRepository.findByClubName(xquareUserResponse.getClubName());
+
         userRepository.save(
                 User.builder()
                     .userId(xquareUserResponse.getId().toString())
@@ -87,6 +93,7 @@ public class LoginService {
                     .major(Major.UNDEFINED)
                     .part(xquareUserResponse.getUser_role().equals("STU") ? Part.INDEPENDENT : Part.TEACHER)
                     .profileImageUrl(xquareUserResponse.getProfileImgUrl())
+                    .myClub(club)
                     .build());
 
         return jwtTokenProvider.receiveToken(xquareUserResponse.getAccount_id());
