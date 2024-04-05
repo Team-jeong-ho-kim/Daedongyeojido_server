@@ -4,6 +4,7 @@ import com.example.daedongyeojido_server.domain.alarm.domain.Alarm;
 import com.example.daedongyeojido_server.domain.club.domain.Club;
 import com.example.daedongyeojido_server.domain.notice.domain.enums.Major;
 import com.example.daedongyeojido_server.domain.user.domain.enums.Part;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -64,7 +65,7 @@ public class User {
     @OneToMany(mappedBy = "user", orphanRemoval = true)
     private List<Alarm> alarms;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "my_club")
     private Club myClub;
 
