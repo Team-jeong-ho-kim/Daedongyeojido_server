@@ -91,7 +91,7 @@ public class LoginService {
                     .name(xquareUserResponse.getName())
                     .classNumber(classNumber)
                     .major(Major.UNDEFINED)
-                    .part(xquareUserResponse.getUser_role().equals("STU") ? Part.INDEPENDENT : Part.TEACHER)
+                    .part(club==null ? Part.INDEPENDENT : Part.CLUB_MEMBER)
                     .profileImageUrl(xquareUserResponse.getProfileImgUrl())
                     .myClub(club)
                     .build());
