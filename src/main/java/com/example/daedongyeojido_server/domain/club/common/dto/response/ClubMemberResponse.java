@@ -20,7 +20,7 @@ public class ClubMemberResponse {
     public ClubMemberResponse(User user) {
         name = user.getName();
         major = user.getMajor();
-        oneLiner = user.getUserId();
+        oneLiner = user.getOneliner();
         profileImageUrl = user.getProfileImageUrl();
     }
 }
