@@ -26,6 +26,5 @@ public class AnswerQuestionService {
         if(!(userFacade.currentUser().getMyClub().equals(clubQuest.getClub()))) throw ClubMisMatchException.EXCEPTION;
 
         clubQuest.answerQuestion(request.getAnswer());
-        clubQuest.getClub().addClubQuest(clubQuest);
     }
 }

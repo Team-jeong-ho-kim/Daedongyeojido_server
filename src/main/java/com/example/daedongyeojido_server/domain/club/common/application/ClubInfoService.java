@@ -4,6 +4,7 @@ import com.example.daedongyeojido_server.domain.club.common.dto.response.ClubInf
 import com.example.daedongyeojido_server.domain.club.common.dto.response.ClubMemberResponse;
 import com.example.daedongyeojido_server.domain.club.dao.ClubRepository;
 import com.example.daedongyeojido_server.domain.club.domain.Club;
+import com.example.daedongyeojido_server.domain.question.dao.QuestionRepository;
 import com.example.daedongyeojido_server.domain.question.dto.response.QuestResponse;
 import com.example.daedongyeojido_server.domain.user.dao.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +20,8 @@ public class ClubInfoService {
 
     private final ClubRepository clubRepository;
 
+    private final QuestionRepository questionRepository;
+
     private final UserRepository userRepository;
 
     @Transactional(readOnly = true)
@@ -31,7 +34,7 @@ public class ClubInfoService {
                 .map(ClubMemberResponse::new)
                 .collect(Collectors.toList());
 
-        List<QuestResponse> questResponses = club.getClubQuests()
+        List<QuestResponse> questResponses = questionRepository.findAllByClub(club)
                 .stream()
                 .map(QuestResponse::new)
                 .collect(Collectors.toList());
