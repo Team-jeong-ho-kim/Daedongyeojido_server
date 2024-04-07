@@ -81,7 +81,7 @@ public class LoginService {
         String num = xquareUserResponse.getNum()<10 ? '0' + Integer.toString(xquareUserResponse.getNum()) : Integer.toString(xquareUserResponse.getNum());
         String classNumber = xquareUserResponse.getGrade().toString() + xquareUserResponse.getClass_num().toString() + num;
 
-        Club club = clubRepository.findByClubName(xquareUserResponse.getClubName());
+        Club club = xquareUserResponse.getClubName()==null ? null : clubRepository.findByClubName(xquareUserResponse.getClubName());;
 
         userRepository.save(
                 User.builder()
