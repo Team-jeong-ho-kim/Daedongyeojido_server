@@ -1,7 +1,9 @@
 package com.example.daedongyeojido_server.domain.alarm.api;
 
+import com.example.daedongyeojido_server.domain.alarm.application.CancelResultService;
 import com.example.daedongyeojido_server.domain.alarm.application.InterviewResultService;
 import com.example.daedongyeojido_server.domain.alarm.application.MyAlarmService;
+import com.example.daedongyeojido_server.domain.alarm.dto.request.CancelResultRequest;
 import com.example.daedongyeojido_server.domain.alarm.dto.request.InterviewResultRequest;
 import com.example.daedongyeojido_server.domain.alarm.dto.response.AlarmResponse;
 import jakarta.validation.Valid;
@@ -20,6 +22,8 @@ public class AlarmController {
 
     private final MyAlarmService myAlarmService;
 
+    private final CancelResultService cancelResultService;
+
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/interview-result")
     public void interviewResult(@RequestBody @Valid InterviewResultRequest request) {
@@ -30,5 +34,11 @@ public class AlarmController {
     @GetMapping("/my-alarm")
     public List<AlarmResponse> myAlarm() {
         return myAlarmService.myAlarm();
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @DeleteMapping("/cancel")
+    public void cancelResult(@RequestBody @Valid CancelResultRequest request) {
+        cancelResultService.cancelResult(request);
     }
 }
