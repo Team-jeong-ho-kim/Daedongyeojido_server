@@ -1,7 +1,6 @@
 package com.example.daedongyeojido_server.domain.club.domain;
 
 import com.example.daedongyeojido_server.domain.notice.domain.Notice;
-import com.example.daedongyeojido_server.domain.question.domain.ClubQuest;
 import com.example.daedongyeojido_server.domain.user.domain.User;
 import jakarta.persistence.Column;
 import jakarta.persistence.ElementCollection;
@@ -57,9 +56,6 @@ public class Club {
     @JoinColumn(name = "notice")
     private Notice notice;
 
-    @OneToMany
-    private List<ClubQuest> clubQuests = new ArrayList<>();
-
     @Column(name = "mess_count")
     private Integer messCount = 0;
 
@@ -70,10 +66,6 @@ public class Club {
 
     public void addNotice(Notice notice) {
         this.notice = notice;
-    }
-
-    public void addClubQuest(ClubQuest clubQuest) {
-        this.clubQuests.add(clubQuest);
     }
 
     public void modifyClub(String title, String introduction, String clubImageUrl, String clubBannerUrl, List<String> tags) {
