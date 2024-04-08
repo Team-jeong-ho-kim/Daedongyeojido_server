@@ -65,7 +65,7 @@ public class SecurityConfig {
                                 "/image", "/notice/all", "/notice/info/**", "/inquiry/create", "/notice/search-notice/**")
                         .permitAll()
 
-                        .requestMatchers("/notice/apply/**", "/report/apply/**", "/report/cancel/**",
+                        .requestMatchers("/notice/apply/**", "/report/apply/**", "/report/cancel/**", "/report-info/**",
                                 "/interview/choose-time", "/interview/query-time", "/notice/select")
                         .hasAnyRole("INDEPENDENT", "ADMIN")
 
