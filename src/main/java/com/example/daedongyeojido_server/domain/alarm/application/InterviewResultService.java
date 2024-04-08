@@ -5,8 +5,10 @@ import com.example.daedongyeojido_server.domain.alarm.domain.Alarm;
 import com.example.daedongyeojido_server.domain.alarm.domain.enums.AlarmType;
 import com.example.daedongyeojido_server.domain.alarm.dto.request.InterviewResultRequest;
 import com.example.daedongyeojido_server.domain.alarm.exception.WrongAlarmTypeException;
+import com.example.daedongyeojido_server.domain.club.exception.ClubMisMatchException;
 import com.example.daedongyeojido_server.domain.report.application.facade.ReportFacade;
 import com.example.daedongyeojido_server.domain.report.domain.Report;
+import com.example.daedongyeojido_server.domain.user.application.facade.UserFacade;
 import com.example.daedongyeojido_server.domain.user.dao.UserRepository;
 import com.example.daedongyeojido_server.domain.user.domain.User;
 import com.example.daedongyeojido_server.domain.user.exception.UserNotFoundException;
@@ -26,12 +28,17 @@ public class InterviewResultService {
 
     private final AlarmRepository alarmRepository;
 
+    private final UserFacade userFacade;
+
     @Transactional
     public void interviewResult(InterviewResultRequest request) {
         Report report = reportFacade.reportFacade(request.getReportId());
 
         User user = userRepository.findByClassNumber(report.getClassNumber())
                 .orElseThrow(() -> UserNotFoundException.EXCEPTION);
+
+        if (!(userFacade.currentUser().getMyClub().getClubName().equals(report.getNotice().getClubName().getClubName())))
+            throw ClubMisMatchException.EXCEPTION;
 
         AlarmType alarmType;
 
