@@ -4,6 +4,7 @@ import com.example.daedongyeojido_server.domain.alarm.dao.AlarmRepository;
 import com.example.daedongyeojido_server.domain.alarm.domain.Alarm;
 import com.example.daedongyeojido_server.domain.alarm.domain.enums.AlarmType;
 import com.example.daedongyeojido_server.domain.alarm.dto.request.InterviewResultRequest;
+import com.example.daedongyeojido_server.domain.alarm.dto.response.ReportIdResponse;
 import com.example.daedongyeojido_server.domain.alarm.exception.WrongAlarmTypeException;
 import com.example.daedongyeojido_server.domain.club.exception.ClubMisMatchException;
 import com.example.daedongyeojido_server.domain.report.application.facade.ReportFacade;
@@ -31,7 +32,7 @@ public class InterviewResultService {
     private final UserFacade userFacade;
 
     @Transactional
-    public void interviewResult(InterviewResultRequest request) {
+    public ReportIdResponse interviewResult(InterviewResultRequest request) {
         Report report = reportFacade.reportFacade(request.getReportId());
 
         User user = userRepository.findByClassNumber(report.getClassNumber())
@@ -65,5 +66,7 @@ public class InterviewResultService {
                         .build());
 
         user.addAlarm(alarm);
+
+        return new ReportIdResponse(report.getReportId());
     }
 }

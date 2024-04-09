@@ -6,6 +6,7 @@ import com.example.daedongyeojido_server.domain.alarm.application.MyAlarmService
 import com.example.daedongyeojido_server.domain.alarm.dto.request.CancelResultRequest;
 import com.example.daedongyeojido_server.domain.alarm.dto.request.InterviewResultRequest;
 import com.example.daedongyeojido_server.domain.alarm.dto.response.AlarmResponse;
+import com.example.daedongyeojido_server.domain.alarm.dto.response.ReportIdResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -26,8 +27,8 @@ public class AlarmController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/interview-result")
-    public void interviewResult(@RequestBody @Valid InterviewResultRequest request) {
-        interviewResultService.interviewResult(request);
+    public ReportIdResponse interviewResult(@RequestBody @Valid InterviewResultRequest request) {
+        return interviewResultService.interviewResult(request);
     }
 
     @ResponseStatus(HttpStatus.OK)
