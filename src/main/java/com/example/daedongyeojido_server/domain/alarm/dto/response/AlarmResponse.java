@@ -15,6 +15,8 @@ public class AlarmResponse {
 
     private Long alarmId;
 
+    private Long reportId;
+
     private String title;
 
     private String contents;
@@ -33,6 +35,7 @@ public class AlarmResponse {
 
     public AlarmResponse(Alarm alarm) {
         alarmId = alarm.getAlarmId();
+        reportId = alarm.getReport().getReportId();
         clubName = alarm.getClubName();
         userName = alarm.getUserName();
         createTime = alarm.getCreateTime();
