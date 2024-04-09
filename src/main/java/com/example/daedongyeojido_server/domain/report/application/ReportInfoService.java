@@ -25,7 +25,7 @@ public class ReportInfoService {
 
         User user = userFacade.currentUser();
 
-        if(user.getMyClub() != report.getNotice().getClubName() && user.getClassNumber().equals(report.getClassNumber())) throw InvalidUserException.EXCEPTION;
+        if(user.getMyClub() != report.getNotice().getClubName() && !user.getClassNumber().equals(report.getClassNumber())) throw InvalidUserException.EXCEPTION;
 
         return ReportInfoResponse.builder()
                 .classNumber(report.getClassNumber())
