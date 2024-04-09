@@ -2,6 +2,7 @@ package com.example.daedongyeojido_server.domain.alarm.domain;
 
 import com.example.daedongyeojido_server.domain.alarm.domain.enums.AlarmType;
 import com.example.daedongyeojido_server.domain.notice.domain.enums.Major;
+import com.example.daedongyeojido_server.domain.report.domain.Report;
 import com.example.daedongyeojido_server.domain.report.domain.enums.PassingResult;
 import com.example.daedongyeojido_server.domain.user.domain.User;
 import jakarta.persistence.*;
@@ -41,6 +42,10 @@ public class Alarm {
     @Column(name = "alarm_type")
     @Enumerated(EnumType.STRING)
     private AlarmType alarmType;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "report", nullable = false)
+    private Report report;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
