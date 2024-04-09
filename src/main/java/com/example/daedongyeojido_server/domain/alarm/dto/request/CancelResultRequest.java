@@ -11,8 +11,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class CancelResultRequest {
 
-    @NotBlank
-    private String clubName;
+    @NotNull
+    private Long reportId;
 
     @NotBlank
     private String classNumber;

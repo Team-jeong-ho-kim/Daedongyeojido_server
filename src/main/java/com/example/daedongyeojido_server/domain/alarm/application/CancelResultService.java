@@ -3,10 +3,8 @@ package com.example.daedongyeojido_server.domain.alarm.application;
 import com.example.daedongyeojido_server.domain.alarm.dao.AlarmRepository;
 import com.example.daedongyeojido_server.domain.alarm.dto.request.CancelResultRequest;
 import com.example.daedongyeojido_server.domain.alarm.exception.WrongAlarmTypeException;
-import com.example.daedongyeojido_server.domain.club.dao.ClubRepository;
-import com.example.daedongyeojido_server.domain.club.domain.Club;
 import com.example.daedongyeojido_server.domain.club.exception.ClubMisMatchException;
-import com.example.daedongyeojido_server.domain.report.dao.ReportRepository;
+import com.example.daedongyeojido_server.domain.report.application.facade.ReportFacade;
 import com.example.daedongyeojido_server.domain.report.domain.Report;
 import com.example.daedongyeojido_server.domain.report.domain.enums.PassingResult;
 import com.example.daedongyeojido_server.domain.user.application.facade.UserFacade;
@@ -27,20 +25,16 @@ public class CancelResultService {
 
     private final UserFacade userFacade;
 
-    private final ReportRepository reportRepository;
-
-    private final ClubRepository clubRepository;
+    private final ReportFacade reportFacade;
 
     @Transactional
     public void cancelResult(CancelResultRequest request) {
         User user = userRepository.findByClassNumber(request.getClassNumber())
                         .orElseThrow(()-> UserNotFoundException.EXCEPTION);
 
-        Club club = clubRepository.findByClubName(request.getClubName());
+        Report report = reportFacade.reportFacade(request.getReportId());
 
-        Report report = reportRepository.findByClassNumberAndNotice(user.getClassNumber(), club.getNotice());
-
-        if (!(userFacade.currentUser().getMyClub().getClubName().equals(request.getClubName())))
+        if (!(userFacade.currentUser().getMyClub().getClubName().equals(report.getNotice().getClubName().getClubName())))
             throw ClubMisMatchException.EXCEPTION;
 
         switch (request.getAlarmType()) {
@@ -53,6 +47,6 @@ public class CancelResultService {
             default -> throw WrongAlarmTypeException.EXCEPTION;
         }
 
-        alarmRepository.deleteByClubNameAndUserAndAlarmType(request.getClubName(), user, request.getAlarmType());
+        alarmRepository.deleteByClubNameAndUserAndAlarmType(report.getNotice().getClubName().getClubName(), user, request.getAlarmType());
     }
 }
