@@ -47,7 +47,7 @@ public class Alarm {
     @JoinColumn(name = "report", nullable = false)
     private Report report;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 }
