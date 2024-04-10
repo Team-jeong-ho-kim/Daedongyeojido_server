@@ -43,7 +43,7 @@ public class Alarm {
     @Enumerated(EnumType.STRING)
     private AlarmType alarmType;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "report", nullable = false)
     private Report report;
 
