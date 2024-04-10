@@ -1,6 +1,7 @@
 package com.example.daedongyeojido_server.domain.question.api;
 
 import com.example.daedongyeojido_server.domain.question.application.AnswerQuestionService;
+import com.example.daedongyeojido_server.domain.question.application.DeleteClubQuestService;
 import com.example.daedongyeojido_server.domain.question.application.QueryQuestionService;
 import com.example.daedongyeojido_server.domain.question.application.QuestClubService;
 import com.example.daedongyeojido_server.domain.question.dto.request.AnswerRequest;
@@ -9,6 +10,7 @@ import com.example.daedongyeojido_server.domain.question.dto.response.QuestRespo
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,6 +32,8 @@ public class QuestionController {
 
     private final QueryQuestionService queryQuestionService;
 
+    private final DeleteClubQuestService deleteClubQuestService;
+
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/quest")
     public void questClub(@RequestBody @Valid QuestRequest request) {
@@ -46,5 +50,11 @@ public class QuestionController {
     @GetMapping("/query/{clubName}")
     public List<QuestResponse> queryQuest(@PathVariable String clubName) {
         return queryQuestionService.queryQuestion(clubName);
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @DeleteMapping("/delete/{clubQuestId}")
+    public void deleteClubQuest(@PathVariable Long clubQuestId) {
+        deleteClubQuestService.deleteClubQuest(clubQuestId);
     }
 }
