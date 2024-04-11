@@ -15,7 +15,7 @@ public enum Major {
 
     IOS("아이오에스"),
 
-    AND("안드로이드"),
+    AOS("안드로이드"),
 
     FLUTTER("플러터"),
 
