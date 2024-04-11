@@ -23,7 +23,7 @@ public class AllClubResponse {
 
     public AllClubResponse(Club club) {
         clubName = club.getClubName();
-        title = club.getTitle();
+        title = club.getTitle1();
         clubImageUrl = club.getClubImageUrl();
         if(club.getNotice() == null) majors = null;
         else majors = club.getNotice().getFields().stream().map(MajorResponse::new).toList();
