@@ -75,7 +75,7 @@ public class Notice {
     @Column(name = "assignment_1", nullable = false)
     private String assignment1;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "club")
     private Club clubName;
 
