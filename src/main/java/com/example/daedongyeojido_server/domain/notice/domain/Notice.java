@@ -42,19 +42,8 @@ public class Notice {
     @Column(name = "club_explain", nullable = false)
     private String clubExplain;
 
-    @OneToMany(mappedBy = "notice", orphanRemoval = true, cascade = CascadeType.REMOVE)
-    private List<Field> fields = new ArrayList<>();
-
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "recruit_day")
-    private StartAndEndTime recruitDay;
-
     @Column(name = "apply_method", nullable = false)
     private String applyMethod;
-
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "interview_day")
-    private StartAndEndTime interviewDay;
 
     @Column(name = "inquiry", nullable = false)
     private String inquiry;
@@ -65,9 +54,41 @@ public class Notice {
     @Column(name = "assignment", nullable = false)
     private String assignment;
 
+    @Column(name = "notice_title_1", nullable = false)
+    private String noticeTitle1;
+
+    @Column(name = "notice_explain_1", nullable = false)
+    private String noticeExplain1;
+
+    @Column(name = "club_explain_1", nullable = false)
+    private String clubExplain1;
+
+    @Column(name = "apply_method_1", nullable = false)
+    private String applyMethod1;
+
+    @Column(name = "inquiry_1", nullable = false)
+    private String inquiry1;
+
+    @Column(name = "we_want_1", nullable = false)
+    private String weWant1;
+
+    @Column(name = "assignment_1", nullable = false)
+    private String assignment1;
+
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "club")
     private Club clubName;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "interview_day")
+    private StartAndEndTime interviewDay;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "recruit_day")
+    private StartAndEndTime recruitDay;
+
+    @OneToMany(mappedBy = "notice", orphanRemoval = true, cascade = CascadeType.REMOVE)
+    private List<Field> fields = new ArrayList<>();
 
     @OneToMany(mappedBy = "notice", orphanRemoval = true)
     private List<Report> reports;
@@ -89,13 +110,13 @@ public class Notice {
 
     public void updateNotice(String noticeTitle, String noticeExplain, String clubExplain,
                              String applyMethod, String inquiry, String weWant, String assignment) {
-        this.noticeTitle = noticeTitle;
-        this.noticeExplain = noticeExplain;
-        this.clubExplain = clubExplain;
-        this.applyMethod = applyMethod;
-        this.inquiry = inquiry;
-        this.weWant = weWant;
-        this.assignment = assignment;
+        this.noticeTitle1 = noticeTitle;
+        this.noticeExplain1 = noticeExplain;
+        this.clubExplain1 = clubExplain;
+        this.applyMethod1 = applyMethod;
+        this.inquiry1 = inquiry;
+        this.weWant1 = weWant;
+        this.assignment1 = assignment;
     }
 
     public void addField(Field field) {
