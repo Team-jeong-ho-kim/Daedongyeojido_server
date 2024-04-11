@@ -21,16 +21,16 @@ public class QueryNoticeInfoService {
 
         return NoticeInfoResponse.builder()
                 .clubName(notice.getClubName().getClubName())
-                .noticeTitle(notice.getNoticeTitle())
-                .noticeExplain(notice.getNoticeExplain())
-                .clubExplain(notice.getClubExplain())
+                .noticeTitle(notice.getNoticeTitle1())
+                .noticeExplain(notice.getNoticeExplain1())
+                .clubExplain(notice.getClubExplain1())
                 .fields(notice.getFields().stream().map(FieldResponse::new).toList())
                 .recruitDay(new StartAndEndTimeResponse(notice.getRecruitDay().getStartDay(), notice.getRecruitDay().getEndDay()))
-                .applyMethod(notice.getApplyMethod())
+                .applyMethod(notice.getApplyMethod1())
                 .interviewDay(new StartAndEndTimeResponse(notice.getInterviewDay().getStartDay(), notice.getInterviewDay().getEndDay()))
-                .inquiry(notice.getInquiry())
-                .weWant(notice.getWeWant())
-                .assignment(notice.getAssignment())
+                .inquiry(notice.getInquiry1())
+                .weWant(notice.getWeWant1())
+                .assignment(notice.getAssignment1())
                 .build();
     }
 }

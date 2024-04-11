@@ -42,14 +42,14 @@ public class CreateNoticeService {
         Notice notice = noticeRepository.save(
                 Notice.builder()
                         .clubName(club)
-                        .noticeTitle(request.getNoticeTitle())
-                        .noticeExplain(request.getNoticeExplain())
-                        .clubExplain(request.getClubExplain())
+                        .noticeTitle1(request.getNoticeTitle())
+                        .noticeExplain1(request.getNoticeExplain())
+                        .clubExplain1(request.getClubExplain())
                         .fields(request.getFields().stream().map(Field::new).toList())
-                        .applyMethod(request.getApplyMethod())
-                        .inquiry(request.getInquiry())
-                        .weWant(request.getWeWant())
-                        .assignment(request.getAssignment())
+                        .applyMethod1(request.getApplyMethod())
+                        .inquiry1(request.getInquiry())
+                        .weWant1(request.getWeWant())
+                        .assignment1(request.getAssignment())
                         .build());
 
         for(int i = 0;i<request.getFields().size(); i++) {
