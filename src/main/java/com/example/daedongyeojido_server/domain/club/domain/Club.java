@@ -30,11 +30,11 @@ public class Club {
     @Column(name = "club_name", length = 20, nullable = false)
     private String clubName;
 
-    @Column(name = "title", length = 30)
-    private String title;
+    @Column(name = "title_1")
+    private String title1;
 
-    @Column(name = "introduction", length = 500)
-    private String introduction;
+    @Column(name = "introduction_1")
+    private String introduction1;
 
     @Column(name = "club_image_url", length = 20, columnDefinition = "TEXT")
     private String clubImageUrl;
@@ -69,8 +69,8 @@ public class Club {
     }
 
     public void modifyClub(String title, String introduction, String clubImageUrl, String clubBannerUrl, List<String> tags) {
-        this.title = title;
-        this.introduction = introduction;
+        this.title1 = title;
+        this.introduction1 = introduction;
         this.clubImageUrl = clubImageUrl;
         this.clubBannerUrl = clubBannerUrl;
         this.tags = tags;
