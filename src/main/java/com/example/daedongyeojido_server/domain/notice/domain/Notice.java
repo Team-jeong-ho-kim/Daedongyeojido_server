@@ -33,13 +33,13 @@ public class Notice {
     @Column(name = "notice_id", nullable = false)
     private Long noticeId;
 
-    @Column(name = "notice_title", nullable = false, length = 20)
+    @Column(name = "notice_title", nullable = false)
     private String noticeTitle;
 
-    @Column(name = "notice_explain", nullable = false, length = 30)
+    @Column(name = "notice_explain", nullable = false)
     private String noticeExplain;
 
-    @Column(name = "club_explain", nullable = false, length = 100)
+    @Column(name = "club_explain", nullable = false)
     private String clubExplain;
 
     @OneToMany(mappedBy = "notice", orphanRemoval = true, cascade = CascadeType.REMOVE)
@@ -49,20 +49,20 @@ public class Notice {
     @JoinColumn(name = "recruit_day")
     private StartAndEndTime recruitDay;
 
-    @Column(name = "apply_method", nullable = false, length = 30)
+    @Column(name = "apply_method", nullable = false)
     private String applyMethod;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "interview_day")
     private StartAndEndTime interviewDay;
 
-    @Column(name = "inquiry", nullable = false, length = 100)
+    @Column(name = "inquiry", nullable = false)
     private String inquiry;
 
-    @Column(name = "we_want", nullable = false, length = 200)
+    @Column(name = "we_want", nullable = false)
     private String weWant;
 
-    @Column(name = "assignment", nullable = false, length = 200)
+    @Column(name = "assignment", nullable = false)
     private String assignment;
 
     @OneToOne(fetch = FetchType.LAZY)
