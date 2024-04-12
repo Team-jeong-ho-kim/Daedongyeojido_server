@@ -41,8 +41,8 @@ public class ClubInfoService {
 
         return ClubInfoResponse.builder()
                 .clubName(club.getClubName())
-                .title(club.getTitle1())
-                .introduction(club.getIntroduction1())
+                .title(club.getTitle())
+                .introduction(club.getIntroduction())
                 .clubImageUrl(club.getClubImageUrl())
                 .clubBannerUrl(club.getClubBannerUrl())
                 .tags(club.getTags())
