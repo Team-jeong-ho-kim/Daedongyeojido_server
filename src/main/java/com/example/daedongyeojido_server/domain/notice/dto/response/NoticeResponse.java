@@ -27,7 +27,7 @@ public class NoticeResponse {
     public NoticeResponse(Notice notice) {
         id = notice.getNoticeId();
         clubName = notice.getClubName().getClubName();
-        noticeTitle = notice.getNoticeTitle1();
+        noticeTitle = notice.getNoticeTitle();
         major = notice.getFields().stream().map(Field::getMajor).toList();
         recruitDay = new StartAndEndTimeResponse(notice.getRecruitDay().getStartDay(), notice.getRecruitDay().getEndDay());
     }

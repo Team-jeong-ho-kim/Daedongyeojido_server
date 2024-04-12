@@ -54,27 +54,6 @@ public class Notice {
     @Column(name = "assignment", nullable = false)
     private String assignment;
 
-    @Column(name = "notice_title_1", nullable = false)
-    private String noticeTitle1;
-
-    @Column(name = "notice_explain_1", nullable = false)
-    private String noticeExplain1;
-
-    @Column(name = "club_explain_1", nullable = false)
-    private String clubExplain1;
-
-    @Column(name = "apply_method_1", nullable = false)
-    private String applyMethod1;
-
-    @Column(name = "inquiry_1", nullable = false)
-    private String inquiry1;
-
-    @Column(name = "we_want_1", nullable = false)
-    private String weWant1;
-
-    @Column(name = "assignment_1", nullable = false)
-    private String assignment1;
-
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "club")
     private Club clubName;
@@ -110,13 +89,13 @@ public class Notice {
 
     public void updateNotice(String noticeTitle, String noticeExplain, String clubExplain,
                              String applyMethod, String inquiry, String weWant, String assignment) {
-        this.noticeTitle1 = noticeTitle;
-        this.noticeExplain1 = noticeExplain;
-        this.clubExplain1 = clubExplain;
-        this.applyMethod1 = applyMethod;
-        this.inquiry1 = inquiry;
-        this.weWant1 = weWant;
-        this.assignment1 = assignment;
+        this.noticeTitle = noticeTitle;
+        this.noticeExplain = noticeExplain;
+        this.clubExplain = clubExplain;
+        this.applyMethod = applyMethod;
+        this.inquiry = inquiry;
+        this.weWant = weWant;
+        this.assignment = assignment;
     }
 
     public void addField(Field field) {
