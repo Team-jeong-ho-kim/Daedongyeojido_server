@@ -26,8 +26,11 @@ public class NoticeQuest {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "question", nullable = false, length = 30)
-    private String question;
+    //@Column(name = "question", nullable = false, length = 30)
+    //private String question;
+
+    @Column(name = "question1", nullable = false)
+    private String question1;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "notice", nullable = false)
