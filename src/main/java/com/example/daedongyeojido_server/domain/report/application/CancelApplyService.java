@@ -1,5 +1,6 @@
 package com.example.daedongyeojido_server.domain.report.application;
 
+import com.example.daedongyeojido_server.domain.alarm.dao.AlarmRepository;
 import com.example.daedongyeojido_server.domain.report.application.facade.ReportFacade;
 import com.example.daedongyeojido_server.domain.report.dao.ReportRepository;
 import com.example.daedongyeojido_server.domain.report.domain.Report;
@@ -19,11 +20,15 @@ public class CancelApplyService {
 
     private final ReportRepository reportRepository;
 
+    private final AlarmRepository alarmRepository;
+
     @Transactional
     public void cancelApply(Long reportId) {
         Report report = reportFacade.reportFacade(reportId);
 
         if(!userFacade.currentUser().getClassNumber().equals(report.getClassNumber())) throw UserMismatchException.EXCEPTION;
+
+        alarmRepository.deleteByReport(report);
 
         reportRepository.delete(report);
     }
