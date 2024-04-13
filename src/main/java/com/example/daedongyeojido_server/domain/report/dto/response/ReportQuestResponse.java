@@ -13,7 +13,7 @@ public class ReportQuestResponse {
     private String answer;
 
     public ReportQuestResponse(ReportQuest reportQuest) {
-        question = reportQuest.getQuestion1();
-        answer = reportQuest.getAnswer1();
+        question = reportQuest.getQuestion();
+        answer = reportQuest.getAnswer();
     }
 }

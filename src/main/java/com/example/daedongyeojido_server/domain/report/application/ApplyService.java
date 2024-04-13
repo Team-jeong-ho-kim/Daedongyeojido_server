@@ -73,8 +73,8 @@ public class ApplyService {
 
             reportQuestRepository.save(
                     ReportQuest.builder()
-                            .question1(saveReportQuestRequest.getQuestion())
-                            .answer1(saveReportQuestRequest.getAnswer())
+                            .question(saveReportQuestRequest.getQuestion())
+                            .answer(saveReportQuestRequest.getAnswer())
                             .report(report)
                             .build());
         }
