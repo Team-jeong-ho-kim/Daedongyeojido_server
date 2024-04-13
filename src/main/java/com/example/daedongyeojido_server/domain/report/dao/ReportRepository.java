@@ -12,6 +12,4 @@ public interface ReportRepository extends JpaRepository<Report, Long> {
     Boolean existsByClassNumberAndNotice(String classNumber, Notice notice);
 
     List<Report> findAllByClassNumber(String classNumber);
-
-    Report findByClassNumberAndNotice(String classNumber, Notice notice);
 }
