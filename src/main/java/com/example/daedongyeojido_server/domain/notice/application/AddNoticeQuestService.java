@@ -22,7 +22,7 @@ public class AddNoticeQuestService {
         Notice notice = noticeFacade.noticeFacade(request.getNoticeId());
 
         NoticeQuest noticeQuest = NoticeQuest.builder()
-                .question1(request.getQuestion())
+                .question(request.getQuestion())
                 .notice(notice)
                 .build();
 

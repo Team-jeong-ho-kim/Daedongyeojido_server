@@ -14,6 +14,6 @@ public class NoticeQuestResponse {
 
     public NoticeQuestResponse(NoticeQuest noticeQuest) {
         id = noticeQuest.getId();
-        question = noticeQuest.getQuestion1();
+        question = noticeQuest.getQuestion();
     }
 }

@@ -53,7 +53,7 @@ public class ApplyService {
             NoticeQuest noticeQuest = noticeQuestRepository.findById(reportQuestRequest.getNoticeQuestId())
                             .orElseThrow(()->NoticeQuestNotFoundException.EXCEPTION);
 
-            saveReportQuestRequests.add(new SaveReportQuestRequest(noticeQuest.getQuestion1(), reportQuestRequest.getAnswer()));
+            saveReportQuestRequests.add(new SaveReportQuestRequest(noticeQuest.getQuestion(), reportQuestRequest.getAnswer()));
         }
 
         Report report = reportRepository.save(
