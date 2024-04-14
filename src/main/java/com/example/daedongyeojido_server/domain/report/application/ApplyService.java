@@ -60,7 +60,7 @@ public class ApplyService {
                 Report.builder()
                         .classNumber(user.getClassNumber())
                         .name(user.getName())
-                        .introduce1(request.getIntroduce())
+                        .introduce(request.getIntroduce())
                         .major(request.getMajor())
                         .reportQuests(saveReportQuestRequests.stream().map(ReportQuest::new).toList())
                         .reportPassingResult(PassingResult.WAIT)
