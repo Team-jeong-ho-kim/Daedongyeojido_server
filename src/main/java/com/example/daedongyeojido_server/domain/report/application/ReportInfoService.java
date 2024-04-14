@@ -30,7 +30,7 @@ public class ReportInfoService {
         return ReportInfoResponse.builder()
                 .classNumber(report.getClassNumber())
                 .name(report.getName())
-                .introduce(report.getIntroduce1())
+                .introduce(report.getIntroduce())
                 .reportPassingResult(report.getReportPassingResult())
                 .noticeQuests(report.getReportQuests().stream().map(ReportQuestResponse::new).toList())
                 .build();
