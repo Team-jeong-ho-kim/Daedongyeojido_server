@@ -42,8 +42,11 @@ public class Report {
     @Column(name = "name", length = 4, nullable = false)
     private String name;
 
-    @Column(name = "introduce", nullable = false)
-    private String introduce;
+    //@Column(name = "introduce", nullable = false)
+    //private String introduce;
+
+    @Column(name = "introduce_1", nullable = false)
+    private String introduce1;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "major", nullable = false)
